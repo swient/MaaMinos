@@ -1,0 +1,35 @@
+{
+    "MinosMailbox": {
+        "enabled": true,
+        "next": "EnterMinosMailbox",
+        "interrupt": "ReturnHome"
+    },
+    "EnterMinosMailbox": {
+        "post_delay": 500,
+        "recognition": "OCR",
+        "expected": "信箱",
+        "roi": [96, 427, 31, 18],
+        "action": "Click",
+        "next": "CompletedMinosMailbox",
+        "interrupt": "AutoProcessAll"
+    },
+    "CompletedMinosMailbox": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "MinosMailbox/CompletedMinosMailbox_1.png",
+            "MinosMailbox/CompletedMinosMailbox_2.png"
+        ],
+        "roi": [105, 236, 40, 40],
+        "next": "ReturnHome"
+    },
+    "AutoProcessAll": {
+        "recognition": "OCR",
+        "expected": "快速處理",
+        "roi": [305, 649, 106, 26],
+        "action": "Click",
+        "next": [
+            "ResourcesObtained",
+            "AutoProcessAll"
+        ]
+    }
+}

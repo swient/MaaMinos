@@ -1,0 +1,82 @@
+{
+    "AutoRaidLevel": {
+        "post_delay": 500,
+        "recognition": "OCR",
+        "expected": "掃蕩",
+        "roi": [815, 635, 75, 40],
+        "action": "Click",
+        "next": [
+            "SkipRaidLevel",
+            "InitRaidTimes",
+            "SetRaidTimes"
+        ]
+    },
+    "SkipRaidLevel": {
+        "recognition": "OCR",
+        "expected": "取消",
+        "roi": [466, 480, 64, 31],
+        "action": "Click",
+        "next": "ReturnHome"
+    },
+    "InitRaidTimes": {
+        "inverse": true,
+        "post_delay": 1000,
+        "recognition": "TemplateMatch",
+        "template": "Discity/InitRaidTimes.png",
+        "roi": [430, 449, 38, 38],
+        "action": "Click",
+        "target": [450, 467, 1, 1],
+        "next": [
+            "AutoRaidLevel",
+            "RaidOnceOnly",
+            "TargetRaidTimes",
+            "InitRaidTimes",
+            "SetRaidTimes"
+        ]
+    },
+    "SetRaidTimes": {
+        "recognition": "OCR",
+        "expected": "選擇次數",
+        "roi": [330, 424, 74, 21],
+        "action": "Click",
+        "target": [913, 468, 1, 1],
+        "next": [
+            "RaidOnceOnly",
+            "MaxRaidTimes",
+            "TargetRaidTimes",
+            "SetRaidTimes"
+        ]
+    },
+    "RaidOnceOnly": {
+        "recognition": "OCR",
+        "expected": "1",
+        "roi": [857, 457, 6, 23],
+        "next": "StartRaidLevel"
+    },
+    "MaxRaidTimes": {
+        "recognition": "TemplateMatch",
+        "template": "Discity/InitRaidTimes.png",
+        "roi": [812, 449, 38, 38],
+        "next": "StartRaidLevel"
+    },
+    "TargetRaidTimes": {
+        "recognition": "OCR",
+        "expected": "3",
+        "roi": [412, 423, 21, 23],
+        "next": "StartRaidLevel"
+    },
+    "StartRaidLevel": {
+        "recognition": "OCR",
+        "expected": "開始掃蕩",
+        "roi": [705, 515, 127, 31],
+        "action": "Click",
+        "next": "CompletedRaidLevel"
+    },
+    "CompletedRaidLevel": {
+        "recognition": "OCR",
+        "expected": "完成",
+        "roi": [465, 632, 68, 32],
+        "action": "Click",
+        "next": "ReturnHome"
+    }
+}

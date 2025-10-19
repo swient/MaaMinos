@@ -1,0 +1,84 @@
+{
+    "BrokenFrontline": {
+        "next": [
+            "CompletedBrokenFrontline",
+            "EnterBrokenFrontline",
+            "EnterDisSea",
+            "EnterDiscity",
+            "EnterOpsHub"
+        ],
+        "interrupt": "ReturnHome"
+    },
+    "EnterBrokenFrontline": {
+        "recognition": "OCR",
+        "expected": "破碎",
+        "roi": [50, 441, 1150, 37],
+        "action": "Click",
+        "next": [
+            "CompletedBrokenFrontline",
+            "EnterBrokenFrontlineItem"
+        ]
+    },
+    "CompletedBrokenFrontline": {
+        "recognition": "TemplateMatch",
+        "template": "Discity/CompletedBrokenFrontline.png",
+        "roi": [102, 514, 26, 26],
+        "next": "ReturnHome"
+    },
+    "EnterBrokenFrontlineItem": {
+        "recognition": "TemplateMatch",
+        "template": "Discity/BrokenFrontline.png",
+        "roi": [102, 514, 26, 26],
+        "action": "Click",
+        "target_offset": [-25, 25, 0, 0],
+        "next": [
+            "EnterBrokenFrontlineStageReward",
+            "EnterBrokenFrontlineItem"
+        ]
+    },
+    "EnterBrokenFrontlineStageReward": {
+        "recognition": "OCR",
+        "expected": "本期",
+        "roi": [214, 228, 45, 25],
+        "action": "Click",
+        "next": "CompletedBrokenFrontlineStageReward",
+        "interrupt": "ClaimBrokenFrontlineReward"
+    },
+    "CompletedBrokenFrontlineStageReward": {
+        "recognition": "TemplateMatch",
+        "template": "Discity/CompletedBrokenFrontlineItem.png",
+        "roi": [192, 197, 26, 26],
+        "next": "EnterBrokenFrontlineLevelReward"
+    },
+    "EnterBrokenFrontlineLevelReward": {
+        "recognition": "OCR",
+        "expected": "關卡",
+        "roi": [214, 319, 45, 25],
+        "action": "Click",
+        "next": "CompletedBrokenFrontlineLevelReward",
+        "interrupt": "EnterBrokenFrontlineLevelRewardItem"
+    },
+    "CompletedBrokenFrontlineLevelReward": {
+        "recognition": "TemplateMatch",
+        "template": "Discity/CompletedBrokenFrontlineItem.png",
+        "roi": [192, 289, 26, 26],
+        "action": "Click",
+        "target": [80, 370, 1, 1],
+        "next": "ReturnHome"
+    },
+    "EnterBrokenFrontlineLevelRewardItem": {
+        "recognition": "TemplateMatch",
+        "template": "Discity/BrokenFrontline.png",
+        "roi": [368, 376, 26, 155],
+        "action": "Click",
+        "target_offset": [-85, 20, 0, 0],
+        "next": "ClaimBrokenFrontlineReward"
+    },
+    "ClaimBrokenFrontlineReward": {
+        "recognition": "OCR",
+        "expected": "鍵領取",
+        "roi": [966, 636, 83, 29],
+        "action": "Click",
+        "next": "ResourcesObtained"
+    }
+}

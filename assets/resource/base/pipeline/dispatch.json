@@ -1,0 +1,50 @@
+{
+    "Dispatch": {
+        "next": [
+            "CompletedDispatch",
+            "EnterDispatch",
+            "EnterBureau",
+            "EnterOpsHub"
+        ],
+        "interrupt": "ReturnHome"
+    },
+    "EnterDispatch": {
+        "recognition": "OCR",
+        "expected": "派遣",
+        "roi": [527, 445, 80, 44],
+        "action": "Click",
+        "next": [
+            "CompletedDispatch",
+            "EnterDispatch"
+        ],
+        "interrupt": [
+            "ClaimDispatch",
+            "AutoDispatch"
+        ]
+    },
+    "CompletedDispatch": {
+        "recognition": "OCR",
+        "expected": "數量已達上限",
+        "roi": [594, 311, 133, 24],
+        "next": "ReturnHome"
+    },
+    "ClaimDispatch": {
+        "recognition": "OCR",
+        "expected": [
+            "領取",
+            "领取"
+        ],
+        "roi": [1140, 532, 105, 37],
+        "action": "Click",
+        "next": [
+            "ResourcesObtained",
+            "ClaimDispatch"
+        ]
+    },
+    "AutoDispatch": {
+        "recognition": "OCR",
+        "expected": "派遣",
+        "roi": [1140, 532, 105, 37],
+        "action": "Click"
+    }
+}

@@ -1,0 +1,40 @@
+{
+    "Friendship": {
+        "enabled": true,
+        "next": [
+            "CompletedFriendship",
+            "EnterFriends",
+            "EnterNexus"
+        ],
+        "interrupt": "ReturnHome"
+    },
+    "EnterFriends": {
+        "recognition": "OCR",
+        "expected": "好友",
+        "roi": [1188, 294, 38, 21],
+        "action": "Click",
+        "next": "CompletedFriendship",
+        "interrupt": [
+            "ClaimFriendship",
+            "SendFriendship"
+        ]
+    },
+    "CompletedFriendship": {
+        "recognition": "OCR",
+        "expected": "已",
+        "roi": [869, 615, 51, 20],
+        "next": "ReturnHome"
+    },
+    "ClaimFriendship": {
+        "recognition": "OCR",
+        "expected": "鍵領取",
+        "roi": [1123, 612, 82, 28],
+        "action": "Click"
+    },
+    "SendFriendship": {
+        "recognition": "OCR",
+        "expected": "鍵贈送",
+        "roi": [1123, 612, 82, 28],
+        "action": "Click"
+    }
+}

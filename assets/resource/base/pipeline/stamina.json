@@ -1,0 +1,67 @@
+{
+    "Stamina": {
+        "enabled": true,
+        "next": [
+            "EnterStamina",
+            "SkipStamina",
+            "EnterBureau",
+            "EnterOpsHub"
+        ],
+        "interrupt": "ReturnHome"
+    },
+    "SkipStamina": {
+        "recognition": "TemplateMatch",
+        "template": "Bureau/SkipStamina.png",
+        "roi": [167, 311, 34, 31],
+        "next": "ReturnHome"
+    },
+    "EnterStamina": {
+        "recognition": "TemplateMatch",
+        "template": "Bureau/Stamina.png",
+        "roi": [155, 284, 66, 61],
+        "action": "Click",
+        "next": "CompletedNoonStamina",
+        "interrupt": "ClaimNoonStamina"
+    },
+    "CompletedNoonStamina": {
+        "recognition": "TemplateMatch",
+        "template": "Bureau/CompletedStamina.png",
+        "roi": [907, 298, 79, 69],
+        "next": [
+            "CompletedNightStamina",
+            "SkipNightStamina"
+        ],
+        "interrupt": "ClaimNightStamina"
+    },
+    "ClaimNoonStamina": {
+        "recognition": "OCR",
+        "expected": "領 取",
+        "roi": [919, 324, 58, 27],
+        "action": "Click",
+        "next": "ResourcesObtained"
+    },
+    "CompletedNightStamina": {
+        "recognition": "TemplateMatch",
+        "template": "Bureau/CompletedStamina.png",
+        "roi": [907, 500, 79, 69],
+        "action": "Click",
+        "target": [640, 700, 1, 1],
+        "next": "ReturnHome"
+    },
+    "SkipNightStamina": {
+        "recognition": "ColorMatch",
+        "upper": [93, 94, 97],
+        "lower": [74, 77, 82],
+        "roi": [852, 510, 192, 61],
+        "action": "Click",
+        "target": [640, 700, 1, 1],
+        "next": "ReturnHome"
+    },
+    "ClaimNightStamina": {
+        "recognition": "OCR",
+        "expected": "領 取",
+        "roi": [919, 526, 58, 27],
+        "action": "Click",
+        "next": "ResourcesObtained"
+    }
+}

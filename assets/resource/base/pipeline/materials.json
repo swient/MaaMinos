@@ -1,0 +1,44 @@
+{
+    "Materials": {
+        "next": [
+            "EnterMaterialsItem",
+            "EnterMaterials",
+            "EnterTheRust",
+            "EnterDiscity",
+            "EnterOpsHub"
+        ],
+        "interrupt": "ReturnHome"
+    },
+    "EnterMaterials": {
+        "post_delay": 500,
+        "recognition": "OCR",
+        "expected": "清剿",
+        "roi": [568, 210, 485, 303],
+        "action": "Click",
+        "next": "EnterMaterialsItem",
+        "interrupt": "AutoSwipeUp"
+    },
+    "EnterMaterialsItem": {
+        "recognition": "OCR",
+        "expected": "淘金",
+        "roi": [146, 134, 52, 495],
+        "action": "Click",
+        "next": [
+            "VerifyMaterialsItem",
+            "EnterMaterialsItem"
+        ]
+    },
+    "VerifyMaterialsItem": {
+        "recognition": "OCR",
+        "expected": "淘金",
+        "roi": [408, 276, 88, 48],
+        "next": "EnterMaterialsLevel"
+    },
+    "EnterMaterialsLevel": {
+        "recognition": "OCR",
+        "expected": "4",
+        "roi": [1098, 472, 16, 22],
+        "action": "Click",
+        "next": "AutoRaidLevel"
+    }
+}

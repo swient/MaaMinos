@@ -1,0 +1,101 @@
+{
+    "SocietyDonation": {
+        "next": [
+            "CompletedDonation",
+            "EnterDonation",
+            "EnterSociety",
+            "EnterNexus"
+        ],
+        "interrupt": "ReturnHome"
+    },
+    "EnterDonation": {
+        "recognition": "OCR",
+        "expected": "秘盟捐贈",
+        "roi": [804, 636, 106, 31],
+        "action": "Click",
+        "next": "CompletedDonation",
+        "interrupt": "AutoDonation"
+    },
+    "CompletedDonation": {
+        "recognition": "OCR",
+        "expected": "明日可捐贈",
+        "roi": [206, 575, 125, 32],
+        "next": "ReturnHome"
+    },
+    "AutoDonation": {
+        "recognition": "OCR",
+        "expected": "全部捐贈",
+        "roi": [289, 584, 113, 31],
+        "action": "Click",
+        "next": "ResourcesObtained"
+    },
+    "SocietyMutalAid": {
+        "next": [
+            "CompletedPostRequest",
+            "EnterMutalAid",
+            "EnterSociety",
+            "EnterNexus"
+        ],
+        "interrupt": "ReturnHome"
+    },
+    "EnterMutalAid": {
+        "recognition": "OCR",
+        "expected": "秘盟互助",
+        "roi": [921, 637, 105, 30],
+        "action": "Click",
+        "next": "CompletedMutalAid",
+        "interrupt": "AutoMutalAid"
+    },
+    "CompletedMutalAid": {
+        "recognition": "OCR",
+        "expected": "今日互助次數已用完",
+        "roi": [400, 339, 169, 31],
+        "next": [
+            "SkipPostRequest",
+            "EnterPostRequest"
+        ]
+    },
+    "AutoMutalAid": {
+        "recognition": "TemplateMatch",
+        "template": "Society/MutalAid.png",
+        "roi": [418, 196, 754, 447],
+        "action": "Click",
+        "target_offset": [0, 100, 0, 0],
+        "next": "ResourcesObtained"
+    },
+    "SkipPostRequest": {
+        "recognition": "OCR",
+        "expected": "查看",
+        "roi": [151, 344, 46, 23],
+        "next": "ReturnHome"
+    },
+    "EnterPostRequest": {
+        "recognition": "OCR",
+        "expected": "發佈求助",
+        "roi": [123, 298, 103, 29],
+        "action": "Click",
+        "next": "EnterExclusiveMaterial"
+    },
+    "EnterExclusiveMaterial": {
+        "recognition": "OCR",
+        "expected": "專屬材料",
+        "roi": [193, 436, 112, 29],
+        "action": "Click",
+        "next": "AutoPostRequest"
+    },
+    "AutoPostRequest": {
+        "recognition": "TemplateMatch",
+        "template": "Society/PostRequest.png",
+        "roi": [571, 435, 92, 92],
+        "action": "Click",
+        "next": "CompletedPostRequest"
+    },
+    "CompletedPostRequest": {
+        "recognition": "OCR",
+        "expected": "技能模組",
+        "roi": [1024, 225, 80, 23],
+        "action": "Click",
+        "target": [1020, 610, 1, 1],
+        "next": "ReturnHome"
+    }
+}

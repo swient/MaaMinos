@@ -1,0 +1,96 @@
+{
+    "System": {
+        "next": [
+            "CompletedCollect",
+            "EnterSystem",
+            "EnterNexus"
+        ],
+        "interrupt": "ReturnHome"
+    },
+    "EnterSystem": {
+        "recognition": "OCR",
+        "expected": "監管",
+        "roi": [1027, 397, 39, 27],
+        "action": "Click",
+        "next": "CompletedCollect",
+        "interrupt": "AutoCollect"
+    },
+    "CompletedCollect": {
+        "recognition": "TemplateMatch",
+        "template": "System/CompletedCollect.png",
+        "roi": [33, 321, 195, 43],
+        "next": "EnterCCTV"
+    },
+    "AutoCollect": {
+        "recognition": "OCR",
+        "expected": "一鍵收取",
+        "roi": [120, 331, 90, 24],
+        "action": "Click",
+        "next": "ResourcesObtained"
+    },
+    "EnterCCTV": {
+        "recognition": "OCR",
+        "expected": [
+            "監管裝置",
+            "監管装置"
+        ],
+        "roi": [129, 188, 80, 25],
+        "action": "Click",
+        "next": [
+            "CompletedSystem",
+            "EnterIncident",
+            "EnterCCTV"
+        ]
+    },
+    "CompletedSystem": {
+        "recognition": "OCR",
+        "expected": "無待處理事項",
+        "roi": [594, 311, 133, 24],
+        "next": "ReturnHome"
+    },
+    "EnterIncident": {
+        "recognition": "TemplateMatch",
+        "template": "System/Incident.png",
+        "roi": [1127, 390, 70, 70],
+        "action": "Click",
+        "next": [
+            "CompletedIncident",
+            "EnterIncident"
+        ],
+        "interrupt": "SkipIncident"
+    },
+    "CompletedIncident": {
+        "recognition": "OCR",
+        "expected": "處理",
+        "roi": [800, 455, 42, 22],
+        "next": [
+            "NextIncident",
+            "ReturnHome"
+        ]
+    },
+    "NextIncident": {
+        "recognition": "OCR",
+        "expected": "下",
+        "roi": [1174, 621, 26, 26],
+        "action": "Click",
+        "next": [
+            "CompletedIncident",
+            "NextIncident"
+        ],
+        "interrupt": "SkipIncident"
+    },
+    "SkipIncident": {
+        "recognition": "OCR",
+        "expected": "跳過",
+        "roi": [1151, 16, 51, 26],
+        "action": "Click",
+        "next": "ResourcesObtained",
+        "interrupt": "AutoIncident"
+    },
+    "AutoIncident": {
+        "recognition": "TemplateMatch",
+        "template": "System/AutoIncident.png",
+        "roi": [1159, 557, 26, 27],
+        "action": "Click"
+    }
+}

@@ -1,0 +1,59 @@
+{
+    "EnterOpsHub": {
+        "recognition": "OCR",
+        "expected": "危機",
+        "roi": [911, 630, 40, 26],
+        "action": "Click"
+    },
+    "EnterNexus": {
+        "recognition": "OCR",
+        "expected": "整備",
+        "roi": [1016, 641, 42, 30],
+        "action": "Click"
+    },
+    "EnterDiscity": {
+        "recognition": "OCR",
+        "expected": "狄斯",
+        "roi": [1151, 140, 71, 42],
+        "action": "Click"
+    },
+    "EnterBureau": {
+        "recognition": "OCR",
+        "expected": "管理局",
+        "roi": [1165, 301, 61, 23],
+        "action": "Click"
+    },
+    "EnterSociety": {
+        "recognition": "OCR",
+        "expected": "秘盟",
+        "roi": [1181, 177, 50, 28],
+        "action": "Click",
+        "interrupt": [
+            "ResourcesObtained",
+            "DailySignIn"
+        ]
+    },
+    "DailySignIn": {
+        "recognition": "OCR",
+        "expected": "今日已簽到",
+        "roi": [709, 270, 204, 43],
+        "action": "Click",
+        "target": [1200, 400, 1, 1]
+    },
+    "EnterTheRust": {
+        "recognition": "OCR",
+        "expected": "鏽河",
+        "roi": [213, 642, 67, 35],
+        "action": "Click"
+    },
+    "EnterDisSea": {
+        "post_delay": 1000,
+        "recognition": "OCR",
+        "expected": [
+            "內海",
+            "内海"
+        ],
+        "roi": [1064, 642, 66, 35],
+        "action": "Click"
+    }
+}

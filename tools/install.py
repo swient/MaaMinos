@@ -7,15 +7,15 @@ import json
 from configure import configure_ocr_model
 
 
-working_dir = Path(__file__).parent
+working_dir = Path(__file__).parent.parent
 install_path = working_dir / Path("install")
 version = len(sys.argv) > 1 and sys.argv[1] or "v0.0.1"
 
 
 def install_deps():
     if not (working_dir / "deps" / "bin").exists():
-        print("Please download the MaaFramework to \"deps\" first.")
-        print("请先下载 MaaFramework 到 \"deps\"。")
+        print('Please download the MaaFramework to "deps" first.')
+        print('請先下載 MaaFramework 到 "deps"。')
         sys.exit(1)
 
     shutil.copytree(
@@ -69,12 +69,14 @@ def install_chores():
         install_path,
     )
 
+
 def install_agent():
     shutil.copytree(
-        working_dir / "agent",
+        working_dir / "assets" / "agent",
         install_path / "agent",
         dirs_exist_ok=True,
     )
+
 
 if __name__ == "__main__":
     install_deps()

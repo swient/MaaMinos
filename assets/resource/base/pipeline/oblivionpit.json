@@ -1,0 +1,44 @@
+{
+    "OblivionPit": {
+        "next": [
+            "AutoOblivionPit",
+            "CompletedOblivionPit",
+            "EnterOblivionPit",
+            "EnterDisSea",
+            "EnterDiscity",
+            "EnterOpsHub"
+        ],
+        "interrupt": "ReturnHome"
+    },
+    "EnterOblivionPit": {
+        "recognition": "OCR",
+        "expected": "濁暗",
+        "roi": [50, 411, 1150, 38],
+        "action": "Click",
+        "next": "CompletedOblivionPit",
+        "interrupt": [
+            "AutoOblivionPit",
+            "ReturnOblivionPit"
+        ]
+    },
+    "CompletedOblivionPit": {
+        "recognition": "OCR",
+        "expected": "0次",
+        "roi": [54, 174, 45, 37],
+        "next": "ReturnHome"
+    },
+    "AutoOblivionPit": {
+        "recognition": "OCR",
+        "expected": "掃蕩",
+        "roi": [1199, 504, 44, 26],
+        "action": "Click",
+        "next": "ResourcesObtained"
+    },
+    "ReturnOblivionPit": {
+        "recognition": "OCR",
+        "expected": "深阱",
+        "roi": [48, 100, 66, 37],
+        "action": "Click",
+        "target": [640, 610, 1, 1]
+    }
+}

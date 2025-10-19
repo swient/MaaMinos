@@ -1,0 +1,60 @@
+{
+    "ReturnHome": {
+        "post_delay": 1000,
+        "recognition": "TemplateMatch",
+        "template": "Home/ReturnHome.png",
+        "roi": [136, 17, 51, 51],
+        "action": "Click",
+        "next": [
+            "HomeFlag",
+            "ReturnHome"
+        ]
+    },
+    "ResourcesObtained": {
+        "pre_delay": 500,
+        "recognition": "OCR",
+        "expected": "獲得物資",
+        "roi": [557, 104, 166, 50],
+        "action": "Click",
+        "target": [640, 700, 1, 1]
+    },
+    "AutoSwipeUp": {
+        "duration": 1000,
+        "post_delay": 500,
+        "action": "Swipe",
+        "begin": [140, 450, 1, 1],
+        "end": [140, 380, 1, 1]
+    },
+    "AutoSwipeDown": {
+        "duration": 1000,
+        "post_delay": 500,
+        "action": "Swipe",
+        "begin": [140, 380, 1, 1],
+        "end": [140, 450, 1, 1]
+    },
+    "AutoSwipeLeft": {
+        "duration": 500,
+        "post_delay": 500,
+        "action": "Swipe",
+        "begin": [840, 410, 1, 1],
+        "end": [750, 410, 1, 1]
+    },
+    "AutoSwipeRight": {
+        "duration": 500,
+        "post_delay": 500,
+        "action": "Swipe",
+        "begin": [750, 410, 1, 1],
+        "end": [840, 410, 1, 1]
+    },
+    "Awards": {
+        "next": [
+            "Friendship",
+            "MinosMailbox",
+            "Stamina"
+        ]
+    },
+    "MyCustomOCR": {
+        "recognition": "OCR",
+        "expected_code": "set in code"
+    }
+}

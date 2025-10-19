@@ -1,0 +1,118 @@
+{
+    "StartUp": {
+        "next": [
+            "HomeFlag_StartUp"
+        ],
+        "interrupt": [
+            "StartGame",
+            "CloseSystemAnnouncement",
+            "CloseEventAnnouncement",
+            "ClaimBlackKeyVIP",
+            "CloseBlackKeyVIP",
+            "AutoEmotionCheck",
+            "CloseLimitedTimeAttires",
+            "ReturnHome",
+            "Start5732"
+        ]
+    },
+    "HomeFlag_StartUp": {
+        "post_delay": 1500,
+        "recognition": "OCR",
+        "expected": "整備",
+        "roi": [1016, 641, 42, 30],
+        "next": "HomeFlag",
+        "interrupt": [
+            "CloseEventAnnouncement",
+            "ClaimBlackKeyVIP",
+            "CloseBlackKeyVIP",
+            "AutoEmotionCheck",
+            "CloseLimitedTimeAttires",
+            "ReturnHome"
+        ]
+    },
+    "HomeFlag": {
+        "recognition": "OCR",
+        "expected": "整備",
+        "roi": [1016, 641, 42, 30]
+    },
+    "StartGame": {
+        "recognition": "OCR",
+        "expected": "進入管理局",
+        "roi": [535, 605, 209, 54],
+        "action": "Click"
+    },
+    "CloseSystemAnnouncement": {
+        "recognition": "OCR",
+        "expected": "系統公告",
+        "roi": [264, 138, 114, 35],
+        "action": "Click",
+        "target": [640, 700, 1, 1]
+    },
+    "CloseEventAnnouncement": {
+        "post_delay": 1500,
+        "recognition": "OCR",
+        "expected": "今日不再彈出",
+        "roi": [1008, 644, 114, 27],
+        "action": "Click",
+        "target": [640, 700, 1, 1]
+    },
+    "ClaimBlackKeyVIP": {
+        "pre_delay": 500,
+        "recognition": "OCR",
+        "expected": "黑鑰",
+        "roi": [640, 646, 39, 21],
+        "action": "Click",
+        "target": [640, 560, 1, 1],
+        "next": "ResourcesObtained"
+    },
+    "CloseBlackKeyVIP": {
+        "recognition": "OCR",
+        "expected": "取消",
+        "roi": [464, 482, 66, 32],
+        "action": "Click"
+    },
+    "AutoEmotionCheck": {
+        "recognition": "OCR",
+        "expected": "累計",
+        "roi": [317, 625, 40, 23],
+        "action": "Click",
+        "target": [820, 400, 1, 1],
+        "next": [
+            "ClaimEmotionCheck",
+            "CompletedEmotionCheck"
+        ]
+    },
+    "ClaimEmotionCheck": {
+        "recognition": "TemplateMatch",
+        "template": "Home/ClaimEmotionCheck.png",
+        "green_mask": true,
+        "roi": [529, 562, 530, 90],
+        "action": "Click",
+        "next": [
+            "ResourcesObtained",
+            "ClaimEmotionCheck"
+        ]
+    },
+    "CompletedEmotionCheck": {
+        "post_delay": 2000,
+        "recognition": "OCR",
+        "expected": "完成",
+        "roi": [682, 411, 40, 20],
+        "action": "Click",
+        "target": [640, 700, 1, 1]
+    },
+    "CloseLimitedTimeAttires": {
+        "recognition": "OCR",
+        "expected": [
+            "套裝",
+            "套装"
+        ],
+        "roi": [1034, 421, 56, 29],
+        "action": "Click",
+        "target": [1155, 45, 1, 1]
+    },
+    "Start5732": {
+        "action": "StartApp",
+        "package": "com.zy.wqmt.global"
+    }
+}

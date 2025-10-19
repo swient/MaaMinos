@@ -1,30 +1,17 @@
 {
+    "name": "MaaMinos",
+    "url": "https://github.com/swient/MaaMinos",
     "controller": [
         {
             "name": "安卓端",
             "type": "Adb"
-        },
-        {
-            "name": "桌面端",
-            "type": "Win32",
-            "win32": {
-                "class_regex": ".*",
-                "window_regex": "Visual Studio"
-            }
         }
     ],
     "resource": [
         {
-            "name": "官服",
+            "name": "國際服",
             "path": [
-                "{PROJECT_DIR}/resource"
-            ]
-        },
-        {
-            "name": "B 服",
-            "path": [
-                "{PROJECT_DIR}/resource",
-                "{PROJECT_DIR}/resource_bilibili"
+                "{PROJECT_DIR}/resource/base"
             ]
         }
     ],
@@ -36,45 +23,563 @@
     },
     "task": [
         {
-            "name": "普通任务",
-            "entry": "MyTask1"
+            "name": "啟動遊戲",
+            "entry": "StartUp",
+            "pipeline_override": {
+                "ReturnHome": {
+                    "next": []
+                },
+                "ResourcesObtained": {
+                    "post_delay": 1500
+                }
+            }
         },
         {
-            "name": "选项任务",
-            "entry": "MyTask2",
-            "option": [
-                "任务选项1"
-            ]
+            "name": "秘盟捐贈",
+            "entry": "SocietyDonation",
+            "doc": "默認捐贈狄斯幣",
+            "pipeline_override": {
+                "EnterNexus": {
+                    "next": "EnterSociety"
+                },
+                "EnterSociety": {
+                    "next": "EnterDonation"
+                }
+            }
         },
         {
-            "name": "参数任务",
-            "entry": "MyTask3",
+            "name": "秘盟互助",
+            "entry": "SocietyMutalAid",
+            "doc": "默認求助技能模組I",
+            "pipeline_override": {
+                "EnterNexus": {
+                    "next": "EnterSociety"
+                },
+                "EnterSociety": {
+                    "next": "EnterMutalAid"
+                }
+            }
+        },
+        {
+            "name": "收取監管",
+            "entry": "System",
+            "doc": "三星事件默認選擇第一項",
+            "pipeline_override": {
+                "EnterNexus": {
+                    "next": "EnterSystem"
+                }
+            }
+        },
+        {
+            "name": "派遣任務",
+            "entry": "Dispatch",
+            "pipeline_override": {
+                "EnterOpsHub": {
+                    "next": "EnterBureau"
+                },
+                "EnterBureau": {
+                    "next": "EnterDispatch"
+                }
+            }
+        },
+        {
+            "name": "濁暗之阱",
+            "doc": "僅完成掃蕩工作,需完成樂園幻境",
+            "entry": "OblivionPit",
+            "pipeline_override": {
+                "EnterOpsHub": {
+                    "next": "EnterDiscity"
+                },
+                "EnterDiscity": {
+                    "next": "EnterDisSea"
+                },
+                "EnterDisSea": {
+                    "next": "EnterOblivionPit",
+                    "interrupt": "AutoSwipeLeft"
+                }
+            }
+        },
+        {
+            "name": "破碎防線",
+            "entry": "BrokenFrontline",
+            "doc": "僅領取本期與關卡獎勵",
+            "pipeline_override": {
+                "EnterOpsHub": {
+                    "next": "EnterDiscity"
+                },
+                "EnterDiscity": {
+                    "next": "EnterDisSea"
+                },
+                "EnterDisSea": {
+                    "next": "EnterBrokenFrontline",
+                    "interrupt": "AutoSwipeLeft"
+                }
+            }
+        },
+        {
+            "name": "領取獎勵",
+            "entry": "Awards",
             "option": [
-                "任务选项1"
+                "領取友情點",
+                "收取信箱",
+                "領取體力"
             ],
-            "pipeline_override": {}
+            "pipeline_override": {
+                "CompletedFriendship": {
+                    "next": [
+                        "MinosMailbox",
+                        "Stamina",
+                        "ReturnHome"
+                    ]
+                },
+                "CompletedMinosMailbox": {
+                    "next": [
+                        "Stamina",
+                        "ReturnHome"
+                    ]
+                }
+            }
         },
         {
-            "name": "带Custom的任务",
-            "entry": "MyTask4"
+            "name": "材料掃蕩",
+            "entry": "Materials",
+            "doc": "不足目標掃蕩次數會掃蕩到可掃蕩的最大值",
+            "option": [
+                "掃蕩材料",
+                "掃蕩次數",
+                "使用全部體力"
+            ],
+            "pipeline_override": {
+                "EnterOpsHub": {
+                    "next": "EnterDiscity"
+                },
+                "EnterDiscity": {
+                    "next": "EnterTheRust"
+                },
+                "EnterTheRust": {
+                    "next": [
+                        "EnterMaterials",
+                        "EnterTheRust"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "記憶風暴",
+            "entry": "StormyMemories",
+            "doc": "選擇三次以上掃蕩次數也只會掃蕩三次",
+            "option": [
+                "記憶畸點",
+                "印象畸點",
+                "殘響畸點",
+                "掃蕩次數"
+            ],
+            "pipeline_override": {
+                "EnterOpsHub": {
+                    "next": "EnterDiscity"
+                },
+                "EnterDiscity": {
+                    "next": "EnterTheRust"
+                },
+                "EnterTheRust": {
+                    "next": [
+                        "EnterStormyMemories",
+                        "EnterTheRust"
+                    ]
+                },
+                "SkipRaidLevel": {
+                    "action": "DoNothing",
+                    "next": []
+                },
+                "CompletedRaidLevel": {
+                    "action": "DoNothing",
+                    "next": []
+                }
+            }
+        },
+        {
+            "name": "監察密令",
+            "entry": "Surveillance",
+            "option": [
+                "監察嘉獎"
+            ],
+            "pipeline_override": {
+                "EnterOpsHub": {
+                    "next": "EnterSurveillance"
+                }
+            }
         }
     ],
     "option": {
-        "任务选项1": {
+        "領取友情點": {
             "cases": [
                 {
-                    "name": "文本1",
+                    "name": "Yes",
                     "pipeline_override": {
-                        "OcrTask": {
-                            "text": "文本1"
+                        "EnterNexus": {
+                            "next": "EnterFriends"
                         }
                     }
                 },
                 {
-                    "name": "文本2",
+                    "name": "No",
                     "pipeline_override": {
-                        "OcrTask": {
-                            "text": "文本2"
+                        "Friendship": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "收取信箱": {
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "MinosMailbox": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "領取體力": {
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "EnterOpsHub": {
+                            "next": "EnterBureau"
+                        },
+                        "EnterBureau": {
+                            "next": [
+                                "SkipStamina",
+                                "EnterStamina"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "Stamina": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "掃蕩材料": {
+            "cases": [
+                {
+                    "name": "狄斯幣",
+                    "pipeline_override": {
+                        "EnterMaterials": {
+                            "expected": "清剿"
+                        },
+                        "EnterMaterialsItem": {
+                            "expected": "淘金"
+                        },
+                        "VerifyMaterialsItem": {
+                            "expected": "淘金"
+                        },
+                        "EnterMaterialsLevel": {
+                            "expected": "5",
+                            "roi": [1177, 472, 16, 22]
+                        }
+                    }
+                },
+                {
+                    "name": "狂亂精粹",
+                    "pipeline_override": {
+                        "EnterMaterials": {
+                            "expected": "清剿"
+                        },
+                        "EnterMaterialsItem": {
+                            "expected": "惡兆"
+                        },
+                        "VerifyMaterialsItem": {
+                            "expected": "惡兆"
+                        },
+                        "EnterMaterialsLevel": {
+                            "expected": "5",
+                            "roi": [1177, 472, 16, 22]
+                        }
+                    }
+                },
+                {
+                    "name": "技能模組",
+                    "pipeline_override": {
+                        "EnterMaterials": {
+                            "expected": "汙染"
+                        },
+                        "EnterMaterialsItem": {
+                            "expected": "禁區"
+                        },
+                        "VerifyMaterialsItem": {
+                            "expected": "禁區"
+                        },
+                        "EnterMaterialsLevel": {
+                            "expected": "5",
+                            "roi": [1177, 472, 16, 22]
+                        }
+                    }
+                },
+                {
+                    "name": "重構碎片",
+                    "pipeline_override": {
+                        "EnterMaterials": {
+                            "expected": "汙染"
+                        },
+                        "EnterMaterialsItem": {
+                            "expected": "極域"
+                        },
+                        "VerifyMaterialsItem": {
+                            "expected": "極域"
+                        },
+                        "EnterMaterialsLevel": {
+                            "expected": "3",
+                            "roi": [897, 472, 16, 22]
+                        }
+                    }
+                },
+                {
+                    "name": "堅韌源質",
+                    "pipeline_override": {
+                        "EnterMaterials": {
+                            "expected": "帕爾"
+                        },
+                        "EnterMaterialsItem": {
+                            "expected": "堅韌"
+                        },
+                        "VerifyMaterialsItem": {
+                            "expected": "堅韌"
+                        }
+                    }
+                },
+                {
+                    "name": "狂暴源質",
+                    "pipeline_override": {
+                        "EnterMaterials": {
+                            "expected": "帕爾"
+                        },
+                        "EnterMaterialsItem": {
+                            "expected": "狂暴"
+                        },
+                        "VerifyMaterialsItem": {
+                            "expected": "狂暴"
+                        }
+                    }
+                },
+                {
+                    "name": "詭秘源質",
+                    "pipeline_override": {
+                        "EnterMaterials": {
+                            "expected": "帕爾"
+                        },
+                        "EnterMaterialsItem": {
+                            "expected": "詭秘"
+                        },
+                        "VerifyMaterialsItem": {
+                            "expected": "詭秘"
+                        }
+                    }
+                },
+                {
+                    "name": "精準源質",
+                    "pipeline_override": {
+                        "EnterMaterials": {
+                            "expected": "帕爾"
+                        },
+                        "EnterMaterialsItem": {
+                            "expected": "精準"
+                        },
+                        "VerifyMaterialsItem": {
+                            "expected": "精準"
+                        }
+                    }
+                },
+                {
+                    "name": "異能源質",
+                    "pipeline_override": {
+                        "EnterMaterials": {
+                            "expected": "帕爾"
+                        },
+                        "EnterMaterialsItem": {
+                            "expected": "異能"
+                        },
+                        "VerifyMaterialsItem": {
+                            "expected": "異能"
+                        }
+                    }
+                },
+                {
+                    "name": "啟迪源質",
+                    "pipeline_override": {
+                        "EnterMaterials": {
+                            "expected": "帕爾"
+                        },
+                        "EnterMaterialsItem": {
+                            "expected": "啟迪"
+                        },
+                        "VerifyMaterialsItem": {
+                            "expected": "啟迪"
+                        }
+                    }
+                }
+            ]
+        },
+        "掃蕩次數": {
+            "cases": [
+                {
+                    "name": "1次",
+                    "pipeline_override": {
+                        "TargetRaidTimes": {
+                            "expected": "1"
+                        }
+                    }
+                },
+                {
+                    "name": "2次",
+                    "pipeline_override": {
+                        "TargetRaidTimes": {
+                            "expected": "2"
+                        }
+                    }
+                },
+                {
+                    "name": "3次",
+                    "pipeline_override": {
+                        "TargetRaidTimes": {
+                            "expected": "3"
+                        }
+                    }
+                },
+                {
+                    "name": "4次",
+                    "pipeline_override": {
+                        "TargetRaidTimes": {
+                            "expected": "4"
+                        }
+                    }
+                },
+                {
+                    "name": "5次",
+                    "pipeline_override": {
+                        "TargetRaidTimes": {
+                            "expected": "5"
+                        }
+                    }
+                }
+            ],
+            "default_case": "3次"
+        },
+        "使用全部體力": {
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "InitRaidTimes": {
+                            "roi": [812, 449, 38, 38],
+                            "target": [830, 467, 1, 1]
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "InitRaidTimes": {
+                            "roi": [430, 449, 38, 38],
+                            "target": [450, 467, 1, 1]
+                        }
+                    }
+                }
+            ],
+            "default_case": "No"
+        },
+        "記憶畸點": {
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "EnterMemoryAnomaly": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "EnterMemoryAnomaly": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "印象畸點": {
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "EnterImpressionAnomaly": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "EnterImpressionAnomaly": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "殘響畸點": {
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "EnterResonanceAnomaly": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "EnterResonanceAnomaly": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "監察嘉獎": {
+            "cases": [
+                {
+                    "name": "思感精粹",
+                    "pipeline_override": {
+                        "ChooseSurveillanceReward": {
+                            "template": "Surveillance/CognitiveEssence.png",
+                            "roi": [411, 199, 122, 122],
+                            "target": [472, 510, 1, 1]
+                        }
+                    }
+                },
+                {
+                    "name": "魂識印記",
+                    "pipeline_override": {
+                        "ChooseSurveillanceReward": {
+                            "template": "Surveillance/SoulMark.png",
+                            "roi": [747, 199, 122, 122],
+                            "target": [808, 510, 1, 1]
                         }
                     }
                 }
