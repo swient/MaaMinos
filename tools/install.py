@@ -3,13 +3,19 @@ from pathlib import Path
 import shutil
 import sys
 import json
-
-from configure import configure_ocr_model
-
+import os
 
 working_dir = Path(__file__).parent.parent
 install_path = working_dir / Path("install")
 version = len(sys.argv) > 1 and sys.argv[1] or "v0.0.1"
+
+current_script_dir = os.path.dirname(__file__)
+if current_script_dir not in sys.path:
+    sys.path.insert(0, current_script_dir)
+
+from configure import configure_ocr_model
+
+sys.stdout.reconfigure(encoding="utf-8")
 
 
 def install_deps():

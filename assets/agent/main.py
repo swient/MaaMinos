@@ -4,10 +4,6 @@ import json
 import subprocess
 from pathlib import Path
 
-from my_utils import get_logger, get_interface_mode
-
-logger = get_logger(__name__)
-
 current_script_path = os.path.abspath(__file__)
 current_script_dir = os.path.dirname(current_script_path)
 script_root_dir = os.path.dirname(current_script_dir)
@@ -20,6 +16,12 @@ if current_script_dir not in sys.path:
 
 VENV_NAME = ".venv"  # 虛擬環境目錄的名稱
 VENV_DIR = Path(script_root_dir) / VENV_NAME
+
+from my_utils import get_logger, get_interface_mode
+
+logger = get_logger(__name__)
+
+sys.stdout.reconfigure(encoding="utf-8")
 
 ### 虛擬環境相關 ###
 

@@ -16,7 +16,17 @@
         "expected": "獲得物資",
         "roi": [557, 104, 166, 50],
         "action": "Click",
-        "target": [640, 700, 1, 1]
+        "target": [640, 700, 1, 1],
+        "next": [
+            "VerifyResourcesObtained",
+            "ResourcesObtained"
+        ]
+    },
+    "VerifyResourcesObtained": {
+        "inverse": true,
+        "recognition": "OCR",
+        "expected": "獲得物資",
+        "roi": [557, 104, 166, 50]
     },
     "AutoSwipeUp": {
         "duration": 1000,
