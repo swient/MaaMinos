@@ -15,7 +15,7 @@
             ]
         }
     ],
-    "agent_demo": {
+    "agent": {
         "child_exec": "python",
         "child_args": [
             "{PROJECT_DIR}/agent/main.py"
@@ -194,6 +194,38 @@
                 "CompletedRaidLevel": {
                     "action": "DoNothing",
                     "next": []
+                }
+            }
+        },
+        {
+            "name": "採購部",
+            "entry": "SupplyOffice",
+            "doc": "同名材料僅購買特惠材料",
+            "option": [
+                "每日免費補給",
+                "搜索令(追蹤兌換)",
+                "內海遺物箱(戰勳兌換)",
+                "S級魂識印記(樣本兌換)",
+                "A級魂識印記(樣本兌換)",
+                "B級魂識印記(樣本兌換)",
+                "低階材料補給箱(秘盟兌換)",
+                "技能模組(秘盟兌換)",
+                "狄斯幣(秘盟兌換)",
+                "狂亂精粹(秘盟兌換)",
+                "搜索令(友情兌換)",
+                "夢影之塵(友情兌換)",
+                "迴響質料(友情兌換)",
+                "邊界重構碎片(友情兌換)",
+                "一階源素補給箱(友情兌換)",
+                "低階材料補給箱(友情兌換)",
+                "技能模組(友情兌換)",
+                "狄斯幣(友情兌換)",
+                "狂亂精粹(友情兌換)",
+                "記憶碎片(友情兌換)"
+            ],
+            "pipeline_override": {
+                "EnterOpsHub": {
+                    "next": "EnterSupplyOffice"
                 }
             }
         },
@@ -584,6 +616,255 @@
                     }
                 }
             ]
+        },
+        "每日免費補給": {
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {}
+                }
+            ]
+        },
+        "搜索令(追蹤兌換)": {
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {}
+                }
+            ]
+        },
+        "內海遺物箱(戰勳兌換)": {
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {}
+                }
+            ]
+        },
+        "S級魂識印記(樣本兌換)": {
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {}
+                }
+            ]
+        },
+        "A級魂識印記(樣本兌換)": {
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {}
+                }
+            ],
+            "default_case": "No"
+        },
+        "B級魂識印記(樣本兌換)": {
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {}
+                }
+            ],
+            "default_case": "No"
+        },
+        "低階材料補給箱(秘盟兌換)": {
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {}
+                }
+            ]
+        },
+        "技能模組(秘盟兌換)": {
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {}
+                }
+            ]
+        },
+        "狄斯幣(秘盟兌換)": {
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {}
+                }
+            ]
+        },
+        "狂亂精粹(秘盟兌換)": {
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {}
+                }
+            ]
+        },
+        "搜索令(友情兌換)": {
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {}
+                }
+            ]
+        },
+        "夢影之塵(友情兌換)": {
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {}
+                }
+            ]
+        },
+        "迴響質料(友情兌換)": {
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {}
+                }
+            ]
+        },
+        "邊界重構碎片(友情兌換)": {
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {}
+                }
+            ],
+            "default_case": "No"
+        },
+        "一階源素補給箱(友情兌換)": {
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {}
+                }
+            ],
+            "default_case": "No"
+        },
+        "低階材料補給箱(友情兌換)": {
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {}
+                }
+            ],
+            "default_case": "No"
+        },
+        "技能模組(友情兌換)": {
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {}
+                }
+            ],
+            "default_case": "No"
+        },
+        "狄斯幣(友情兌換)": {
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {}
+                }
+            ],
+            "default_case": "No"
+        },
+        "狂亂精粹(友情兌換)": {
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {}
+                }
+            ],
+            "default_case": "No"
+        },
+        "記憶碎片(友情兌換)": {
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {}
+                }
+            ],
+            "default_case": "No"
         }
     }
 }

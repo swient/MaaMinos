@@ -24,6 +24,7 @@ def install_deps():
         ignore=shutil.ignore_patterns(
             "*MaaDbgControlUnit*",
             "*MaaThriftControlUnit*",
+            "*MaaWin32ControlUnit*",
             "*MaaRpc*",
             "*MaaHttp*",
         ),
@@ -47,6 +48,10 @@ def install_resource():
     )
     shutil.copy2(
         working_dir / "assets" / "interface.json",
+        install_path,
+    )
+    shutil.copy2(
+        working_dir / "assets" / "requirements.txt",
         install_path,
     )
 
@@ -76,6 +81,19 @@ def install_agent():
         install_path / "agent",
         dirs_exist_ok=True,
     )
+
+    with open(install_path / "interface.json", "r", encoding="utf-8") as f:
+        interface = json.load(f)
+
+    if sys.platform.startswith("win"):
+        interface["agent"]["child_exec"] = r"{PROJECT_DIR}/python/python.exe"
+    elif sys.platform.startswith("darwin"):
+        interface["agent"]["child_exec"] = r"{PROJECT_DIR}/python/bin/python3"
+    elif sys.platform.startswith("linux"):
+        interface["agent"]["child_exec"] = r"python3"
+
+    with open(install_path / "interface.json", "w", encoding="utf-8") as f:
+        json.dump(interface, f, ensure_ascii=False, indent=4)
 
 
 if __name__ == "__main__":

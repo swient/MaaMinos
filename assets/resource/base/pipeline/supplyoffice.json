@@ -1,0 +1,121 @@
+{
+    "SupplyOffice": {
+        "action": "Custom",
+        "custom_action": "BuySupplyOfficeProduct",
+        "next": [
+            "HomeFlag",
+            "ReturnHome"
+        ]
+    },
+    "SupplyOfficeTemplate": {
+        "next": [
+            "EnterSupplyOfficeItemDetail",
+            "EnterSupplyOfficeItem",
+            "EnterSupplyOffice",
+            "EnterOpsHub"
+        ],
+        "interrupt": "ReturnHome"
+    },
+    "EnterSupplyOffice": {
+        "post_delay": 1500,
+        "recognition": "OCR",
+        "expected": "採購",
+        "roi": [1024, 562, 44, 31],
+        "action": "Click",
+        "next": "EnterSupplyOfficeItem",
+        "interrupt": "AutoSwipeUp"
+    },
+    "EnterSupplyOfficeItem": {
+        "post_delay": 500,
+        "recognition": "OCR",
+        "expected": "精選禮包",
+        "roi": [64, 242, 150, 478],
+        "action": "Click",
+        "next": "EnterSupplyOfficeItemDetail",
+        "interrupt": "AutoSwipeUp"
+    },
+    "EnterSupplyOfficeItemDetail": {
+        "post_delay": 1500,
+        "recognition": "OCR",
+        "expected": "養成補給",
+        "roi": [64, 242, 150, 478],
+        "action": "Click",
+        "next": "AutoBuySupplyOfficeProduct",
+        "interrupt": [
+            "CancelBuySupplyOfficeProduct",
+            "AutoSwipeLeft"
+        ]
+    },
+    "AutoBuySupplyOfficeProduct": {
+        "recognition": "Custom",
+        "custom_recognition": "CheckSupplyOfficeProduct",
+        "action": "Click",
+        "next": "VerifySupplyOfficeProduct"
+    },
+    "CancelBuySupplyOfficeProduct": {
+        "recognition": "OCR",
+        "expected": "購買",
+        "roi": [964, 553, 64, 33],
+        "action": "Click",
+        "target": [640, 700, 1, 1]
+    },
+    "VerifySupplyOfficeProduct": {
+        "post_delay": 500,
+        "recognition": "OCR",
+        "expected": "免費補給",
+        "roi": [160, 130, 245, 45],
+        "next": [
+            "SkipBuySupplyOfficeProduct",
+            "MaxSupplyOfficeBuyTimes",
+            "BuySupplyOfficeProduct"
+        ]
+    },
+    "SkipBuySupplyOfficeProduct": {
+        "recognition": "ColorMatch",
+        "upper": [93, 94, 97],
+        "lower": [74, 77, 82],
+        "roi": [897, 543, 199, 54],
+        "action": "Click",
+        "target": [640, 700, 1, 1],
+        "next": "CloseSupplyOfficeItem",
+        "interrupt": "AutoSwipeDown"
+    },
+    "MaxSupplyOfficeBuyTimes": {
+        "recognition": "OCR",
+        "expected": "購買數量",
+        "roi": [686, 431, 77, 24],
+        "next": "BuySupplyOfficeProduct",
+        "action": "Click",
+        "target": [987, 480, 1, 1]
+    },
+    "BuySupplyOfficeProduct": {
+        "recognition": "OCR",
+        "expected": "購買",
+        "roi": [964, 553, 64, 33],
+        "action": "Click",
+        "next": "SupplyOfficeProductObtained"
+    },
+    "SupplyOfficeProductObtained": {
+        "pre_delay": 500,
+        "recognition": "OCR",
+        "expected": "獲得物資",
+        "roi": [557, 104, 166, 50],
+        "action": "Click",
+        "target": [640, 700, 1, 1],
+        "next": "CloseSupplyOfficeItem",
+        "interrupt": "AutoSwipeDown"
+    },
+    "CloseSupplyOfficeItem": {
+        "threshold": 0.6,
+        "recognition": "TemplateMatch",
+        "template": "SupplyOffice/CloseSupplyOfficeItem.png",
+        "roi": [25, 242, 40, 478],
+        "action": "Click",
+        "next": "CompletedSupplyOffice"
+    },
+    "CompletedSupplyOffice": {
+        "action": "Swipe",
+        "begin": [330, 365, 1, 1],
+        "end": [1270, 365, 1, 1]
+    }
+}
