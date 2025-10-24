@@ -1,10 +1,11 @@
 import json
+from pathlib import Path
 
 from maa.agent.agent_server import AgentServer
 from maa.custom_recognition import CustomRecognition
 from maa.context import Context
 
-from my_utils import get_logger
+from my_utils import is_new_period, get_logger
 
 logger = get_logger(__name__)
 
@@ -85,4 +86,52 @@ class CheckSupplyOfficeProduct(CustomRecognition):
                 logger.exception(f"辨識區域 {roi} 發生錯誤")
                 continue
         # 六個區域都沒辨識到
+        return None
+
+
+@AgentServer.custom_recognition("VerifyTime")
+class VerifyTime(CustomRecognition):
+    def analyze(
+        self,
+        context: Context,
+        argv: CustomRecognition.AnalyzeArg,
+    ) -> CustomRecognition.AnalyzeResult:
+
+        param = json.loads(argv.custom_recognition_param)
+        key = param.get("key")
+        period_type = param.get("period_type")
+        if not key or not period_type:
+            logger.error("未提供 key 或 period_type 參數")
+            return None
+
+        # 新增 minos_data.json 檔案
+        RECORD_PATH = Path("config/minos_data.json")
+        if not RECORD_PATH.exists():
+            try:
+                RECORD_PATH.parent.mkdir(parents=True, exist_ok=True)
+                with open(RECORD_PATH, "w", encoding="utf-8") as f:
+                    json.dump({}, f, indent=4, ensure_ascii=False)
+            except Exception:
+                logger.exception(f"寫入 {RECORD_PATH} 失敗")
+                return None
+
+        # 讀取任務完成時間
+        try:
+            with open(RECORD_PATH, encoding="utf-8") as f:
+                record_data = json.load(f)
+            if key not in record_data:
+                record_data.setdefault(key, {})
+                record_data[key].setdefault("last_purchased_time", 0)
+            with open(RECORD_PATH, "w", encoding="utf-8") as f:
+                json.dump(record_data, f, indent=4, ensure_ascii=False)
+        except Exception:
+            logger.exception("讀取任務完成時間失敗")
+            return None
+
+        # 判斷完成時間是否在週期內
+        last_time = record_data[key]["last_purchased_time"]
+        if not is_new_period(last_time, period_type):
+            logger.info(f"跳過任務流程：{key}")
+            return [0, 0, 0, 0]
+
         return None

@@ -56,19 +56,27 @@ class BuySupplyOfficeProduct(CustomAction):
         # 新增 minos_data.json 檔案
         RECORD_PATH = Path("config/minos_data.json")
         if not RECORD_PATH.exists():
-            RECORD_PATH.parent.mkdir(parents=True, exist_ok=True)
-            with open(RECORD_PATH, "w", encoding="utf-8") as f:
-                json.dump({}, f, indent=4, ensure_ascii=False)
+            try:
+                RECORD_PATH.parent.mkdir(parents=True, exist_ok=True)
+                with open(RECORD_PATH, "w", encoding="utf-8") as f:
+                    json.dump({}, f, indent=4, ensure_ascii=False)
+            except Exception:
+                logger.exception(f"寫入 {RECORD_PATH} 失敗")
+                return False
 
         # 確保所有商品都已初始化
-        with open(RECORD_PATH, encoding="utf-8") as f:
-            record_data = json.load(f)
-        for key in SUPPLYOFFICE_PRODUCTS.keys():
-            record_data.setdefault(key, {})
-            record_data[key].setdefault("last_purchased_time", 0)
-            record_data[key]["is_purchasing"] = False
-        with open(RECORD_PATH, "w", encoding="utf-8") as f:
-            json.dump(record_data, f, indent=4, ensure_ascii=False)
+        try:
+            with open(RECORD_PATH, encoding="utf-8") as f:
+                record_data = json.load(f)
+            for key in SUPPLYOFFICE_PRODUCTS.keys():
+                record_data.setdefault(key, {})
+                record_data[key].setdefault("last_purchased_time", 0)
+                record_data[key]["is_purchasing"] = False
+            with open(RECORD_PATH, "w", encoding="utf-8") as f:
+                json.dump(record_data, f, indent=4, ensure_ascii=False)
+        except Exception:
+            logger.exception("初始化商品失敗")
+            return False
 
         # 執行採購流程
         for key, override in SUPPLYOFFICE_PRODUCTS.items():
@@ -81,8 +89,12 @@ class BuySupplyOfficeProduct(CustomAction):
                 continue
             record_data[key]["is_purchasing"] = True
             logger.info(f"正在採購材料：{key}")
-            with open(RECORD_PATH, "w", encoding="utf-8") as f:
-                json.dump(record_data, f, indent=4, ensure_ascii=False)
+            try:
+                with open(RECORD_PATH, "w", encoding="utf-8") as f:
+                    json.dump(record_data, f, indent=4, ensure_ascii=False)
+            except Exception:
+                logger.exception(f"寫入 {RECORD_PATH} 失敗")
+                return False
             context.override_pipeline(override)
             result = context.run_task("SupplyOfficeTemplate")
             # 驗證是否執行到 CompletedSupplyOffice 節點
@@ -98,6 +110,56 @@ class BuySupplyOfficeProduct(CustomAction):
             if purchase_success:
                 record_data[key]["last_purchased_time"] = int(time.time() * 1000)
                 record_data[key]["is_purchasing"] = False
+                try:
+                    with open(RECORD_PATH, "w", encoding="utf-8") as f:
+                        json.dump(record_data, f, indent=4, ensure_ascii=False)
+                except Exception:
+                    logger.exception(f"寫入 {RECORD_PATH} 失敗")
+                    return False
+        return True
+
+
+@AgentServer.custom_action("RecordTime")
+class RecordTime(CustomAction):
+    def run(
+        self,
+        context: Context,
+        argv: CustomAction.RunArg,
+    ) -> bool:
+
+        param = json.loads(argv.custom_action_param)
+        key = param.get("key")
+        if not key:
+            logger.error("未提供 key 參數")
+            return False
+
+        # 新增 minos_data.json 檔案
+        RECORD_PATH = Path("config/minos_data.json")
+        if not RECORD_PATH.exists():
+            try:
+                RECORD_PATH.parent.mkdir(parents=True, exist_ok=True)
                 with open(RECORD_PATH, "w", encoding="utf-8") as f:
-                    json.dump(record_data, f, indent=4, ensure_ascii=False)
+                    json.dump({}, f, indent=4, ensure_ascii=False)
+            except Exception:
+                logger.exception(f"寫入 {RECORD_PATH} 失敗")
+                return False
+
+        try:
+            with open(RECORD_PATH, encoding="utf-8") as f:
+                record_data = json.load(f)
+        except Exception:
+            logger.exception(f"讀取 {RECORD_PATH} 失敗")
+            return False
+
+        # 紀錄任務完成時間
+        record_data.setdefault(key, {})
+        record_data[key]["last_purchased_time"] = int(time.time() * 1000)
+
+        try:
+            with open(RECORD_PATH, "w", encoding="utf-8") as f:
+                json.dump(record_data, f, indent=4, ensure_ascii=False)
+        except Exception:
+            logger.exception(f"寫入 {RECORD_PATH} 失敗")
+            return False
+
         return True

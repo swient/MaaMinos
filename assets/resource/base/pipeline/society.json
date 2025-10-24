@@ -1,12 +1,25 @@
 {
     "SocietyDonation": {
         "next": [
+            "VerifyDonation",
             "CompletedDonation",
             "EnterDonation",
             "EnterSociety",
             "EnterNexus"
         ],
         "interrupt": "ReturnHome"
+    },
+    "VerifyDonation": {
+        "recognition": "Custom",
+        "custom_recognition": "VerifyTime",
+        "custom_recognition_param": {
+            "key": "秘盟捐贈",
+            "period_type": "day"
+        },
+        "next": [
+            "HomeFlag",
+            "ReturnHome"
+        ]
     },
     "EnterDonation": {
         "recognition": "OCR",
@@ -20,6 +33,12 @@
         "recognition": "OCR",
         "expected": "明日可捐贈",
         "roi": [206, 575, 125, 32],
+        "next": "RecordDonation"
+    },
+    "RecordDonation": {
+        "action": "Custom",
+        "custom_action": "RecordTime",
+        "custom_action_param": {"key": "秘盟捐贈"},
         "next": "ReturnHome"
     },
     "AutoDonation": {

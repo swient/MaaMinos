@@ -1,6 +1,7 @@
 {
     "BrokenFrontline": {
         "next": [
+            "VerifyBrokenFrontline",
             "CompletedBrokenFrontline",
             "EnterBrokenFrontline",
             "EnterDisSea",
@@ -8,6 +9,18 @@
             "EnterOpsHub"
         ],
         "interrupt": "ReturnHome"
+    },
+    "VerifyBrokenFrontline": {
+        "recognition": "Custom",
+        "custom_recognition": "VerifyTime",
+        "custom_recognition_param": {
+            "key": "破碎防線",
+            "period_type": "day"
+        },
+        "next": [
+            "HomeFlag",
+            "ReturnHome"
+        ]
     },
     "EnterBrokenFrontline": {
         "recognition": "OCR",
@@ -23,6 +36,12 @@
         "recognition": "TemplateMatch",
         "template": "Discity/CompletedBrokenFrontline.png",
         "roi": [102, 514, 26, 26],
+        "next": "RecordBrokenFrontline"
+    },
+    "RecordBrokenFrontline": {
+        "action": "Custom",
+        "custom_action": "RecordTime",
+        "custom_action_param": {"key": "破碎防線"},
         "next": "ReturnHome"
     },
     "EnterBrokenFrontlineItem": {
