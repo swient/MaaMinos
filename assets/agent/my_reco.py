@@ -28,8 +28,8 @@ class CheckSupplyOfficeProduct(CustomRecognition):
             return None
         # 找到 is_purchasing 為 True 的商品 key
         product_key = None
-        for key, value in record_data.items():
-            if value["is_purchasing"] is True:
+        for key, item in record_data["採購部"].items():
+            if item["is_purchasing"] is True:
                 product_key = key
                 break
         if not product_key:

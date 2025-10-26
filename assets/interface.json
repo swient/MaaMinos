@@ -167,7 +167,7 @@
         {
             "name": "記憶風暴",
             "entry": "StormyMemories",
-            "doc": "選擇三次以上掃蕩次數也只會掃蕩三次",
+            "doc": "自定義設置只在星期日生效",
             "option": [
                 "記憶畸點",
                 "印象畸點",
@@ -537,19 +537,11 @@
             "cases": [
                 {
                     "name": "Yes",
-                    "pipeline_override": {
-                        "EnterMemoryAnomaly": {
-                            "enabled": true
-                        }
-                    }
+                    "pipeline_override": {}
                 },
                 {
                     "name": "No",
-                    "pipeline_override": {
-                        "EnterMemoryAnomaly": {
-                            "enabled": false
-                        }
-                    }
+                    "pipeline_override": {}
                 }
             ]
         },
@@ -557,19 +549,11 @@
             "cases": [
                 {
                     "name": "Yes",
-                    "pipeline_override": {
-                        "EnterImpressionAnomaly": {
-                            "enabled": true
-                        }
-                    }
+                    "pipeline_override": {}
                 },
                 {
                     "name": "No",
-                    "pipeline_override": {
-                        "EnterImpressionAnomaly": {
-                            "enabled": false
-                        }
-                    }
+                    "pipeline_override": {}
                 }
             ]
         },
@@ -577,19 +561,11 @@
             "cases": [
                 {
                     "name": "Yes",
-                    "pipeline_override": {
-                        "EnterResonanceAnomaly": {
-                            "enabled": true
-                        }
-                    }
+                    "pipeline_override": {}
                 },
                 {
                     "name": "No",
-                    "pipeline_override": {
-                        "EnterResonanceAnomaly": {
-                            "enabled": false
-                        }
-                    }
+                    "pipeline_override": {}
                 }
             ]
         },

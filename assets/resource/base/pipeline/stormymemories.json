@@ -1,9 +1,15 @@
 {
     "StormyMemories": {
+        "action": "Custom",
+        "custom_action": "RaidStormyMemories",
         "next": [
-            "EnterMemoryAnomaly",
-            "EnterImpressionAnomaly",
-            "EnterResonanceAnomaly",
+            "HomeFlag",
+            "ReturnHome"
+        ]
+    },
+    "StormyMemoriesTemplate": {
+        "next": [
+            "EnterStormyMemoriesItem",
             "EnterStormyMemories",
             "EnterTheRust",
             "EnterDiscity",
@@ -18,174 +24,73 @@
         "roi": [271, 291, 51, 41],
         "action": "Click",
         "next": [
-            "EnterMemoryAnomaly",
-            "EnterImpressionAnomaly",
-            "EnterResonanceAnomaly",
-            "EnterStormyMemories",
-            "ReturnHome"
+            "EnterStormyMemoriesItem",
+            "EnterStormyMemories"
         ]
     },
-    "EnterMemoryAnomaly": {
-        "enabled": true,
+    "EnterStormyMemoriesItem": {
         "recognition": "OCR",
         "expected": "記憶",
         "roi": [147, 136, 97, 259],
         "action": "Click",
         "next": [
-            "SkipMemoryAnomaly",
-            "VerifyMemoryAnomaly",
-            "EnterMemoryAnomaly"
+            "SkipStormyMemoriesItem",
+            "VerifyStormyMemoriesItem",
+            "EnterStormyMemoriesItem"
         ]
     },
-    "SkipMemoryAnomaly": {
+    "SkipStormyMemoriesItem": {
         "post_delay": 1000,
         "recognition": "OCR",
         "expected": "開放",
-        "roi": [683, 312, 45, 23],
-        "next": [
-            "EnterImpressionAnomaly",
-            "EnterResonanceAnomaly",
-            "ReturnHome"
-        ]
+        "roi": [683, 312, 45, 23]
     },
-    "VerifyMemoryAnomaly": {
+    "VerifyStormyMemoriesItem": {
         "recognition": "OCR",
         "expected": "記憶",
         "roi": [406, 178, 90, 48],
         "next": [
-            "SkipRaidMemoryAnomaly",
-            "CompletedRaidMemoryAnomaly"
+            "SkipRaidStormyMemoriesItem",
+            "CompletedRaidStormyMemoriesItem"
         ],
         "interrupt": "EnterStormyMemoriesLevel"
     },
-    "SkipRaidMemoryAnomaly": {
+    "SkipRaidStormyMemoriesItem": {
         "recognition": "OCR",
         "expected": "取消",
         "roi": [466, 480, 64, 31],
         "action": "Click",
-        "next": "ReturnMemoryAnomaly"
+        "next": [
+            "RecordStormyMemories",
+            "ReturnStormyMemoriesItem"
+        ]
     },
-    "CompletedRaidMemoryAnomaly": {
+    "CompletedRaidStormyMemoriesItem": {
         "recognition": "OCR",
         "expected": "完成",
         "roi": [465, 632, 68, 32],
         "action": "Click",
-        "next": "ReturnMemoryAnomaly"
+        "next": [
+            "RecordStormyMemories",
+            "ReturnStormyMemoriesItem"
+        ]
     },
-    "ReturnMemoryAnomaly": {
+    "RecordStormyMemories": {
+        "recognition": "OCR",
+        "expected": "0/3",
+        "roi": [1193, 42, 32, 19],
+        "action": "Custom",
+        "custom_action": "RecordTime",
+        "custom_action_param": {"key": "記憶風暴"},
+        "next": "ReturnStormyMemoriesItem"
+    },
+    "ReturnStormyMemoriesItem": {
         "post_delay": 500,
         "recognition": "OCR",
         "expected": "掃蕩",
         "roi": [815, 635, 75, 40],
         "action": "Click",
-        "target": [40, 40, 1, 1],
-        "next": [
-            "EnterImpressionAnomaly",
-            "EnterResonanceAnomaly",
-            "ReturnMemoryAnomaly",
-            "ReturnHome"
-        ]
-    },
-    "EnterImpressionAnomaly": {
-        "enabled": true,
-        "recognition": "OCR",
-        "expected": "印象",
-        "roi": [147, 136, 97, 259],
-        "action": "Click",
-        "next": [
-            "SkipImpressionAnomaly",
-            "VerifyImpressionAnomaly",
-            "EnterImpressionAnomaly"
-        ]
-    },
-    "SkipImpressionAnomaly": {
-        "post_delay": 1000,
-        "recognition": "OCR",
-        "expected": "開放",
-        "roi": [683, 312, 45, 23],
-        "next": [
-            "EnterResonanceAnomaly",
-            "ReturnHome"
-        ]
-    },
-    "VerifyImpressionAnomaly": {
-        "recognition": "OCR",
-        "expected": "印象",
-        "roi": [406, 178, 90, 48],
-        "next": [
-            "SkipRaidImpressionAnomaly",
-            "CompletedRaidImpressionAnomaly"
-        ],
-        "interrupt": "EnterStormyMemoriesLevel"
-    },
-    "SkipRaidImpressionAnomaly": {
-        "recognition": "OCR",
-        "expected": "取消",
-        "roi": [466, 480, 64, 31],
-        "action": "Click",
-        "next": "ReturnImpressionAnomaly"
-    },
-    "CompletedRaidImpressionAnomaly": {
-        "recognition": "OCR",
-        "expected": "完成",
-        "roi": [465, 632, 68, 32],
-        "action": "Click",
-        "next": "ReturnImpressionAnomaly"
-    },
-    "ReturnImpressionAnomaly": {
-        "post_delay": 500,
-        "recognition": "OCR",
-        "expected": "掃蕩",
-        "roi": [815, 635, 75, 40],
-        "action": "Click",
-        "target": [40, 40, 1, 1],
-        "next": [
-            "EnterResonanceAnomaly",
-            "ReturnImpressionAnomaly",
-            "ReturnHome"
-        ]
-    },
-    "EnterResonanceAnomaly": {
-        "enabled": true,
-        "recognition": "OCR",
-        "expected": "殘響",
-        "roi": [147, 136, 97, 259],
-        "action": "Click",
-        "next": [
-            "SkipResonanceAnomaly",
-            "VerifyResonanceAnomaly",
-            "EnterResonanceAnomaly"
-        ]
-    },
-    "SkipResonanceAnomaly": {
-        "recognition": "OCR",
-        "expected": "開放",
-        "roi": [683, 312, 45, 23],
-        "next": "ReturnHome"
-    },
-    "VerifyResonanceAnomaly": {
-        "recognition": "OCR",
-        "expected": "殘響",
-        "roi": [406, 178, 90, 48],
-        "next": [
-            "SkipRaidResonanceAnomaly",
-            "CompletedRaidResonanceAnomaly"
-        ],
-        "interrupt": "EnterStormyMemoriesLevel"
-    },
-    "SkipRaidResonanceAnomaly": {
-        "recognition": "OCR",
-        "expected": "取消",
-        "roi": [466, 480, 64, 31],
-        "action": "Click",
-        "next": "ReturnHome"
-    },
-    "CompletedRaidResonanceAnomaly": {
-        "recognition": "OCR",
-        "expected": "完成",
-        "roi": [465, 632, 68, 32],
-        "action": "Click",
-        "next": "ReturnHome"
+        "target": [40, 40, 1, 1]
     },
     "EnterStormyMemoriesLevel": {
         "recognition": "OCR",

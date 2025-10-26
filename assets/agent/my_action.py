@@ -1,12 +1,15 @@
 import json
 import time
 from pathlib import Path
+from types import SimpleNamespace
+from datetime import datetime, timedelta, timezone
 
 from maa.agent.agent_server import AgentServer
 from maa.custom_action import CustomAction
 from maa.context import Context
 
 from my_utils import is_new_period, get_logger
+from my_reco import VerifyTime
 
 logger = get_logger(__name__)
 
@@ -68,10 +71,12 @@ class BuySupplyOfficeProduct(CustomAction):
         try:
             with open(RECORD_PATH, encoding="utf-8") as f:
                 record_data = json.load(f)
+            if "採購部" not in record_data:
+                record_data["採購部"] = {}
             for key in SUPPLYOFFICE_PRODUCTS.keys():
-                record_data.setdefault(key, {})
-                record_data[key].setdefault("last_purchased_time", 0)
-                record_data[key]["is_purchasing"] = False
+                record_data["採購部"].setdefault(key, {})
+                record_data["採購部"][key].setdefault("last_purchased_time", 0)
+                record_data["採購部"][key]["is_purchasing"] = False
             with open(RECORD_PATH, "w", encoding="utf-8") as f:
                 json.dump(record_data, f, indent=4, ensure_ascii=False)
         except Exception:
@@ -79,15 +84,15 @@ class BuySupplyOfficeProduct(CustomAction):
             return False
 
         # 執行採購流程
-        for key, override in SUPPLYOFFICE_PRODUCTS.items():
-            last_time = record_data[key]["last_purchased_time"]
-            period_type = override["period_type"]
+        for key, item in SUPPLYOFFICE_PRODUCTS.items():
+            last_time = record_data["採購部"][key]["last_purchased_time"]
+            period_type = item["period_type"]
             if not (supply_options[key] == "Yes" or supply_options[key] == 0):
                 continue
             if not is_new_period(last_time, period_type):
                 logger.info(f"跳過採購材料：{key}")
                 continue
-            record_data[key]["is_purchasing"] = True
+            record_data["採購部"][key]["is_purchasing"] = True
             logger.info(f"正在採購材料：{key}")
             try:
                 with open(RECORD_PATH, "w", encoding="utf-8") as f:
@@ -95,7 +100,7 @@ class BuySupplyOfficeProduct(CustomAction):
             except Exception:
                 logger.exception(f"寫入 {RECORD_PATH} 失敗")
                 return False
-            context.override_pipeline(override)
+            context.override_pipeline(item["pipeline_override"])
             result = context.run_task("SupplyOfficeTemplate")
             # 驗證是否執行到 CompletedSupplyOffice 節點
             if (
@@ -108,14 +113,96 @@ class BuySupplyOfficeProduct(CustomAction):
                 purchase_success = False
             # 紀錄採購時間
             if purchase_success:
-                record_data[key]["last_purchased_time"] = int(time.time() * 1000)
-                record_data[key]["is_purchasing"] = False
+                record_data["採購部"][key]["last_purchased_time"] = int(
+                    time.time() * 1000
+                )
+                record_data["採購部"][key]["is_purchasing"] = False
                 try:
                     with open(RECORD_PATH, "w", encoding="utf-8") as f:
                         json.dump(record_data, f, indent=4, ensure_ascii=False)
                 except Exception:
                     logger.exception(f"寫入 {RECORD_PATH} 失敗")
                     return False
+        return True
+
+
+@AgentServer.custom_action("RaidStormyMemories")
+class RaidStormyMemories(CustomAction):
+
+    def run(
+        self,
+        context: Context,
+        argv: CustomAction.RunArg,
+    ) -> bool:
+
+        # 週期判斷，若在週期內直接結束任務
+        verify_param = json.dumps({"key": "記憶風暴", "period_type": "day"})
+        verify_time = VerifyTime().analyze(
+            context, SimpleNamespace(custom_recognition_param=verify_param)
+        )
+        if verify_time is not None:
+            return True
+
+        try:
+            with open("agent/stormymemories_level.json", encoding="utf-8") as f:
+                STORMYMEMORIES_LEVELS = json.load(f)
+        except Exception:
+            logger.exception("讀取 agent/stormymemories_level.json 失敗")
+            return False
+
+        # 讀取關卡選項
+        stormy_options = {}
+        config_sources = [
+            (Path("config/config.json"), "TaskItems", "index"),
+            (Path("config/maa_pi_config.json"), "task", "value"),
+        ]
+        for config_path, task_key, option_key in config_sources:
+            if not config_path.exists():
+                continue
+            try:
+                with open(config_path, encoding="utf-8") as f:
+                    config = json.load(f)
+                    for task in config[task_key]:
+                        if task["name"] == "記憶風暴":
+                            for item in task["option"]:
+                                stormy_options[item["name"]] = item[option_key]
+                            break
+                if stormy_options:
+                    break
+            except Exception:
+                logger.exception(f"讀取 {config_path} 失敗")
+                return False
+        if not stormy_options:
+            logger.error("讀取 maa config 檔案失敗")
+            return False
+
+        # 取得目前日期
+        now = datetime.now(timezone(timedelta(hours=8)))
+        # 若目前時間小於5點，視為前一天
+        if now.hour < 5:
+            now = now - timedelta(days=1)
+        week_day = now.strftime("%a")
+
+        # 執行掃蕩流程
+        for key, item in STORMYMEMORIES_LEVELS.items():
+            if week_day not in item["week_days"]:
+                continue
+            if week_day != "Sun":
+                # 讀取最大掃蕩次數
+                try:
+                    with open("./interface.json", encoding="utf-8") as f:
+                        interface_data = json.load(f)
+                    option = interface_data["option"]["使用全部體力"]
+                    Max_raid_times = option["cases"][0]["pipeline_override"]
+                except Exception:
+                    logger.exception("讀取 interface.json 失敗")
+                item["pipeline_override"]["InitRaidTimes"] = Max_raid_times
+            elif not (stormy_options[key] == "Yes" or stormy_options[key] == 0):
+                continue
+            logger.info(f"正在掃蕩關卡：{key}")
+            context.override_pipeline(item["pipeline_override"])
+            context.run_task("StormyMemoriesTemplate")
+
         return True
 
 

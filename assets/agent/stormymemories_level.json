@@ -1,0 +1,23 @@
+{
+    "記憶畸點": {
+        "week_days": ["Mon", "Thu", "Sun"],
+        "pipeline_override": {
+            "EnterStormyMemoriesItem": {"expected": "記憶"},
+            "VerifyStormyMemoriesItem": {"expected": "記憶"}
+        }
+    },
+    "印象畸點": {
+        "week_days": ["Tue", "Fri", "Sun"],
+        "pipeline_override": {
+            "EnterStormyMemoriesItem": {"expected": "印象"},
+            "VerifyStormyMemoriesItem": {"expected": "印象"}
+        }
+    },
+    "殘響畸點": {
+        "week_days": ["Wed", "Sat", "Sun"],
+        "pipeline_override": {
+            "EnterStormyMemoriesItem": {"expected": "殘響"},
+            "VerifyStormyMemoriesItem": {"expected": "殘響"}
+        }
+    }
+}
