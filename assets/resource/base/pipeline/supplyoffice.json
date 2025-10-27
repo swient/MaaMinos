@@ -55,7 +55,7 @@
     "CancelBuySupplyOfficeProduct": {
         "recognition": "OCR",
         "expected": "購買",
-        "roi": [964, 553, 64, 33],
+        "roi": [964, 548, 102, 38],
         "action": "Click",
         "target": [640, 700, 1, 1]
     },

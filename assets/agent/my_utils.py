@@ -18,10 +18,10 @@ def is_new_period(last_ts: int, period_type: str) -> bool:
 
     if period_type == "day":
         # 今日5點
-        today_start = now.replace(hour=5, minute=0, second=0, microsecond=0)
+        day_start = now.replace(hour=5, minute=0, second=0, microsecond=0)
         if now.hour < 5:
-            today_start -= timedelta(days=1)
-        return last < today_start
+            day_start -= timedelta(days=1)
+        return last < day_start
     elif period_type == "week":
         # 本週週一0點
         week_start = now - timedelta(days=now.weekday())
@@ -31,6 +31,18 @@ def is_new_period(last_ts: int, period_type: str) -> bool:
         # 本月1日0點
         month_start = now.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
         return last < month_start
+    elif period_type == "noon":
+        # 今日11點
+        noon_start = now.replace(hour=11, minute=0, second=0, microsecond=0)
+        if now.hour < 11:
+            noon_start -= timedelta(days=1)
+        return last < noon_start
+    elif period_type == "night":
+        # 今日17點
+        night_start = now.replace(hour=17, minute=0, second=0, microsecond=0)
+        if now.hour < 17:
+            night_start -= timedelta(days=1)
+        return last < night_start
     else:
         raise ValueError(f"未知的 period_type: {period_type}")
 

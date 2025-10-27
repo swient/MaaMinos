@@ -192,8 +192,8 @@ class RaidStormyMemories(CustomAction):
                 try:
                     with open("./interface.json", encoding="utf-8") as f:
                         interface_data = json.load(f)
-                    option = interface_data["option"]["使用全部體力"]
-                    Max_raid_times = option["cases"][0]["pipeline_override"]
+                    option = interface_data["option"]["使用全部體力"]["cases"][0]
+                    Max_raid_times = option["pipeline_override"]["InitRaidTimes"]
                 except Exception:
                     logger.exception("讀取 interface.json 失敗")
                 item["pipeline_override"]["InitRaidTimes"] = Max_raid_times

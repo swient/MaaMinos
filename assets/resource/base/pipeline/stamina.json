@@ -2,6 +2,7 @@
     "Stamina": {
         "enabled": true,
         "next": [
+            "VerifyNoonStamina",
             "EnterStamina",
             "SkipStamina",
             "EnterBureau",
@@ -9,10 +10,47 @@
         ],
         "interrupt": "ReturnHome"
     },
+    "VerifyNoonStamina": {
+        "recognition": "Custom",
+        "custom_recognition": "VerifyTime",
+        "custom_recognition_param": {
+            "key": "午間補給",
+            "period_type": "noon"
+        },
+        "next": [
+            "VerifyNightStamina",
+            "EnterStamina",
+            "SkipStamina",
+            "EnterBureau",
+            "EnterOpsHub"
+        ],
+        "interrupt": "ReturnHome"
+    },
+    "VerifyNightStamina": {
+        "recognition": "Custom",
+        "custom_recognition": "VerifyTime",
+        "custom_recognition_param": {
+            "key": "晚間補給",
+            "period_type": "night"
+        },
+        "next": [
+            "HomeFlag",
+            "ReturnHome"
+        ]
+    },
     "SkipStamina": {
         "recognition": "TemplateMatch",
         "template": "Bureau/SkipStamina.png",
         "roi": [167, 311, 34, 31],
+        "action": "Custom",
+        "custom_action": "RecordTime",
+        "custom_action_param": {"key": "午間補給"},
+        "next": "RecordNightStamina"
+    },
+    "RecordNightStamina": {
+        "action": "Custom",
+        "custom_action": "RecordTime",
+        "custom_action_param": {"key": "晚間補給"},
         "next": "ReturnHome"
     },
     "EnterStamina": {
@@ -27,6 +65,12 @@
         "recognition": "TemplateMatch",
         "template": "Bureau/CompletedStamina.png",
         "roi": [907, 298, 79, 69],
+        "next": "RecordNoonStamina"
+    },
+    "RecordNoonStamina": {
+        "action": "Custom",
+        "custom_action": "RecordTime",
+        "custom_action_param": {"key": "午間補給"},
         "next": [
             "CompletedNightStamina",
             "SkipNightStamina"
@@ -46,7 +90,7 @@
         "roi": [907, 500, 79, 69],
         "action": "Click",
         "target": [640, 700, 1, 1],
-        "next": "ReturnHome"
+        "next": "RecordNightStamina"
     },
     "SkipNightStamina": {
         "recognition": "ColorMatch",
@@ -55,7 +99,7 @@
         "roi": [852, 510, 192, 61],
         "action": "Click",
         "target": [640, 700, 1, 1],
-        "next": "ReturnHome"
+        "next": "RecordNightStamina"
     },
     "ClaimNightStamina": {
         "recognition": "OCR",
