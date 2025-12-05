@@ -89,7 +89,7 @@
         "template": "Bureau/CompletedStamina.png",
         "roi": [907, 500, 79, 69],
         "action": "Click",
-        "target": [640, 700, 1, 1],
+        "target": [640, 715, 1, 1],
         "next": "RecordNightStamina"
     },
     "SkipNightStamina": {
@@ -98,7 +98,7 @@
         "lower": [74, 77, 82],
         "roi": [852, 510, 192, 61],
         "action": "Click",
-        "target": [640, 700, 1, 1],
+        "target": [640, 715, 1, 1],
         "next": "RecordNightStamina"
     },
     "ClaimNightStamina": {

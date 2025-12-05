@@ -57,7 +57,7 @@
         "expected": "購買",
         "roi": [964, 548, 102, 38],
         "action": "Click",
-        "target": [640, 700, 1, 1]
+        "target": [640, 715, 1, 1]
     },
     "VerifySupplyOfficeProduct": {
         "post_delay": 500,
@@ -76,7 +76,7 @@
         "lower": [74, 77, 82],
         "roi": [897, 543, 199, 54],
         "action": "Click",
-        "target": [640, 700, 1, 1],
+        "target": [640, 715, 1, 1],
         "next": "CloseSupplyOfficeItem",
         "interrupt": "AutoSwipeDown"
     },
@@ -101,7 +101,7 @@
         "expected": "獲得物資",
         "roi": [557, 104, 166, 50],
         "action": "Click",
-        "target": [640, 700, 1, 1],
+        "target": [640, 715, 1, 1],
         "next": "CloseSupplyOfficeItem",
         "interrupt": "AutoSwipeDown"
     },

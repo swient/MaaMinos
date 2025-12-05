@@ -17,9 +17,10 @@
     },
     "HomeFlag_StartUp": {
         "post_delay": 1500,
-        "recognition": "OCR",
-        "expected": "整備",
-        "roi": [1016, 641, 42, 30],
+        "recognition": "TemplateMatch",
+        "template": "Home/HomeFlag.png",
+        "green_mask": true,
+        "roi": [292, 481, 50, 50],
         "next": "HomeFlag",
         "interrupt": [
             "CloseEventAnnouncement",
@@ -31,9 +32,10 @@
         ]
     },
     "HomeFlag": {
-        "recognition": "OCR",
-        "expected": "整備",
-        "roi": [1016, 641, 42, 30]
+        "recognition": "TemplateMatch",
+        "template": "Home/HomeFlag.png",
+        "green_mask": true,
+        "roi": [292, 481, 50, 50]
     },
     "StartGame": {
         "recognition": "OCR",
@@ -46,7 +48,7 @@
         "expected": "系統公告",
         "roi": [264, 138, 114, 35],
         "action": "Click",
-        "target": [640, 700, 1, 1]
+        "target": [640, 715, 1, 1]
     },
     "CloseEventAnnouncement": {
         "post_delay": 1500,
@@ -54,13 +56,13 @@
         "expected": "今日不再彈出",
         "roi": [1008, 644, 114, 27],
         "action": "Click",
-        "target": [640, 700, 1, 1]
+        "target": [640, 715, 1, 1]
     },
     "ClaimBlackKeyVIP": {
         "pre_delay": 500,
         "recognition": "OCR",
         "expected": "黑鑰",
-        "roi": [640, 646, 39, 21],
+        "roi": [531, 472, 41, 21],
         "action": "Click",
         "target": [640, 560, 1, 1],
         "next": "ResourcesObtained"
@@ -97,9 +99,9 @@
         "post_delay": 2000,
         "recognition": "OCR",
         "expected": "完成",
-        "roi": [682, 411, 40, 20],
+        "roi": [682, 387, 40, 45],
         "action": "Click",
-        "target": [640, 700, 1, 1]
+        "target": [640, 715, 1, 1]
     },
     "CloseLimitedTimeAttires": {
         "recognition": "OCR",

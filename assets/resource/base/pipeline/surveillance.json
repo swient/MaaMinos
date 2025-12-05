@@ -54,7 +54,7 @@
         ]
     },
     "ClaimSurveillanceDataPoints": {
-        "post_delay": 500,
+        "post_delay": 1000,
         "recognition": "OCR",
         "expected": "鍵領取",
         "roi": [1081, 590, 80, 27],
@@ -82,7 +82,7 @@
         "expected": "獲得物資",
         "roi": [557, 104, 166, 50],
         "action": "Click",
-        "target": [640, 700, 1, 1],
+        "target": [640, 715, 1, 1],
         "next": [
             "EnterSurveillanceMissionItem",
             "CompletedSurveillanceMission"

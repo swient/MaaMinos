@@ -1,6 +1,6 @@
 [remote.github]
-owner = "MaaXYZ"
-repo = "MaaPracticeBoilerplate"
+owner = "swient"
+repo = "MaaMinos"
 #自用時換成自己的倉庫owner和repo
 #注意，本地git user需與github一致才能實現成功@
 [changelog]
