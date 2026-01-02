@@ -3,9 +3,9 @@
         "next": [
             "EnterSurveillanceMission",
             "EnterSurveillance",
-            "EnterOpsHub"
-        ],
-        "interrupt": "ReturnHome"
+            "EnterOpsHub",
+            "[JumpBack]ReturnHome"
+        ]
     },
     "EnterSurveillance": {
         "recognition": "OCR",
@@ -99,8 +99,10 @@
         "expected": "密令",
         "roi": [980, 667, 58, 32],
         "action": "Click",
-        "next": "CompletedSurveillanceOrder",
-        "interrupt": "ClaimSurveillanceReward"
+        "next": [
+            "CompletedSurveillanceOrder",
+            "[JumpBack]ClaimSurveillanceReward"
+        ]
     },
     "CompletedSurveillanceOrder": {
         "recognition": "TemplateMatch",
@@ -113,8 +115,10 @@
         "expected": "鍵領取",
         "roi": [822, 573, 81, 28],
         "action": "Click",
-        "next": "ResourcesObtained",
-        "interrupt": "ChooseSurveillanceReward"
+        "next": [
+            "ResourcesObtained",
+            "[JumpBack]ChooseSurveillanceReward"
+        ]
     },
     "ChooseSurveillanceReward": {
         "recognition": "TemplateMatch",

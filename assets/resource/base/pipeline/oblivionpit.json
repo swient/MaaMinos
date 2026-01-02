@@ -7,9 +7,9 @@
             "EnterOblivionPit",
             "EnterDisSea",
             "EnterDiscity",
-            "EnterOpsHub"
-        ],
-        "interrupt": "ReturnHome"
+            "EnterOpsHub",
+            "[JumpBack]ReturnHome"
+        ]
     },
     "VerifyOblivionPit": {
         "recognition": "Custom",
@@ -28,10 +28,10 @@
         "expected": "濁暗",
         "roi": [50, 411, 1150, 38],
         "action": "Click",
-        "next": "CompletedOblivionPit",
-        "interrupt": [
-            "AutoOblivionPit",
-            "ReturnOblivionPit"
+        "next": [
+            "CompletedOblivionPit",
+            "[JumpBack]AutoOblivionPit",
+            "[JumpBack]ReturnOblivionPit"
         ]
     },
     "CompletedOblivionPit": {

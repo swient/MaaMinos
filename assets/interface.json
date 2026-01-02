@@ -35,6 +35,16 @@
             }
         },
         {
+            "name": "收取監管",
+            "entry": "System",
+            "doc": "三星事件默認選擇第一項",
+            "pipeline_override": {
+                "EnterNexus": {
+                    "next": "EnterSystem"
+                }
+            }
+        },
+        {
             "name": "秘盟捐贈",
             "entry": "SocietyDonation",
             "doc": "默認捐贈狄斯幣",
@@ -43,7 +53,11 @@
                     "next": "EnterSociety"
                 },
                 "EnterSociety": {
-                    "next": "EnterDonation"
+                    "next": [
+                        "EnterDonation",
+                        "[JumpBack]ResourcesObtained",
+                        "[JumpBack]DailySignIn"
+                    ]
                 }
             }
         },
@@ -56,17 +70,11 @@
                     "next": "EnterSociety"
                 },
                 "EnterSociety": {
-                    "next": "EnterMutalAid"
-                }
-            }
-        },
-        {
-            "name": "收取監管",
-            "entry": "System",
-            "doc": "三星事件默認選擇第一項",
-            "pipeline_override": {
-                "EnterNexus": {
-                    "next": "EnterSystem"
+                    "next": [
+                        "EnterMutalAid",
+                        "[JumpBack]ResourcesObtained",
+                        "[JumpBack]DailySignIn"
+                    ]
                 }
             }
         },
@@ -94,8 +102,10 @@
                     "next": "EnterDisSea"
                 },
                 "EnterDisSea": {
-                    "next": "EnterOblivionPit",
-                    "interrupt": "AutoSwipeLeft"
+                    "next": [
+                        "EnterOblivionPit",
+                        "[JumpBack]AutoSwipeLeft"
+                    ]
                 }
             }
         },
@@ -111,8 +121,10 @@
                     "next": "EnterDisSea"
                 },
                 "EnterDisSea": {
-                    "next": "EnterBrokenFrontline",
-                    "interrupt": "AutoSwipeLeft"
+                    "next": [
+                        "EnterBrokenFrontline",
+                        "[JumpBack]AutoSwipeLeft"
+                    ]
                 }
             }
         },
@@ -136,30 +148,6 @@
                     "next": [
                         "Stamina",
                         "ReturnHome"
-                    ]
-                }
-            }
-        },
-        {
-            "name": "材料掃蕩",
-            "entry": "Materials",
-            "doc": "不足目標掃蕩次數會掃蕩到可掃蕩的最大值",
-            "option": [
-                "掃蕩材料",
-                "掃蕩次數",
-                "使用全部體力"
-            ],
-            "pipeline_override": {
-                "EnterOpsHub": {
-                    "next": "EnterDiscity"
-                },
-                "EnterDiscity": {
-                    "next": "EnterTheRust"
-                },
-                "EnterTheRust": {
-                    "next": [
-                        "EnterMaterials",
-                        "EnterTheRust"
                     ]
                 }
             }
@@ -198,6 +186,30 @@
             }
         },
         {
+            "name": "材料掃蕩",
+            "entry": "Materials",
+            "doc": "不足目標掃蕩次數會掃蕩到可掃蕩的最大值",
+            "option": [
+                "掃蕩材料",
+                "掃蕩次數",
+                "使用全部體力"
+            ],
+            "pipeline_override": {
+                "EnterOpsHub": {
+                    "next": "EnterDiscity"
+                },
+                "EnterDiscity": {
+                    "next": "EnterTheRust"
+                },
+                "EnterTheRust": {
+                    "next": [
+                        "EnterMaterials",
+                        "EnterTheRust"
+                    ]
+                }
+            }
+        },
+        {
             "name": "採購部",
             "entry": "SupplyOffice",
             "doc": "同名材料僅購買特惠材料",
@@ -214,6 +226,7 @@
                 "狂亂精粹(秘盟兌換)",
                 "搜索令(友情兌換)",
                 "夢影之塵(友情兌換)",
+                "監測磁帶(友情兌換)",
                 "迴響質料(友情兌換)",
                 "邊界重構碎片(友情兌換)",
                 "一階源素補給箱(友情兌換)",
@@ -728,6 +741,18 @@
             ]
         },
         "夢影之塵(友情兌換)": {
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {}
+                }
+            ]
+        },
+        "監測磁帶(友情兌換)": {
             "cases": [
                 {
                     "name": "Yes",

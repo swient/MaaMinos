@@ -27,11 +27,7 @@
         "recognition": "OCR",
         "expected": "秘盟",
         "roi": [1181, 177, 50, 28],
-        "action": "Click",
-        "interrupt": [
-            "ResourcesObtained",
-            "DailySignIn"
-        ]
+        "action": "Click"
     },
     "DailySignIn": {
         "recognition": "OCR",

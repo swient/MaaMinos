@@ -12,18 +12,25 @@
             "EnterSupplyOfficeItemDetail",
             "EnterSupplyOfficeItem",
             "EnterSupplyOffice",
-            "EnterOpsHub"
-        ],
-        "interrupt": "ReturnHome"
+            "EnterOpsHub",
+            "[JumpBack]ReturnHome"
+        ]
     },
     "EnterSupplyOffice": {
-        "post_delay": 1500,
         "recognition": "OCR",
         "expected": "採購",
         "roi": [1024, 562, 44, 31],
         "action": "Click",
-        "next": "EnterSupplyOfficeItem",
-        "interrupt": "AutoSwipeUp"
+        "next": "VerifySupplyOffice"
+    },
+    "VerifySupplyOffice": {
+        "recognition": "OCR",
+        "expected": "採購推薦",
+        "roi": [70, 166, 137, 44],
+        "next": [
+            "EnterSupplyOfficeItem",
+            "[JumpBack]AutoSwipeUp"
+        ]
     },
     "EnterSupplyOfficeItem": {
         "post_delay": 500,
@@ -31,8 +38,10 @@
         "expected": "精選禮包",
         "roi": [64, 242, 150, 478],
         "action": "Click",
-        "next": "EnterSupplyOfficeItemDetail",
-        "interrupt": "AutoSwipeUp"
+        "next": [
+            "EnterSupplyOfficeItemDetail",
+            "[JumpBack]AutoSwipeUp"
+        ]
     },
     "EnterSupplyOfficeItemDetail": {
         "post_delay": 1500,
@@ -40,10 +49,10 @@
         "expected": "養成補給",
         "roi": [64, 242, 150, 478],
         "action": "Click",
-        "next": "AutoBuySupplyOfficeProduct",
-        "interrupt": [
-            "CancelBuySupplyOfficeProduct",
-            "AutoSwipeLeft"
+        "next": [
+            "AutoBuySupplyOfficeProduct",
+            "[JumpBack]CancelBuySupplyOfficeProduct",
+            "[JumpBack]AutoSwipeLeft"
         ]
     },
     "AutoBuySupplyOfficeProduct": {
@@ -77,8 +86,10 @@
         "roi": [897, 543, 199, 54],
         "action": "Click",
         "target": [640, 715, 1, 1],
-        "next": "CloseSupplyOfficeItem",
-        "interrupt": "AutoSwipeDown"
+        "next": [
+            "CloseSupplyOfficeItem",
+            "[JumpBack]AutoSwipeDown"
+        ]
     },
     "MaxSupplyOfficeBuyTimes": {
         "recognition": "OCR",
@@ -102,13 +113,15 @@
         "roi": [557, 104, 166, 50],
         "action": "Click",
         "target": [640, 715, 1, 1],
-        "next": "CloseSupplyOfficeItem",
-        "interrupt": "AutoSwipeDown"
+        "next": [
+            "CloseSupplyOfficeItem",
+            "[JumpBack]AutoSwipeDown"
+        ]
     },
     "CloseSupplyOfficeItem": {
-        "threshold": 0.6,
         "recognition": "TemplateMatch",
         "template": "SupplyOffice/CloseSupplyOfficeItem.png",
+        "threshold": 0.6,
         "roi": [25, 242, 40, 478],
         "action": "Click",
         "next": "CompletedSupplyOffice"

@@ -13,12 +13,12 @@
             "EnterStormyMemories",
             "EnterTheRust",
             "EnterDiscity",
-            "EnterOpsHub"
-        ],
-        "interrupt": "ReturnHome"
+            "EnterOpsHub",
+            "[JumpBack]ReturnHome"
+        ]
     },
     "EnterStormyMemories": {
-        "post_delay": 500,
+        "post_delay": 1000,
         "recognition": "OCR",
         "expected": "風暴",
         "roi": [271, 291, 51, 41],
@@ -51,9 +51,9 @@
         "roi": [406, 178, 90, 48],
         "next": [
             "SkipRaidStormyMemoriesItem",
-            "CompletedRaidStormyMemoriesItem"
-        ],
-        "interrupt": "EnterStormyMemoriesLevel"
+            "CompletedRaidStormyMemoriesItem",
+            "[JumpBack]EnterStormyMemoriesLevel"
+        ]
     },
     "SkipRaidStormyMemoriesItem": {
         "recognition": "OCR",

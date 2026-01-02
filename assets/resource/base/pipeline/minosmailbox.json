@@ -1,17 +1,22 @@
 {
     "MinosMailbox": {
         "enabled": true,
-        "next": "EnterMinosMailbox",
-        "interrupt": "ReturnHome"
+        "next": [
+            "EnterMinosMailbox",
+            "[JumpBack]ReturnHome"
+        ]
     },
     "EnterMinosMailbox": {
         "post_delay": 500,
         "recognition": "OCR",
         "expected": "信箱",
-        "roi": [96, 427, 31, 18],
+        "roi": [97, 428, 31, 18],
         "action": "Click",
-        "next": "CompletedMinosMailbox",
-        "interrupt": "AutoProcessAll"
+        "next": [
+            "CompletedMinosMailbox",
+            "EnterMinosMailbox",
+            "[JumpBack]AutoProcessAll"
+        ]
     },
     "CompletedMinosMailbox": {
         "recognition": "TemplateMatch",

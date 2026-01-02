@@ -6,9 +6,9 @@
             "EnterStamina",
             "SkipStamina",
             "EnterBureau",
-            "EnterOpsHub"
-        ],
-        "interrupt": "ReturnHome"
+            "EnterOpsHub",
+            "[JumpBack]ReturnHome"
+        ]
     },
     "VerifyNoonStamina": {
         "recognition": "Custom",
@@ -22,9 +22,9 @@
             "EnterStamina",
             "SkipStamina",
             "EnterBureau",
-            "EnterOpsHub"
-        ],
-        "interrupt": "ReturnHome"
+            "EnterOpsHub",
+            "[JumpBack]ReturnHome"
+        ]
     },
     "VerifyNightStamina": {
         "recognition": "Custom",
@@ -58,8 +58,10 @@
         "template": "Bureau/Stamina.png",
         "roi": [155, 284, 66, 61],
         "action": "Click",
-        "next": "CompletedNoonStamina",
-        "interrupt": "ClaimNoonStamina"
+        "next": [
+            "CompletedNoonStamina",
+            "[JumpBack]ClaimNoonStamina"
+        ]
     },
     "CompletedNoonStamina": {
         "recognition": "TemplateMatch",
@@ -73,9 +75,9 @@
         "custom_action_param": {"key": "午間補給"},
         "next": [
             "CompletedNightStamina",
-            "SkipNightStamina"
-        ],
-        "interrupt": "ClaimNightStamina"
+            "SkipNightStamina",
+            "[JumpBack]ClaimNightStamina"
+        ]
     },
     "ClaimNoonStamina": {
         "recognition": "OCR",

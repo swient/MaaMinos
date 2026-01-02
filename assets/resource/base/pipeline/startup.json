@@ -1,18 +1,17 @@
 {
     "StartUp": {
         "next": [
-            "HomeFlag_StartUp"
-        ],
-        "interrupt": [
-            "StartGame",
-            "CloseSystemAnnouncement",
-            "CloseEventAnnouncement",
-            "ClaimBlackKeyVIP",
-            "CloseBlackKeyVIP",
-            "AutoEmotionCheck",
-            "CloseLimitedTimeAttires",
-            "ReturnHome",
-            "Start5732"
+            "HomeFlag_StartUp",
+            "[JumpBack]StartGame",
+            "[JumpBack]CloseSystemAnnouncement",
+            "[JumpBack]CloseEventAnnouncement",
+            "[JumpBack]ClaimBlackKeyVIP",
+            "[JumpBack]CloseBlackKeyVIP",
+            "[JumpBack]AutoEmotionCheck",
+            "[JumpBack]CloseLimitedTimeAttires",
+            "[JumpBack]AutoHappyBirthday",
+            "[JumpBack]ReturnHome",
+            "[JumpBack]Start5732"
         ]
     },
     "HomeFlag_StartUp": {
@@ -21,14 +20,15 @@
         "template": "Home/HomeFlag.png",
         "green_mask": true,
         "roi": [292, 481, 50, 50],
-        "next": "HomeFlag",
-        "interrupt": [
-            "CloseEventAnnouncement",
-            "ClaimBlackKeyVIP",
-            "CloseBlackKeyVIP",
-            "AutoEmotionCheck",
-            "CloseLimitedTimeAttires",
-            "ReturnHome"
+        "next": [
+            "[JumpBack]CloseEventAnnouncement",
+            "[JumpBack]ClaimBlackKeyVIP",
+            "[JumpBack]CloseBlackKeyVIP",
+            "[JumpBack]AutoEmotionCheck",
+            "[JumpBack]CloseLimitedTimeAttires",
+            "[JumpBack]AutoHappyBirthday",
+            "[JumpBack]ReturnHome",
+            "HomeFlag"
         ]
     },
     "HomeFlag": {
@@ -99,11 +99,12 @@
         "post_delay": 2000,
         "recognition": "OCR",
         "expected": "完成",
-        "roi": [682, 387, 40, 45],
+        "roi": [681, 387, 42, 45],
         "action": "Click",
         "target": [640, 715, 1, 1]
     },
     "CloseLimitedTimeAttires": {
+        "post_delay": 1500,
         "recognition": "OCR",
         "expected": [
             "套裝",
@@ -112,6 +113,13 @@
         "roi": [1034, 421, 56, 29],
         "action": "Click",
         "target": [1155, 45, 1, 1]
+    },
+    "AutoHappyBirthday": {
+        "recognition": "OCR",
+        "expected": "生日快樂",
+        "roi": [931, 553, 121, 33],
+        "action": "Click",
+        "target": [40, 40, 1, 1]
     },
     "Start5732": {
         "action": "StartApp",

@@ -5,9 +5,9 @@
             "EnterMaterials",
             "EnterTheRust",
             "EnterDiscity",
-            "EnterOpsHub"
-        ],
-        "interrupt": "ReturnHome"
+            "EnterOpsHub",
+            "[JumpBack]ReturnHome"
+        ]
     },
     "EnterMaterials": {
         "post_delay": 500,
@@ -15,8 +15,10 @@
         "expected": "清剿",
         "roi": [568, 210, 485, 303],
         "action": "Click",
-        "next": "EnterMaterialsItem",
-        "interrupt": "AutoSwipeUp"
+        "next": [
+            "EnterMaterialsItem",
+            "[JumpBack]AutoSwipeUp"
+        ]
     },
     "EnterMaterialsItem": {
         "recognition": "OCR",
@@ -24,9 +26,16 @@
         "roi": [146, 134, 52, 495],
         "action": "Click",
         "next": [
+            "SkipMaterialsItem",
             "VerifyMaterialsItem",
             "EnterMaterialsItem"
         ]
+    },
+    "SkipMaterialsItem": {
+        "recognition": "OCR",
+        "expected": "開放",
+        "roi": [705, 312, 45, 23],
+        "next": "ReturnHome"
     },
     "VerifyMaterialsItem": {
         "recognition": "OCR",

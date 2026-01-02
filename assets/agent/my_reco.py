@@ -67,7 +67,7 @@ class CheckSupplyOfficeProduct(CustomRecognition):
                         "MyCustomOCR": {"roi": roi, "expected": expected}
                     },
                 )
-                if product_detail is not None:
+                if product_detail is not None and product_detail.hit:
                     # 若該商品有折扣，需同時辨識到折扣
                     if is_discounted:
                         discount_roi = [roi[0] - 100, roi[1], roi[2] - 50, roi[3]]
@@ -78,7 +78,7 @@ class CheckSupplyOfficeProduct(CustomRecognition):
                                 "MyCustomOCR": {"roi": discount_roi, "expected": "50"}
                             },
                         )
-                        if discount_detail is not None:
+                        if discount_detail is not None and discount_detail.hit:
                             return product_detail.box
                     else:
                         return product_detail.box

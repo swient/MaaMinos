@@ -4,9 +4,9 @@
             "CompletedDispatch",
             "EnterDispatch",
             "EnterBureau",
-            "EnterOpsHub"
-        ],
-        "interrupt": "ReturnHome"
+            "EnterOpsHub",
+            "[JumpBack]ReturnHome"
+        ]
     },
     "EnterDispatch": {
         "recognition": "OCR",
@@ -15,11 +15,9 @@
         "action": "Click",
         "next": [
             "CompletedDispatch",
-            "EnterDispatch"
-        ],
-        "interrupt": [
-            "ClaimDispatch",
-            "AutoDispatch"
+            "EnterDispatch",
+            "[JumpBack]ClaimDispatch",
+            "[JumpBack]AutoDispatch"
         ]
     },
     "CompletedDispatch": {

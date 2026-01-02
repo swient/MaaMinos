@@ -34,7 +34,7 @@ class BuySupplyOfficeProduct(CustomAction):
         supply_options = {}
         config_sources = [
             (Path("config/config.json"), "TaskItems", "index"),
-            (Path("config/maa_pi_config.json"), "task", "value"),
+            (Path("config/maa_pi_config.json"), "task", "default"),
         ]
         for config_path, task_key, option_key in config_sources:
             if not config_path.exists():
@@ -44,8 +44,13 @@ class BuySupplyOfficeProduct(CustomAction):
                     config = json.load(f)
                     for task in config[task_key]:
                         if task["name"] == "採購部":
-                            for item in task["option"]:
-                                supply_options[item["name"]] = item[option_key]
+                            option = task["option"]
+                            if isinstance(option, dict):
+                                for name, value in option.items():
+                                    supply_options[name] = value[option_key]
+                            elif isinstance(option, list):
+                                for item in option:
+                                    supply_options[item["name"]] = item[option_key]
                             break
                 if supply_options:
                     break

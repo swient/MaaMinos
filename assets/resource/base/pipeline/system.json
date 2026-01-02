@@ -3,17 +3,19 @@
         "next": [
             "CompletedCollect",
             "EnterSystem",
-            "EnterNexus"
-        ],
-        "interrupt": "ReturnHome"
+            "EnterNexus",
+            "[JumpBack]ReturnHome"
+        ]
     },
     "EnterSystem": {
         "recognition": "OCR",
         "expected": "監管",
         "roi": [1027, 397, 39, 27],
         "action": "Click",
-        "next": "CompletedCollect",
-        "interrupt": "AutoCollect"
+        "next": [
+            "CompletedCollect",
+            "[JumpBack]AutoCollect"
+        ]
     },
     "CompletedCollect": {
         "recognition": "TemplateMatch",
@@ -55,9 +57,9 @@
         "action": "Click",
         "next": [
             "CompletedIncident",
-            "EnterIncident"
-        ],
-        "interrupt": "SkipIncident"
+            "EnterIncident",
+            "[JumpBack]SkipIncident"
+        ]
     },
     "CompletedIncident": {
         "post_delay": 500,
@@ -76,17 +78,19 @@
         "action": "Click",
         "next": [
             "CompletedIncident",
-            "NextIncident"
-        ],
-        "interrupt": "SkipIncident"
+            "NextIncident",
+            "[JumpBack]SkipIncident"
+        ]
     },
     "SkipIncident": {
         "recognition": "OCR",
         "expected": "跳過",
         "roi": [1151, 16, 51, 26],
         "action": "Click",
-        "next": "ResourcesObtained",
-        "interrupt": "AutoIncident"
+        "next": [
+            "ResourcesObtained",
+            "[JumpBack]AutoIncident"
+        ]
     },
     "AutoIncident": {
         "recognition": "TemplateMatch",

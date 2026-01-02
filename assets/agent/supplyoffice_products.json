@@ -24,7 +24,7 @@
         "period_type": "month",
         "is_discounted": true,
         "pipeline_override": {
-            "EnterSupplyOfficeItem": {"expected": "中心"},
+            "EnterSupplyOfficeItem": {"expected": "玩法"},
             "EnterSupplyOfficeItemDetail": {"expected": "戰勳"},
             "VerifySupplyOfficeProduct": {"expected": ["遺物", "遗物"]}
         }
@@ -34,7 +34,7 @@
         "period_type": "month",
         "is_discounted": true,
         "pipeline_override": {
-            "EnterSupplyOfficeItem": {"expected": "中心"},
+            "EnterSupplyOfficeItem": {"expected": "玩法"},
             "EnterSupplyOfficeItemDetail": {"expected": "樣本"},
             "VerifySupplyOfficeProduct": {"expected": "S級魂識"}
         }
@@ -44,7 +44,7 @@
         "period_type": "month",
         "is_discounted": true,
         "pipeline_override": {
-            "EnterSupplyOfficeItem": {"expected": "中心"},
+            "EnterSupplyOfficeItem": {"expected": "玩法"},
             "EnterSupplyOfficeItemDetail": {"expected": "樣本"},
             "VerifySupplyOfficeProduct": {"expected": "A級魂識"}
         }
@@ -54,7 +54,7 @@
         "period_type": "month",
         "is_discounted": true,
         "pipeline_override": {
-            "EnterSupplyOfficeItem": {"expected": "中心"},
+            "EnterSupplyOfficeItem": {"expected": "玩法"},
             "EnterSupplyOfficeItemDetail": {"expected": "樣本"},
             "VerifySupplyOfficeProduct": {"expected": "B級魂識"}
         }
@@ -64,7 +64,7 @@
         "period_type": "month",
         "is_discounted": false,
         "pipeline_override": {
-            "EnterSupplyOfficeItem": {"expected": "中心"},
+            "EnterSupplyOfficeItem": {"expected": "玩法"},
             "EnterSupplyOfficeItemDetail": {"expected": "秘盟"},
             "VerifySupplyOfficeProduct": {"expected": "低階材料"}
         }
@@ -74,7 +74,7 @@
         "period_type": "month",
         "is_discounted": false,
         "pipeline_override": {
-            "EnterSupplyOfficeItem": {"expected": "中心"},
+            "EnterSupplyOfficeItem": {"expected": "玩法"},
             "EnterSupplyOfficeItemDetail": {"expected": "秘盟"},
             "VerifySupplyOfficeProduct": {"expected": "技能模組"}
         }
@@ -84,7 +84,7 @@
         "period_type": "month",
         "is_discounted": false,
         "pipeline_override": {
-            "EnterSupplyOfficeItem": {"expected": "中心"},
+            "EnterSupplyOfficeItem": {"expected": "玩法"},
             "EnterSupplyOfficeItemDetail": {"expected": "秘盟"},
             "VerifySupplyOfficeProduct": {"expected": "狄斯幣"}
         }
@@ -94,7 +94,7 @@
         "period_type": "month",
         "is_discounted": false,
         "pipeline_override": {
-            "EnterSupplyOfficeItem": {"expected": "中心"},
+            "EnterSupplyOfficeItem": {"expected": "玩法"},
             "EnterSupplyOfficeItemDetail": {"expected": "秘盟"},
             "VerifySupplyOfficeProduct": {"expected": "狂亂精粹"}
         }
@@ -117,6 +117,16 @@
             "EnterSupplyOfficeItem": {"expected": "中心"},
             "EnterSupplyOfficeItemDetail": {"expected": "友情"},
             "VerifySupplyOfficeProduct": {"expected": "夢影"}
+        }
+    },
+    "監測磁帶(友情兌換)": {
+        "expected": "監測",
+        "period_type": "month",
+        "is_discounted": false,
+        "pipeline_override": {
+            "EnterSupplyOfficeItem": {"expected": "中心"},
+            "EnterSupplyOfficeItemDetail": {"expected": "友情"},
+            "VerifySupplyOfficeProduct": {"expected": "監測"}
         }
     },
     "迴響質料(友情兌換)": {

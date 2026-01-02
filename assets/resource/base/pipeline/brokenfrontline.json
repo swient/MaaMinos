@@ -6,9 +6,9 @@
             "EnterBrokenFrontline",
             "EnterDisSea",
             "EnterDiscity",
-            "EnterOpsHub"
-        ],
-        "interrupt": "ReturnHome"
+            "EnterOpsHub",
+            "[JumpBack]ReturnHome"
+        ]
     },
     "VerifyBrokenFrontline": {
         "recognition": "Custom",
@@ -60,8 +60,10 @@
         "expected": "本期",
         "roi": [214, 228, 45, 25],
         "action": "Click",
-        "next": "CompletedBrokenFrontlineStageReward",
-        "interrupt": "ClaimBrokenFrontlineReward"
+        "next": [
+            "CompletedBrokenFrontlineStageReward",
+            "[JumpBack]ClaimBrokenFrontlineReward"
+        ]
     },
     "CompletedBrokenFrontlineStageReward": {
         "recognition": "TemplateMatch",
@@ -74,8 +76,10 @@
         "expected": "關卡",
         "roi": [214, 319, 45, 25],
         "action": "Click",
-        "next": "CompletedBrokenFrontlineLevelReward",
-        "interrupt": "EnterBrokenFrontlineLevelRewardItem"
+        "next": [
+            "CompletedBrokenFrontlineLevelReward",
+            "[JumpBack]EnterBrokenFrontlineLevelRewardItem"
+        ]
     },
     "CompletedBrokenFrontlineLevelReward": {
         "recognition": "TemplateMatch",

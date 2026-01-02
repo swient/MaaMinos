@@ -4,19 +4,19 @@
         "next": [
             "CompletedFriendship",
             "EnterFriends",
-            "EnterNexus"
-        ],
-        "interrupt": "ReturnHome"
+            "EnterNexus",
+            "[JumpBack]ReturnHome"
+        ]
     },
     "EnterFriends": {
         "recognition": "OCR",
         "expected": "好友",
         "roi": [1188, 294, 38, 21],
         "action": "Click",
-        "next": "CompletedFriendship",
-        "interrupt": [
-            "ClaimFriendship",
-            "SendFriendship"
+        "next": [
+            "CompletedFriendship",
+            "[JumpBack]ClaimFriendship",
+            "[JumpBack]SendFriendship"
         ]
     },
     "CompletedFriendship": {

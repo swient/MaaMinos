@@ -88,10 +88,28 @@ def get_logger(name: str, level: int = None) -> logging.Logger:
     else:
         stream_level = level
 
-    # stderr handler，只顯示 [level] 訊息
+    # 自定義日誌等級的格式
+    class CustomLevelFormatter(logging.Formatter):
+        LEVEL_MAP = {
+            "DEBUG": "debug",
+            "INFO": "info",
+            "WARNING": "warn",
+            "ERROR": "err",
+            "CRITICAL": "critical",
+        }
+
+        def format(self, record):
+            # 取得縮寫
+            custom_name = self.LEVEL_MAP[record.levelname]
+            # 將縮寫存入 record 供格式化字串使用
+            record.level_custom = custom_name
+            return super().format(record)
+
+    # stderr handler
     stream_handler = logging.StreamHandler()
     stream_handler.setLevel(stream_level)
-    stream_handler.setFormatter(logging.Formatter("[%(levelname)s] %(message)s"))
+    formatter = CustomLevelFormatter("%(level_custom)s: %(message)s")
+    stream_handler.setFormatter(formatter)
     logger.addHandler(stream_handler)
 
     # file handler，完整 log 輸出

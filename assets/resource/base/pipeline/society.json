@@ -5,9 +5,9 @@
             "CompletedDonation",
             "EnterDonation",
             "EnterSociety",
-            "EnterNexus"
-        ],
-        "interrupt": "ReturnHome"
+            "EnterNexus",
+            "[JumpBack]ReturnHome"
+        ]
     },
     "VerifyDonation": {
         "recognition": "Custom",
@@ -23,11 +23,16 @@
     },
     "EnterDonation": {
         "recognition": "OCR",
-        "expected": "秘盟捐贈",
+        "expected": [
+            "秘盟捐贈",
+            "秘盟捐赠"
+        ],
         "roi": [804, 636, 106, 31],
         "action": "Click",
-        "next": "CompletedDonation",
-        "interrupt": "AutoDonation"
+        "next": [
+            "CompletedDonation",
+            "[JumpBack]AutoDonation"
+        ]
     },
     "CompletedDonation": {
         "recognition": "OCR",
@@ -53,17 +58,19 @@
             "CompletedPostRequest",
             "EnterMutalAid",
             "EnterSociety",
-            "EnterNexus"
-        ],
-        "interrupt": "ReturnHome"
+            "EnterNexus",
+            "[JumpBack]ReturnHome"
+        ]
     },
     "EnterMutalAid": {
         "recognition": "OCR",
         "expected": "秘盟互助",
         "roi": [921, 637, 105, 30],
         "action": "Click",
-        "next": "CompletedMutalAid",
-        "interrupt": "AutoMutalAid"
+        "next": [
+            "CompletedMutalAid",
+            "[JumpBack]AutoMutalAid"
+        ]
     },
     "CompletedMutalAid": {
         "recognition": "OCR",
@@ -75,12 +82,16 @@
         ]
     },
     "AutoMutalAid": {
+        "post_delay": 500,
         "recognition": "TemplateMatch",
         "template": "Society/MutalAid.png",
         "roi": [418, 196, 754, 447],
         "action": "Click",
         "target_offset": [0, 100, 0, 0],
-        "next": "ResourcesObtained"
+        "next": [
+            "ResourcesObtained",
+            "AutoMutalAid"
+        ]
     },
     "SkipPostRequest": {
         "recognition": "OCR",
