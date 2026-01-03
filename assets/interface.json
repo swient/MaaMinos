@@ -1,4 +1,5 @@
 {
+    "interface_version": 2,
     "name": "MaaMinos",
     "url": "https://github.com/swient/MaaMinos",
     "controller": [
@@ -217,24 +218,9 @@
                 "每日免費補給",
                 "搜索令(追蹤兌換)",
                 "內海遺物箱(戰勳兌換)",
-                "S級魂識印記(樣本兌換)",
-                "A級魂識印記(樣本兌換)",
-                "B級魂識印記(樣本兌換)",
-                "低階材料補給箱(秘盟兌換)",
-                "技能模組(秘盟兌換)",
-                "狄斯幣(秘盟兌換)",
-                "狂亂精粹(秘盟兌換)",
-                "搜索令(友情兌換)",
-                "夢影之塵(友情兌換)",
-                "監測磁帶(友情兌換)",
-                "迴響質料(友情兌換)",
-                "邊界重構碎片(友情兌換)",
-                "一階源素補給箱(友情兌換)",
-                "低階材料補給箱(友情兌換)",
-                "技能模組(友情兌換)",
-                "狄斯幣(友情兌換)",
-                "狂亂精粹(友情兌換)",
-                "記憶碎片(友情兌換)"
+                "樣本兌換",
+                "秘盟兌換",
+                "友情兌換"
             ],
             "pipeline_override": {
                 "EnterOpsHub": {
@@ -257,6 +243,7 @@
     ],
     "option": {
         "領取友情點": {
+            "type": "switch",
             "cases": [
                 {
                     "name": "Yes",
@@ -277,6 +264,7 @@
             ]
         },
         "收取信箱": {
+            "type": "switch",
             "cases": [
                 {
                     "name": "Yes",
@@ -293,6 +281,7 @@
             ]
         },
         "領取體力": {
+            "type": "switch",
             "cases": [
                 {
                     "name": "Yes",
@@ -319,6 +308,7 @@
             ]
         },
         "掃蕩材料": {
+            "type": "select",
             "cases": [
                 {
                     "name": "狄斯幣",
@@ -479,6 +469,7 @@
             ]
         },
         "掃蕩次數": {
+            "type": "select",
             "cases": [
                 {
                     "name": "1次",
@@ -524,6 +515,7 @@
             "default_case": "3次"
         },
         "使用全部體力": {
+            "type": "switch",
             "cases": [
                 {
                     "name": "Yes",
@@ -547,6 +539,7 @@
             "default_case": "No"
         },
         "記憶畸點": {
+            "type": "switch",
             "cases": [
                 {
                     "name": "Yes",
@@ -559,6 +552,7 @@
             ]
         },
         "印象畸點": {
+            "type": "switch",
             "cases": [
                 {
                     "name": "Yes",
@@ -571,6 +565,7 @@
             ]
         },
         "殘響畸點": {
+            "type": "switch",
             "cases": [
                 {
                     "name": "Yes",
@@ -583,6 +578,7 @@
             ]
         },
         "監察嘉獎": {
+            "type": "select",
             "cases": [
                 {
                     "name": "思感精粹",
@@ -607,6 +603,7 @@
             ]
         },
         "每日免費補給": {
+            "type": "switch",
             "cases": [
                 {
                     "name": "Yes",
@@ -619,6 +616,7 @@
             ]
         },
         "搜索令(追蹤兌換)": {
+            "type": "switch",
             "cases": [
                 {
                     "name": "Yes",
@@ -631,6 +629,7 @@
             ]
         },
         "內海遺物箱(戰勳兌換)": {
+            "type": "switch",
             "cases": [
                 {
                     "name": "Yes",
@@ -642,7 +641,26 @@
                 }
             ]
         },
+        "樣本兌換": {
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "option": [
+                        "S級魂識印記(樣本兌換)",
+                        "A級魂識印記(樣本兌換)",
+                        "B級魂識印記(樣本兌換)"
+                    ],
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {}
+                }
+            ]
+        },
         "S級魂識印記(樣本兌換)": {
+            "type": "switch",
             "cases": [
                 {
                     "name": "Yes",
@@ -655,6 +673,7 @@
             ]
         },
         "A級魂識印記(樣本兌換)": {
+            "type": "switch",
             "cases": [
                 {
                     "name": "Yes",
@@ -668,6 +687,7 @@
             "default_case": "No"
         },
         "B級魂識印記(樣本兌換)": {
+            "type": "switch",
             "cases": [
                 {
                     "name": "Yes",
@@ -680,7 +700,27 @@
             ],
             "default_case": "No"
         },
+        "秘盟兌換": {
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "option": [
+                        "低階材料補給箱(秘盟兌換)",
+                        "技能模組(秘盟兌換)",
+                        "狄斯幣(秘盟兌換)",
+                        "狂亂精粹(秘盟兌換)"
+                    ],
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {}
+                }
+            ]
+        },
         "低階材料補給箱(秘盟兌換)": {
+            "type": "switch",
             "cases": [
                 {
                     "name": "Yes",
@@ -693,6 +733,7 @@
             ]
         },
         "技能模組(秘盟兌換)": {
+            "type": "switch",
             "cases": [
                 {
                     "name": "Yes",
@@ -705,6 +746,7 @@
             ]
         },
         "狄斯幣(秘盟兌換)": {
+            "type": "switch",
             "cases": [
                 {
                     "name": "Yes",
@@ -717,6 +759,7 @@
             ]
         },
         "狂亂精粹(秘盟兌換)": {
+            "type": "switch",
             "cases": [
                 {
                     "name": "Yes",
@@ -728,7 +771,34 @@
                 }
             ]
         },
+        "友情兌換": {
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "option": [
+                        "搜索令(友情兌換)",
+                        "夢影之塵(友情兌換)",
+                        "監測磁帶(友情兌換)",
+                        "迴響質料(友情兌換)",
+                        "邊界重構碎片(友情兌換)",
+                        "一階源素補給箱(友情兌換)",
+                        "低階材料補給箱(友情兌換)",
+                        "技能模組(友情兌換)",
+                        "狄斯幣(友情兌換)",
+                        "狂亂精粹(友情兌換)",
+                        "記憶碎片(友情兌換)"
+                    ],
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {}
+                }
+            ]
+        },
         "搜索令(友情兌換)": {
+            "type": "switch",
             "cases": [
                 {
                     "name": "Yes",
@@ -741,6 +811,7 @@
             ]
         },
         "夢影之塵(友情兌換)": {
+            "type": "switch",
             "cases": [
                 {
                     "name": "Yes",
@@ -753,6 +824,7 @@
             ]
         },
         "監測磁帶(友情兌換)": {
+            "type": "switch",
             "cases": [
                 {
                     "name": "Yes",
@@ -765,6 +837,7 @@
             ]
         },
         "迴響質料(友情兌換)": {
+            "type": "switch",
             "cases": [
                 {
                     "name": "Yes",
@@ -777,6 +850,7 @@
             ]
         },
         "邊界重構碎片(友情兌換)": {
+            "type": "switch",
             "cases": [
                 {
                     "name": "Yes",
@@ -790,6 +864,7 @@
             "default_case": "No"
         },
         "一階源素補給箱(友情兌換)": {
+            "type": "switch",
             "cases": [
                 {
                     "name": "Yes",
@@ -803,6 +878,7 @@
             "default_case": "No"
         },
         "低階材料補給箱(友情兌換)": {
+            "type": "switch",
             "cases": [
                 {
                     "name": "Yes",
@@ -816,6 +892,7 @@
             "default_case": "No"
         },
         "技能模組(友情兌換)": {
+            "type": "switch",
             "cases": [
                 {
                     "name": "Yes",
@@ -829,6 +906,7 @@
             "default_case": "No"
         },
         "狄斯幣(友情兌換)": {
+            "type": "switch",
             "cases": [
                 {
                     "name": "Yes",
@@ -842,6 +920,7 @@
             "default_case": "No"
         },
         "狂亂精粹(友情兌換)": {
+            "type": "switch",
             "cases": [
                 {
                     "name": "Yes",
@@ -855,6 +934,7 @@
             "default_case": "No"
         },
         "記憶碎片(友情兌換)": {
+            "type": "switch",
             "cases": [
                 {
                     "name": "Yes",

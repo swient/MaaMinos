@@ -45,12 +45,19 @@ class BuySupplyOfficeProduct(CustomAction):
                     for task in config[task_key]:
                         if task["name"] == "採購部":
                             option = task["option"]
+                            # maa_pi_config.json
                             if isinstance(option, dict):
                                 for name, value in option.items():
                                     supply_options[name] = value[option_key]
+                            # config.json
                             elif isinstance(option, list):
                                 for item in option:
                                     supply_options[item["name"]] = item[option_key]
+                                    # fmt: off
+                                    if "sub_options" in item and isinstance(item["sub_options"], list):
+                                        for sub_item in item["sub_options"]:
+                                            supply_options[sub_item["name"]] = sub_item[option_key]
+                                    # fmt: on
                             break
                 if supply_options:
                     break
