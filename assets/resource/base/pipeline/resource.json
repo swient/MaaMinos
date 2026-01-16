@@ -1,49 +1,49 @@
 {
-    "Materials": {
+    "Resource": {
         "next": [
-            "EnterMaterialsItem",
-            "EnterMaterials",
+            "EnterResourceItem",
+            "EnterResource",
             "EnterTheRust",
             "EnterDiscity",
             "EnterOpsHub",
             "[JumpBack]ReturnHome"
         ]
     },
-    "EnterMaterials": {
+    "EnterResource": {
         "post_delay": 500,
         "recognition": "OCR",
         "expected": "清剿",
         "roi": [568, 210, 485, 303],
         "action": "Click",
         "next": [
-            "EnterMaterialsItem",
+            "EnterResourceItem",
             "[JumpBack]AutoSwipeUp"
         ]
     },
-    "EnterMaterialsItem": {
+    "EnterResourceItem": {
         "recognition": "OCR",
         "expected": "淘金",
         "roi": [146, 134, 52, 495],
         "action": "Click",
         "next": [
-            "SkipMaterialsItem",
-            "VerifyMaterialsItem",
-            "EnterMaterialsItem"
+            "SkipResourceItem",
+            "VerifyResourceItem",
+            "EnterResourceItem"
         ]
     },
-    "SkipMaterialsItem": {
+    "SkipResourceItem": {
         "recognition": "OCR",
         "expected": "開放",
         "roi": [705, 312, 45, 23],
         "next": "ReturnHome"
     },
-    "VerifyMaterialsItem": {
+    "VerifyResourceItem": {
         "recognition": "OCR",
         "expected": "淘金",
         "roi": [408, 276, 88, 48],
-        "next": "EnterMaterialsLevel"
+        "next": "EnterResourceLevel"
     },
-    "EnterMaterialsLevel": {
+    "EnterResourceLevel": {
         "recognition": "OCR",
         "expected": "4",
         "roi": [1098, 472, 16, 22],

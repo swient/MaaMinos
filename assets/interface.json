@@ -187,11 +187,11 @@
             }
         },
         {
-            "name": "材料掃蕩",
-            "entry": "Materials",
+            "name": "資源掃蕩",
+            "entry": "Resource",
             "doc": "不足目標掃蕩次數會掃蕩到可掃蕩的最大值",
             "option": [
-                "掃蕩材料",
+                "掃蕩資源",
                 "掃蕩次數",
                 "使用全部體力"
             ],
@@ -204,7 +204,7 @@
                 },
                 "EnterTheRust": {
                     "next": [
-                        "EnterMaterials",
+                        "EnterResource",
                         "EnterTheRust"
                     ]
                 }
@@ -267,8 +267,7 @@
             "type": "switch",
             "cases": [
                 {
-                    "name": "Yes",
-                    "pipeline_override": {}
+                    "name": "Yes"
                 },
                 {
                     "name": "No",
@@ -307,22 +306,22 @@
                 }
             ]
         },
-        "掃蕩材料": {
+        "掃蕩資源": {
             "type": "select",
             "cases": [
                 {
                     "name": "狄斯幣",
                     "pipeline_override": {
-                        "EnterMaterials": {
+                        "EnterResource": {
                             "expected": "清剿"
                         },
-                        "EnterMaterialsItem": {
+                        "EnterResourceItem": {
                             "expected": "淘金"
                         },
-                        "VerifyMaterialsItem": {
+                        "VerifyResourceItem": {
                             "expected": "淘金"
                         },
-                        "EnterMaterialsLevel": {
+                        "EnterResourceLevel": {
                             "expected": "5",
                             "roi": [1177, 472, 16, 22]
                         }
@@ -331,16 +330,16 @@
                 {
                     "name": "狂亂精粹",
                     "pipeline_override": {
-                        "EnterMaterials": {
+                        "EnterResource": {
                             "expected": "清剿"
                         },
-                        "EnterMaterialsItem": {
+                        "EnterResourceItem": {
                             "expected": "惡兆"
                         },
-                        "VerifyMaterialsItem": {
+                        "VerifyResourceItem": {
                             "expected": "惡兆"
                         },
-                        "EnterMaterialsLevel": {
+                        "EnterResourceLevel": {
                             "expected": "5",
                             "roi": [1177, 472, 16, 22]
                         }
@@ -349,16 +348,16 @@
                 {
                     "name": "技能模組",
                     "pipeline_override": {
-                        "EnterMaterials": {
+                        "EnterResource": {
                             "expected": "汙染"
                         },
-                        "EnterMaterialsItem": {
+                        "EnterResourceItem": {
                             "expected": "禁區"
                         },
-                        "VerifyMaterialsItem": {
+                        "VerifyResourceItem": {
                             "expected": "禁區"
                         },
-                        "EnterMaterialsLevel": {
+                        "EnterResourceLevel": {
                             "expected": "5",
                             "roi": [1177, 472, 16, 22]
                         }
@@ -367,16 +366,16 @@
                 {
                     "name": "重構碎片",
                     "pipeline_override": {
-                        "EnterMaterials": {
+                        "EnterResource": {
                             "expected": "汙染"
                         },
-                        "EnterMaterialsItem": {
+                        "EnterResourceItem": {
                             "expected": "極域"
                         },
-                        "VerifyMaterialsItem": {
+                        "VerifyResourceItem": {
                             "expected": "極域"
                         },
-                        "EnterMaterialsLevel": {
+                        "EnterResourceLevel": {
                             "expected": "3",
                             "roi": [897, 472, 16, 22]
                         }
@@ -385,13 +384,13 @@
                 {
                     "name": "堅韌源質",
                     "pipeline_override": {
-                        "EnterMaterials": {
+                        "EnterResource": {
                             "expected": "帕爾"
                         },
-                        "EnterMaterialsItem": {
+                        "EnterResourceItem": {
                             "expected": "堅韌"
                         },
-                        "VerifyMaterialsItem": {
+                        "VerifyResourceItem": {
                             "expected": "堅韌"
                         }
                     }
@@ -399,13 +398,13 @@
                 {
                     "name": "狂暴源質",
                     "pipeline_override": {
-                        "EnterMaterials": {
+                        "EnterResource": {
                             "expected": "帕爾"
                         },
-                        "EnterMaterialsItem": {
+                        "EnterResourceItem": {
                             "expected": "狂暴"
                         },
-                        "VerifyMaterialsItem": {
+                        "VerifyResourceItem": {
                             "expected": "狂暴"
                         }
                     }
@@ -413,13 +412,13 @@
                 {
                     "name": "詭秘源質",
                     "pipeline_override": {
-                        "EnterMaterials": {
+                        "EnterResource": {
                             "expected": "帕爾"
                         },
-                        "EnterMaterialsItem": {
+                        "EnterResourceItem": {
                             "expected": "詭秘"
                         },
-                        "VerifyMaterialsItem": {
+                        "VerifyResourceItem": {
                             "expected": "詭秘"
                         }
                     }
@@ -427,13 +426,13 @@
                 {
                     "name": "精準源質",
                     "pipeline_override": {
-                        "EnterMaterials": {
+                        "EnterResource": {
                             "expected": "帕爾"
                         },
-                        "EnterMaterialsItem": {
+                        "EnterResourceItem": {
                             "expected": "精準"
                         },
-                        "VerifyMaterialsItem": {
+                        "VerifyResourceItem": {
                             "expected": "精準"
                         }
                     }
@@ -441,13 +440,13 @@
                 {
                     "name": "異能源質",
                     "pipeline_override": {
-                        "EnterMaterials": {
+                        "EnterResource": {
                             "expected": "帕爾"
                         },
-                        "EnterMaterialsItem": {
+                        "EnterResourceItem": {
                             "expected": "異能"
                         },
-                        "VerifyMaterialsItem": {
+                        "VerifyResourceItem": {
                             "expected": "異能"
                         }
                     }
@@ -455,13 +454,13 @@
                 {
                     "name": "啟迪源質",
                     "pipeline_override": {
-                        "EnterMaterials": {
+                        "EnterResource": {
                             "expected": "帕爾"
                         },
-                        "EnterMaterialsItem": {
+                        "EnterResourceItem": {
                             "expected": "啟迪"
                         },
-                        "VerifyMaterialsItem": {
+                        "VerifyResourceItem": {
                             "expected": "啟迪"
                         }
                     }
@@ -542,12 +541,10 @@
             "type": "switch",
             "cases": [
                 {
-                    "name": "Yes",
-                    "pipeline_override": {}
+                    "name": "Yes"
                 },
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 }
             ]
         },
@@ -555,12 +552,10 @@
             "type": "switch",
             "cases": [
                 {
-                    "name": "Yes",
-                    "pipeline_override": {}
+                    "name": "Yes"
                 },
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 }
             ]
         },
@@ -568,12 +563,10 @@
             "type": "switch",
             "cases": [
                 {
-                    "name": "Yes",
-                    "pipeline_override": {}
+                    "name": "Yes"
                 },
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 }
             ]
         },
@@ -606,12 +599,10 @@
             "type": "switch",
             "cases": [
                 {
-                    "name": "Yes",
-                    "pipeline_override": {}
+                    "name": "Yes"
                 },
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 }
             ]
         },
@@ -619,12 +610,10 @@
             "type": "switch",
             "cases": [
                 {
-                    "name": "Yes",
-                    "pipeline_override": {}
+                    "name": "Yes"
                 },
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 }
             ]
         },
@@ -632,12 +621,10 @@
             "type": "switch",
             "cases": [
                 {
-                    "name": "Yes",
-                    "pipeline_override": {}
+                    "name": "Yes"
                 },
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 }
             ]
         },
@@ -650,12 +637,10 @@
                         "S級魂識印記(樣本兌換)",
                         "A級魂識印記(樣本兌換)",
                         "B級魂識印記(樣本兌換)"
-                    ],
-                    "pipeline_override": {}
+                    ]
                 },
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 }
             ]
         },
@@ -663,12 +648,10 @@
             "type": "switch",
             "cases": [
                 {
-                    "name": "Yes",
-                    "pipeline_override": {}
+                    "name": "Yes"
                 },
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 }
             ]
         },
@@ -676,12 +659,10 @@
             "type": "switch",
             "cases": [
                 {
-                    "name": "Yes",
-                    "pipeline_override": {}
+                    "name": "Yes"
                 },
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 }
             ],
             "default_case": "No"
@@ -690,12 +671,10 @@
             "type": "switch",
             "cases": [
                 {
-                    "name": "Yes",
-                    "pipeline_override": {}
+                    "name": "Yes"
                 },
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 }
             ],
             "default_case": "No"
@@ -710,12 +689,10 @@
                         "技能模組(秘盟兌換)",
                         "狄斯幣(秘盟兌換)",
                         "狂亂精粹(秘盟兌換)"
-                    ],
-                    "pipeline_override": {}
+                    ]
                 },
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 }
             ]
         },
@@ -723,12 +700,10 @@
             "type": "switch",
             "cases": [
                 {
-                    "name": "Yes",
-                    "pipeline_override": {}
+                    "name": "Yes"
                 },
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 }
             ]
         },
@@ -736,12 +711,10 @@
             "type": "switch",
             "cases": [
                 {
-                    "name": "Yes",
-                    "pipeline_override": {}
+                    "name": "Yes"
                 },
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 }
             ]
         },
@@ -749,12 +722,10 @@
             "type": "switch",
             "cases": [
                 {
-                    "name": "Yes",
-                    "pipeline_override": {}
+                    "name": "Yes"
                 },
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 }
             ]
         },
@@ -762,12 +733,10 @@
             "type": "switch",
             "cases": [
                 {
-                    "name": "Yes",
-                    "pipeline_override": {}
+                    "name": "Yes"
                 },
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 }
             ]
         },
@@ -788,12 +757,10 @@
                         "狄斯幣(友情兌換)",
                         "狂亂精粹(友情兌換)",
                         "記憶碎片(友情兌換)"
-                    ],
-                    "pipeline_override": {}
+                    ]
                 },
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 }
             ]
         },
@@ -801,12 +768,10 @@
             "type": "switch",
             "cases": [
                 {
-                    "name": "Yes",
-                    "pipeline_override": {}
+                    "name": "Yes"
                 },
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 }
             ]
         },
@@ -814,12 +779,10 @@
             "type": "switch",
             "cases": [
                 {
-                    "name": "Yes",
-                    "pipeline_override": {}
+                    "name": "Yes"
                 },
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 }
             ]
         },
@@ -827,12 +790,10 @@
             "type": "switch",
             "cases": [
                 {
-                    "name": "Yes",
-                    "pipeline_override": {}
+                    "name": "Yes"
                 },
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 }
             ]
         },
@@ -840,12 +801,10 @@
             "type": "switch",
             "cases": [
                 {
-                    "name": "Yes",
-                    "pipeline_override": {}
+                    "name": "Yes"
                 },
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 }
             ]
         },
@@ -853,12 +812,10 @@
             "type": "switch",
             "cases": [
                 {
-                    "name": "Yes",
-                    "pipeline_override": {}
+                    "name": "Yes"
                 },
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 }
             ],
             "default_case": "No"
@@ -867,12 +824,10 @@
             "type": "switch",
             "cases": [
                 {
-                    "name": "Yes",
-                    "pipeline_override": {}
+                    "name": "Yes"
                 },
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 }
             ],
             "default_case": "No"
@@ -881,12 +836,10 @@
             "type": "switch",
             "cases": [
                 {
-                    "name": "Yes",
-                    "pipeline_override": {}
+                    "name": "Yes"
                 },
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 }
             ],
             "default_case": "No"
@@ -895,12 +848,10 @@
             "type": "switch",
             "cases": [
                 {
-                    "name": "Yes",
-                    "pipeline_override": {}
+                    "name": "Yes"
                 },
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 }
             ],
             "default_case": "No"
@@ -909,12 +860,10 @@
             "type": "switch",
             "cases": [
                 {
-                    "name": "Yes",
-                    "pipeline_override": {}
+                    "name": "Yes"
                 },
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 }
             ],
             "default_case": "No"
@@ -923,12 +872,10 @@
             "type": "switch",
             "cases": [
                 {
-                    "name": "Yes",
-                    "pipeline_override": {}
+                    "name": "Yes"
                 },
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 }
             ],
             "default_case": "No"
@@ -937,12 +884,10 @@
             "type": "switch",
             "cases": [
                 {
-                    "name": "Yes",
-                    "pipeline_override": {}
+                    "name": "Yes"
                 },
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 }
             ],
             "default_case": "No"
