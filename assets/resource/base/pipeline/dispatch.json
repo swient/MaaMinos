@@ -41,7 +41,10 @@
     },
     "AutoDispatch": {
         "recognition": "OCR",
-        "expected": "派遣",
+        "expected": [
+            "派遣",
+            "派滑"
+        ],
         "roi": [1140, 532, 105, 37],
         "action": "Click"
     }

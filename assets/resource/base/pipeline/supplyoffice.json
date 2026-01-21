@@ -21,9 +21,9 @@
         "expected": "採購",
         "roi": [1024, 562, 44, 31],
         "action": "Click",
-        "next": "VerifySupplyOffice"
+        "next": "VerifyEnterSupplyOffice"
     },
-    "VerifySupplyOffice": {
+    "VerifyEnterSupplyOffice": {
         "recognition": "OCR",
         "expected": "採購推薦",
         "roi": [70, 166, 137, 44],
@@ -119,10 +119,9 @@
         ]
     },
     "CloseSupplyOfficeItem": {
-        "recognition": "TemplateMatch",
-        "template": "SupplyOffice/CloseSupplyOfficeItem.png",
-        "threshold": 0.6,
-        "roi": [25, 242, 40, 478],
+        "recognition": "OCR",
+        "expected": "精選禮包",
+        "roi": [64, 242, 150, 478],
         "action": "Click",
         "next": "CompletedSupplyOffice"
     },

@@ -349,7 +349,10 @@
                     "name": "技能模組",
                     "pipeline_override": {
                         "EnterResource": {
-                            "expected": "汙染"
+                            "expected": [
+                                "汙染",
+                                "汗染"
+                            ]
                         },
                         "EnterResourceItem": {
                             "expected": "禁區"
@@ -367,7 +370,10 @@
                     "name": "重構碎片",
                     "pipeline_override": {
                         "EnterResource": {
-                            "expected": "汙染"
+                            "expected": [
+                                "汙染",
+                                "汗染"
+                            ]
                         },
                         "EnterResourceItem": {
                             "expected": "極域"

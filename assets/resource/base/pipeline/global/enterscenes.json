@@ -24,17 +24,11 @@
         "action": "Click"
     },
     "EnterSociety": {
+        "post_delay": 500,
         "recognition": "OCR",
         "expected": "秘盟",
         "roi": [1181, 177, 50, 28],
         "action": "Click"
-    },
-    "DailySignIn": {
-        "recognition": "OCR",
-        "expected": "今日已簽到",
-        "roi": [709, 270, 204, 43],
-        "action": "Click",
-        "target": [1200, 400, 1, 1]
     },
     "EnterTheRust": {
         "recognition": "OCR",

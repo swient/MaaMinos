@@ -1,10 +1,14 @@
 {
     "StartUp": {
         "next": [
-            "HomeFlag_StartUp",
-            "[JumpBack]StartGame",
+            "HomeFlag",
+            "StartGame",
+            "[JumpBack]GameLoading_1",
+            "[JumpBack]GameLoading_2",
             "[JumpBack]CloseSystemAnnouncement",
+            "[JumpBack]AutoEventAnnouncement",
             "[JumpBack]CloseEventAnnouncement",
+            "[JumpBack]CloseEventArrest",
             "[JumpBack]ClaimBlackKeyVIP",
             "[JumpBack]CloseBlackKeyVIP",
             "[JumpBack]AutoEmotionCheck",
@@ -14,21 +18,55 @@
             "[JumpBack]Start5732"
         ]
     },
-    "HomeFlag_StartUp": {
-        "post_delay": 1500,
-        "recognition": "TemplateMatch",
-        "template": "Home/HomeFlag.png",
-        "green_mask": true,
-        "roi": [292, 481, 50, 50],
+    "StartGame": {
+        "post_delay": 4000,
+        "recognition": "OCR",
+        "expected": "進入管理局",
+        "roi": [535, 605, 209, 54],
+        "action": "Click",
         "next": [
+            "HomeFlag_StartUp",
+            "[JumpBack]HomeLoading",
+            "[JumpBack]AutoEventAnnouncement",
             "[JumpBack]CloseEventAnnouncement",
+            "[JumpBack]CloseEventArrest",
             "[JumpBack]ClaimBlackKeyVIP",
             "[JumpBack]CloseBlackKeyVIP",
             "[JumpBack]AutoEmotionCheck",
             "[JumpBack]CloseLimitedTimeAttires",
             "[JumpBack]AutoHappyBirthday",
             "[JumpBack]ReturnHome",
-            "HomeFlag"
+            "[JumpBack]CloseUnknownAnnouncement"
+        ]
+    },
+    "HomeFlag_StartUp": {
+        "post_delay": 1500,
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "TemplateMatch",
+                "template": "Home/HomeFlag.png",
+                "green_mask": true,
+                "roi": [292, 481, 50, 50]
+            },
+            {
+                "recognition": "OCR",
+                "expected": "禁閉者",
+                "roi": [1019, 427, 75, 32]
+            }
+        ],
+        "next": [
+            "HomeFlag",
+            "[JumpBack]AutoEventAnnouncement",
+            "[JumpBack]CloseEventAnnouncement",
+            "[JumpBack]CloseEventArrest",
+            "[JumpBack]ClaimBlackKeyVIP",
+            "[JumpBack]CloseBlackKeyVIP",
+            "[JumpBack]AutoEmotionCheck",
+            "[JumpBack]CloseLimitedTimeAttires",
+            "[JumpBack]AutoHappyBirthday",
+            "[JumpBack]ReturnHome",
+            "[JumpBack]CloseUnknownAnnouncement"
         ]
     },
     "HomeFlag": {
@@ -37,11 +75,18 @@
         "green_mask": true,
         "roi": [292, 481, 50, 50]
     },
-    "StartGame": {
+    "GameLoading_1": {
+        "post_delay": 3000,
+        "recognition": "ColorMatch",
+        "count": 900000,
+        "upper": [0, 0, 0],
+        "lower": [0, 0, 0]
+    },
+    "GameLoading_2": {
+        "post_delay": 3000,
         "recognition": "OCR",
-        "expected": "進入管理局",
-        "roi": [535, 605, 209, 54],
-        "action": "Click"
+        "expected": "檢查中",
+        "roi": [621, 677, 49, 19]
     },
     "CloseSystemAnnouncement": {
         "recognition": "OCR",
@@ -50,11 +95,37 @@
         "action": "Click",
         "target": [640, 715, 1, 1]
     },
+    "HomeLoading": {
+        "post_delay": 3000,
+        "recognition": "OCR",
+        "expected": [
+            "載入中",
+            "载入中"
+        ],
+        "roi": [520, 497, 58, 21]
+    },
+    "AutoEventAnnouncement": {
+        "post_delay": 500,
+        "recognition": "TemplateMatch",
+        "template": "Home/AutoEventAnnouncement.png",
+        "roi": [972, 642, 34, 34],
+        "action": "Click",
+        "next": "CloseEventAnnouncement"
+    },
     "CloseEventAnnouncement": {
         "post_delay": 1500,
+        "recognition": "TemplateMatch",
+        "template": "Home/CloseEventAnnouncement.png",
+        "threshold": 0.9,
+        "roi": [972, 642, 34, 34],
+        "action": "Click",
+        "target": [640, 715, 1, 1]
+    },
+    "CloseEventArrest": {
+        "post_delay": 1500,
         "recognition": "OCR",
-        "expected": "今日不再彈出",
-        "roi": [1008, 644, 114, 27],
+        "expected": "前往",
+        "roi": [892, 561, 79, 40],
         "action": "Click",
         "target": [640, 715, 1, 1]
     },
@@ -121,7 +192,14 @@
         "action": "Click",
         "target": [40, 40, 1, 1]
     },
+    "CloseUnknownAnnouncement": {
+        "max_hit": 5,
+        "post_delay": 1500,
+        "action": "Click",
+        "target": [640, 715, 1, 1]
+    },
     "Start5732": {
+        "max_hit": 1,
         "action": "StartApp",
         "package": "com.zy.wqmt.global"
     }

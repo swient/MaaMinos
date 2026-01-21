@@ -6,7 +6,8 @@
         "pipeline_override": {
             "EnterSupplyOfficeItem": {"expected": "精選禮包"},
             "EnterSupplyOfficeItemDetail": {"expected": "養成補給"},
-            "VerifySupplyOfficeProduct": {"expected": "免費補給"}
+            "VerifySupplyOfficeProduct": {"expected": "免費補給"},
+            "CloseSupplyOfficeItem": {"expected": "精選禮包"}
         }
     },
     "搜索令(追蹤兌換)": {
@@ -16,7 +17,8 @@
         "pipeline_override": {
             "EnterSupplyOfficeItem": {"expected": "中心"},
             "EnterSupplyOfficeItemDetail": {"expected": "追蹤"},
-            "VerifySupplyOfficeProduct": {"expected": "搜索"}
+            "VerifySupplyOfficeProduct": {"expected": "搜索"},
+            "CloseSupplyOfficeItem": {"expected": "中心"}
         }
     },
     "內海遺物箱(戰勳兌換)": {
@@ -26,7 +28,8 @@
         "pipeline_override": {
             "EnterSupplyOfficeItem": {"expected": "玩法"},
             "EnterSupplyOfficeItemDetail": {"expected": "戰勳"},
-            "VerifySupplyOfficeProduct": {"expected": ["遺物", "遗物"]}
+            "VerifySupplyOfficeProduct": {"expected": ["遺物", "遗物"]},
+            "CloseSupplyOfficeItem": {"expected": "玩法"}
         }
     },
     "S級魂識印記(樣本兌換)": {
@@ -36,7 +39,8 @@
         "pipeline_override": {
             "EnterSupplyOfficeItem": {"expected": "玩法"},
             "EnterSupplyOfficeItemDetail": {"expected": "樣本"},
-            "VerifySupplyOfficeProduct": {"expected": "S級魂識"}
+            "VerifySupplyOfficeProduct": {"expected": "S級魂識"},
+            "CloseSupplyOfficeItem": {"expected": "玩法"}
         }
     },
     "A級魂識印記(樣本兌換)": {
@@ -46,7 +50,8 @@
         "pipeline_override": {
             "EnterSupplyOfficeItem": {"expected": "玩法"},
             "EnterSupplyOfficeItemDetail": {"expected": "樣本"},
-            "VerifySupplyOfficeProduct": {"expected": "A級魂識"}
+            "VerifySupplyOfficeProduct": {"expected": "A級魂識"},
+            "CloseSupplyOfficeItem": {"expected": "玩法"}
         }
     },
     "B級魂識印記(樣本兌換)": {
@@ -56,7 +61,8 @@
         "pipeline_override": {
             "EnterSupplyOfficeItem": {"expected": "玩法"},
             "EnterSupplyOfficeItemDetail": {"expected": "樣本"},
-            "VerifySupplyOfficeProduct": {"expected": "B級魂識"}
+            "VerifySupplyOfficeProduct": {"expected": "B級魂識"},
+            "CloseSupplyOfficeItem": {"expected": "玩法"}
         }
     },
     "低階材料補給箱(秘盟兌換)": {
@@ -66,7 +72,8 @@
         "pipeline_override": {
             "EnterSupplyOfficeItem": {"expected": "玩法"},
             "EnterSupplyOfficeItemDetail": {"expected": "秘盟"},
-            "VerifySupplyOfficeProduct": {"expected": "低階材料"}
+            "VerifySupplyOfficeProduct": {"expected": "低階材料"},
+            "CloseSupplyOfficeItem": {"expected": "玩法"}
         }
     },
     "技能模組(秘盟兌換)": {
@@ -76,7 +83,8 @@
         "pipeline_override": {
             "EnterSupplyOfficeItem": {"expected": "玩法"},
             "EnterSupplyOfficeItemDetail": {"expected": "秘盟"},
-            "VerifySupplyOfficeProduct": {"expected": "技能模組"}
+            "VerifySupplyOfficeProduct": {"expected": "技能模組"},
+            "CloseSupplyOfficeItem": {"expected": "玩法"}
         }
     },
     "狄斯幣(秘盟兌換)": {
@@ -86,7 +94,8 @@
         "pipeline_override": {
             "EnterSupplyOfficeItem": {"expected": "玩法"},
             "EnterSupplyOfficeItemDetail": {"expected": "秘盟"},
-            "VerifySupplyOfficeProduct": {"expected": "狄斯幣"}
+            "VerifySupplyOfficeProduct": {"expected": "狄斯幣"},
+            "CloseSupplyOfficeItem": {"expected": "玩法"}
         }
     },
     "狂亂精粹(秘盟兌換)": {
@@ -96,7 +105,8 @@
         "pipeline_override": {
             "EnterSupplyOfficeItem": {"expected": "玩法"},
             "EnterSupplyOfficeItemDetail": {"expected": "秘盟"},
-            "VerifySupplyOfficeProduct": {"expected": "狂亂精粹"}
+            "VerifySupplyOfficeProduct": {"expected": "狂亂精粹"},
+            "CloseSupplyOfficeItem": {"expected": "玩法"}
         }
     },
     "搜索令(友情兌換)": {
@@ -106,7 +116,8 @@
         "pipeline_override": {
             "EnterSupplyOfficeItem": {"expected": "中心"},
             "EnterSupplyOfficeItemDetail": {"expected": "友情"},
-            "VerifySupplyOfficeProduct": {"expected": "搜索"}
+            "VerifySupplyOfficeProduct": {"expected": "搜索"},
+            "CloseSupplyOfficeItem": {"expected": "中心"}
         }
     },
     "夢影之塵(友情兌換)": {
@@ -116,7 +127,8 @@
         "pipeline_override": {
             "EnterSupplyOfficeItem": {"expected": "中心"},
             "EnterSupplyOfficeItemDetail": {"expected": "友情"},
-            "VerifySupplyOfficeProduct": {"expected": "夢影"}
+            "VerifySupplyOfficeProduct": {"expected": "夢影"},
+            "CloseSupplyOfficeItem": {"expected": "中心"}
         }
     },
     "監測磁帶(友情兌換)": {
@@ -126,7 +138,8 @@
         "pipeline_override": {
             "EnterSupplyOfficeItem": {"expected": "中心"},
             "EnterSupplyOfficeItemDetail": {"expected": "友情"},
-            "VerifySupplyOfficeProduct": {"expected": "監測"}
+            "VerifySupplyOfficeProduct": {"expected": "監測"},
+            "CloseSupplyOfficeItem": {"expected": "中心"}
         }
     },
     "迴響質料(友情兌換)": {
@@ -136,7 +149,8 @@
         "pipeline_override": {
             "EnterSupplyOfficeItem": {"expected": "中心"},
             "EnterSupplyOfficeItemDetail": {"expected": "友情"},
-            "VerifySupplyOfficeProduct": {"expected": "迴響"}
+            "VerifySupplyOfficeProduct": {"expected": "迴響"},
+            "CloseSupplyOfficeItem": {"expected": "中心"}
         }
     },
     "邊界重構碎片(友情兌換)": {
@@ -146,7 +160,8 @@
         "pipeline_override": {
             "EnterSupplyOfficeItem": {"expected": "中心"},
             "EnterSupplyOfficeItemDetail": {"expected": "友情"},
-            "VerifySupplyOfficeProduct": {"expected": "邊界重構"}
+            "VerifySupplyOfficeProduct": {"expected": "邊界重構"},
+            "CloseSupplyOfficeItem": {"expected": "中心"}
         }
     },
     "一階源素補給箱(友情兌換)": {
@@ -156,7 +171,8 @@
         "pipeline_override": {
             "EnterSupplyOfficeItem": {"expected": "中心"},
             "EnterSupplyOfficeItemDetail": {"expected": "友情"},
-            "VerifySupplyOfficeProduct": {"expected": "階源素"}
+            "VerifySupplyOfficeProduct": {"expected": "階源素"},
+            "CloseSupplyOfficeItem": {"expected": "中心"}
         }
     },
     "低階材料補給箱(友情兌換)": {
@@ -166,7 +182,8 @@
         "pipeline_override": {
             "EnterSupplyOfficeItem": {"expected": "中心"},
             "EnterSupplyOfficeItemDetail": {"expected": "友情"},
-            "VerifySupplyOfficeProduct": {"expected": "低階材料"}
+            "VerifySupplyOfficeProduct": {"expected": "低階材料"},
+            "CloseSupplyOfficeItem": {"expected": "中心"}
         }
     },
     "技能模組(友情兌換)": {
@@ -176,7 +193,8 @@
         "pipeline_override": {
             "EnterSupplyOfficeItem": {"expected": "中心"},
             "EnterSupplyOfficeItemDetail": {"expected": "友情"},
-            "VerifySupplyOfficeProduct": {"expected": "技能模組"}
+            "VerifySupplyOfficeProduct": {"expected": "技能模組"},
+            "CloseSupplyOfficeItem": {"expected": "中心"}
         }
     },
     "狄斯幣(友情兌換)": {
@@ -186,7 +204,8 @@
         "pipeline_override": {
             "EnterSupplyOfficeItem": {"expected": "中心"},
             "EnterSupplyOfficeItemDetail": {"expected": "友情"},
-            "VerifySupplyOfficeProduct": {"expected": "狄斯幣"}
+            "VerifySupplyOfficeProduct": {"expected": "狄斯幣"},
+            "CloseSupplyOfficeItem": {"expected": "中心"}
         }
     },
     "狂亂精粹(友情兌換)": {
@@ -196,7 +215,8 @@
         "pipeline_override": {
             "EnterSupplyOfficeItem": {"expected": "中心"},
             "EnterSupplyOfficeItemDetail": {"expected": "友情"},
-            "VerifySupplyOfficeProduct": {"expected": "狂亂精粹"}
+            "VerifySupplyOfficeProduct": {"expected": "狂亂精粹"},
+            "CloseSupplyOfficeItem": {"expected": "中心"}
         }
     },
     "記憶碎片(友情兌換)": {
@@ -206,7 +226,8 @@
         "pipeline_override": {
             "EnterSupplyOfficeItem": {"expected": "中心"},
             "EnterSupplyOfficeItemDetail": {"expected": "友情"},
-            "VerifySupplyOfficeProduct": {"expected": "記憶"}
+            "VerifySupplyOfficeProduct": {"expected": "記憶"},
+            "CloseSupplyOfficeItem": {"expected": "中心"}
         }
     }
 }
