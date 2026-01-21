@@ -27,25 +27,16 @@ sys.stdout.reconfigure(encoding="utf-8")
 
 
 def is_running_in_managed_venv():
-    """檢查腳本是否在此腳本管理的特定 venv 中運行"""
-    current_python = Path(sys.executable).resolve()
+    """檢查腳本是否在虛擬環境中運行"""
+    in_venv = sys.prefix != sys.base_prefix
+    prefix_path = Path(sys.prefix).resolve()
 
-    logger.debug(f"當前 Python 解譯器: {current_python}")
-
-    if sys.platform.startswith("win"):
-        # Windows: 如果在虛擬環境中，Python 應該在 Scripts 目錄下
-        if current_python.parent.name == "Scripts":
-            return True
-        else:
-            logger.debug("當前不在目標虛擬環境中")
-            return False
+    if in_venv:
+        logger.debug(f"當前在虛擬環境中運行: {prefix_path}")
     else:
-        # Linux/Unix: 如果在虛擬環境中，Python 應該在 bin 目錄下
-        if current_python.parent.name == "bin":
-            return True
-        else:
-            logger.debug("當前不在目標虛擬環境中")
-            return False
+        logger.debug(f"當前不在虛擬環境中運行: {prefix_path}")
+
+    return in_venv
 
 
 def ensure_venv_and_relaunch_if_needed():
@@ -152,7 +143,7 @@ def find_local_wheels_dir():
 
     if deps_dir.exists() and any(deps_dir.glob("*.whl")):
         whl_count = len(list(deps_dir.glob("*.whl")))
-        logger.info(f"發現本地 deps 目錄包含 {whl_count} 個 whl 檔案")
+        logger.debug(f"發現本地 deps 目錄包含 {whl_count} 個 whl 檔案")
         return deps_dir
 
     logger.debug("未找到 deps 目錄或目錄中無 whl 檔案")
@@ -180,11 +171,11 @@ def run_pip_command(cmd_args: list[str], operation_name: str) -> bool:
         all_output = []
 
         # 即時讀取並顯示輸出
-        for line in iter(process.stdout.readline, ""):
-            line = line.rstrip("\n\r")
-            if line.strip():  # 只顯示非空行
-                print(line)  # 即時顯示到終端
-                all_output.append(line)  # 收集到列表中
+        if process.stdout:
+            for line in iter(process.stdout.readline, ""):
+                line = line.rstrip("\n\r")
+                if line.strip():  # 只顯示非空行
+                    all_output.append(line)  # 收集到列表中
 
         # 等待進程結束
         return_code = process.wait()
@@ -215,7 +206,7 @@ def install_requirements(req_file="requirements.txt", pip_config=None) -> bool:
     # 查找本地 deps 目錄
     deps_dir = find_local_wheels_dir()
     if deps_dir:
-        logger.info(f"使用本地 whl 檔案安裝，目錄: {deps_dir}")
+        logger.debug(f"使用本地 whl 檔案安裝，目錄: {deps_dir}")
 
         cmd = [
             sys.executable,
@@ -295,7 +286,7 @@ def check_and_install_dependencies():
     pip_config = read_pip_config()
     enable_pip_install = pip_config.get("enable_pip_install", True)
 
-    logger.info(f"啟用 pip 安裝依賴: {enable_pip_install}")
+    logger.debug(f"啟用 pip 安裝依賴: {enable_pip_install}")
 
     if enable_pip_install:
         logger.info("開始安裝/更新依賴")

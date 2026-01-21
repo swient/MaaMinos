@@ -105,6 +105,7 @@
                 "EnterDisSea": {
                     "next": [
                         "EnterOblivionPit",
+                        "[JumpBack]InitSwipePosition",
                         "[JumpBack]AutoSwipeLeft"
                     ]
                 }
@@ -124,6 +125,7 @@
                 "EnterDisSea": {
                     "next": [
                         "EnterBrokenFrontline",
+                        "[JumpBack]InitSwipePosition",
                         "[JumpBack]AutoSwipeLeft"
                     ]
                 }
@@ -391,7 +393,11 @@
                     "name": "堅韌源質",
                     "pipeline_override": {
                         "EnterResource": {
-                            "expected": "帕爾"
+                            "expected": "帕爾",
+                            "next": [
+                                "EnterResourceItem",
+                                "[JumpBack]AutoSwipeDown"
+                            ]
                         },
                         "EnterResourceItem": {
                             "expected": "堅韌"
@@ -461,7 +467,11 @@
                     "name": "啟迪源質",
                     "pipeline_override": {
                         "EnterResource": {
-                            "expected": "帕爾"
+                            "expected": "帕爾",
+                            "next": [
+                                "EnterResourceItem",
+                                "[JumpBack]AutoSwipeUp"
+                            ]
                         },
                         "EnterResourceItem": {
                             "expected": "啟迪"

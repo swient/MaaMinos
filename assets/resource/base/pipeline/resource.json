@@ -15,15 +15,12 @@
         "expected": "清剿",
         "roi": [568, 210, 485, 303],
         "action": "Click",
-        "next": [
-            "EnterResourceItem",
-            "[JumpBack]AutoSwipeUp"
-        ]
+        "next": "EnterResourceItem"
     },
     "EnterResourceItem": {
         "recognition": "OCR",
         "expected": "淘金",
-        "roi": [146, 134, 52, 495],
+        "roi": [146, 135, 52, 523],
         "action": "Click",
         "next": [
             "SkipResourceItem",

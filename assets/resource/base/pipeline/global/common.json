@@ -29,32 +29,38 @@
         "roi": [557, 104, 166, 50]
     },
     "AutoSwipeUp": {
-        "duration": 1000,
-        "post_delay": 500,
+        "duration": 500,
+        "end_hold": 500,
         "action": "Swipe",
-        "begin": [140, 450, 1, 1],
-        "end": [140, 380, 1, 1]
+        "begin": [140, 420, 1, 1],
+        "end": [140, 300, 1, 1]
     },
     "AutoSwipeDown": {
-        "duration": 1000,
-        "post_delay": 500,
+        "duration": 500,
+        "end_hold": 500,
         "action": "Swipe",
-        "begin": [140, 380, 1, 1],
-        "end": [140, 450, 1, 1]
+        "begin": [140, 300, 1, 1],
+        "end": [140, 420, 1, 1]
     },
     "AutoSwipeLeft": {
         "duration": 500,
-        "post_delay": 500,
+        "end_hold": 500,
         "action": "Swipe",
-        "begin": [840, 410, 1, 1],
-        "end": [750, 410, 1, 1]
+        "begin": [1130, 440, 1, 1],
+        "end": [450, 440, 1, 1]
     },
     "AutoSwipeRight": {
         "duration": 500,
-        "post_delay": 500,
+        "end_hold": 500,
         "action": "Swipe",
-        "begin": [750, 410, 1, 1],
-        "end": [840, 410, 1, 1]
+        "begin": [450, 440, 1, 1],
+        "end": [1130, 440, 1, 1]
+    },
+    "InitSwipePosition": {
+        "max_hit": 1,
+        "action": "Swipe",
+        "begin": [100, 440, 1, 1],
+        "end": [1180, 440, 1, 1]
     },
     "DailySignIn": {
         "recognition": "OCR",

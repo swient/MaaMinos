@@ -127,7 +127,7 @@
     },
     "CompletedSupplyOffice": {
         "action": "Swipe",
-        "begin": [330, 365, 1, 1],
-        "end": [1270, 365, 1, 1]
+        "begin": [330, 440, 1, 1],
+        "end": [1270, 440, 1, 1]
     }
 }
