@@ -20,7 +20,7 @@
     "EnterBureau": {
         "recognition": "OCR",
         "expected": "管理局",
-        "roi": [1165, 301, 61, 23],
+        "roi": [1165, 302, 62, 25],
         "action": "Click"
     },
     "EnterSociety": {

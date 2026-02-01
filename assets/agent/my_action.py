@@ -166,7 +166,7 @@ class RaidStormyMemories(CustomAction):
         stormy_options = {}
         config_sources = [
             (Path("config/config.json"), "TaskItems", "index"),
-            (Path("config/maa_pi_config.json"), "task", "value"),
+            (Path("config/maa_pi_config.json"), "task", "default"),
         ]
         for config_path, task_key, option_key in config_sources:
             if not config_path.exists():
@@ -176,8 +176,15 @@ class RaidStormyMemories(CustomAction):
                     config = json.load(f)
                     for task in config[task_key]:
                         if task["name"] == "記憶風暴":
-                            for item in task["option"]:
-                                stormy_options[item["name"]] = item[option_key]
+                            option = task["option"]
+                            # maa_pi_config.json
+                            if isinstance(option, dict):
+                                for name, value in option.items():
+                                    stormy_options[name] = value[option_key]
+                            # config.json
+                            elif isinstance(option, list):
+                                for item in option:
+                                    stormy_options[item["name"]] = item[option_key]
                             break
                 if stormy_options:
                     break

@@ -58,6 +58,7 @@
     },
     "InitSwipePosition": {
         "max_hit": 1,
+        "post_delay": 500,
         "action": "Swipe",
         "begin": [100, 440, 1, 1],
         "end": [1180, 440, 1, 1]

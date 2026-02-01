@@ -26,6 +26,7 @@
         "action": "Click",
         "next": [
             "HomeFlag_StartUp",
+            "StartGame",
             "[JumpBack]HomeLoading",
             "[JumpBack]AutoEventAnnouncement",
             "[JumpBack]CloseEventAnnouncement",
@@ -108,6 +109,7 @@
         "post_delay": 500,
         "recognition": "TemplateMatch",
         "template": "Home/AutoEventAnnouncement.png",
+        "threshold": 0.9,
         "roi": [972, 642, 34, 34],
         "action": "Click",
         "next": "CloseEventAnnouncement"
@@ -168,9 +170,19 @@
     },
     "CompletedEmotionCheck": {
         "post_delay": 2000,
-        "recognition": "OCR",
-        "expected": "完成",
-        "roi": [681, 387, 42, 45],
+        "recognition": "Or",
+        "any_of": [
+            {
+                "recognition": "OCR",
+                "expected": "完成",
+                "roi": [681, 386, 42, 24]
+            },
+            {
+                "recognition": "OCR",
+                "expected": "完成",
+                "roi": [681, 410, 42, 23]
+            }
+        ],
         "action": "Click",
         "target": [640, 715, 1, 1]
     },
