@@ -65,8 +65,8 @@
     },
     "DailySignIn": {
         "recognition": "OCR",
-        "expected": "今日已簽到",
-        "roi": [709, 270, 204, 43],
+        "expected": "今日",
+        "roi": [710, 270, 78, 43],
         "action": "Click",
         "target": [1200, 400, 1, 1]
     },

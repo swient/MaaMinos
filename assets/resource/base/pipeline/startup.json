@@ -170,19 +170,9 @@
     },
     "CompletedEmotionCheck": {
         "post_delay": 2000,
-        "recognition": "Or",
-        "any_of": [
-            {
-                "recognition": "OCR",
-                "expected": "完成",
-                "roi": [681, 386, 42, 24]
-            },
-            {
-                "recognition": "OCR",
-                "expected": "完成",
-                "roi": [681, 410, 42, 23]
-            }
-        ],
+        "recognition": "OCR",
+        "expected": "完成",
+        "roi": [681, 410, 42, 23],
         "action": "Click",
         "target": [640, 715, 1, 1]
     },
