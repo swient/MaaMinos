@@ -56,9 +56,18 @@
         "begin": [450, 440, 1, 1],
         "end": [1130, 440, 1, 1]
     },
-    "InitSwipePosition": {
+    "InitSwipePosition_1": {
         "max_hit": 1,
         "post_delay": 500,
+        "action": "Swipe",
+        "begin": [200, 440, 1, 1],
+        "end": [1180, 440, 1, 1]
+    },
+    "InitSwipePosition_2": {
+        "max_hit": 1,
+        "post_delay": 500,
+        "repeat": 2,
+        "repeat_delay": 500,
         "action": "Swipe",
         "begin": [100, 440, 1, 1],
         "end": [1180, 440, 1, 1]
@@ -70,6 +79,12 @@
         "action": "Click",
         "target": [1200, 400, 1, 1]
     },
+    "ReturnMainStory": {
+        "recognition": "OCR",
+        "expected": "核心危機",
+        "roi": [601, 47, 82, 24],
+        "action": "Click"
+    },
     "Awards": {
         "next": [
             "Friendship",
@@ -80,5 +95,15 @@
     "MyCustomOCR": {
         "recognition": "OCR",
         "expected_code": "set in code"
+    },
+    "IdentifyMainStoryLevel": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "Discity/IdentifyMainStoryLevel_1.png",
+            "Discity/IdentifyMainStoryLevel_2.png"
+        ],
+        "threshold": 0.9,
+        "green_mask": true,
+        "roi": [50, 340, 1180, 170]
     }
 }

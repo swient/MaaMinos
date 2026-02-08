@@ -89,6 +89,48 @@ class CheckSupplyOfficeProduct(CustomRecognition):
         return None
 
 
+@AgentServer.custom_recognition("CheckMainStoryLevel")
+class CheckMainStoryLevel(CustomRecognition):
+
+    def analyze(
+        self,
+        context: Context,
+        argv: CustomRecognition.AnalyzeArg,
+    ) -> CustomRecognition.AnalyzeResult:
+
+        param = json.loads(argv.custom_recognition_param)
+        expected = param.get("expected")
+
+        identify_detail = context.run_recognition(
+            "IdentifyMainStoryLevel",
+            argv.image,
+        )
+        if identify_detail is not None and identify_detail.hit:
+            # 取得所有 filtered_results 的 box
+            roi_list = [r.box for r in getattr(identify_detail, "filtered_results", [])]
+        else:
+            return None
+
+        # 依序辨識所有區域
+        for roi in roi_list:
+            try:
+                level_roi = [roi[0] + 65, roi[1] + 33, roi[2] - 95, roi[3] - 41]
+                level_detail = context.run_recognition(
+                    "MyCustomOCR",
+                    argv.image,
+                    pipeline_override={
+                        "MyCustomOCR": {"roi": level_roi, "expected": expected}
+                    },
+                )
+                if level_detail is not None and level_detail.hit:
+                    return level_detail.box
+            except Exception:
+                logger.exception(f"辨識區域 {roi} 發生錯誤")
+                continue
+        # 所有區域都沒辨識到
+        return None
+
+
 @AgentServer.custom_recognition("VerifyTime")
 class VerifyTime(CustomRecognition):
     def analyze(

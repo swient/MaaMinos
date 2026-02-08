@@ -36,6 +36,12 @@
         "roi": [213, 642, 67, 35],
         "action": "Click"
     },
+    "EnterMainStory": {
+        "recognition": "OCR",
+        "expected": "狄斯城",
+        "roi": [621, 641, 102, 36],
+        "action": "Click"
+    },
     "EnterDisSea": {
         "post_delay": 1000,
         "recognition": "OCR",

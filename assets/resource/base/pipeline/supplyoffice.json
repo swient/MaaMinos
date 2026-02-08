@@ -21,9 +21,9 @@
         "expected": "採購",
         "roi": [1024, 562, 44, 31],
         "action": "Click",
-        "next": "VerifyEnterSupplyOffice"
+        "next": "VerifySupplyOffice"
     },
-    "VerifyEnterSupplyOffice": {
+    "VerifySupplyOffice": {
         "recognition": "OCR",
         "expected": "採購推薦",
         "roi": [70, 166, 137, 44],

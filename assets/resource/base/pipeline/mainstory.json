@@ -1,0 +1,101 @@
+{
+    "MainStory": {
+        "next": [
+            "VerifyMainStoryLevel",
+            "VerifyMainStoryLevelSelection",
+            "VerifyMainStoryChapterSelection",
+            "VerifyMainStory",
+            "EnterDiscity",
+            "EnterOpsHub",
+            "[JumpBack]ReturnHome"
+        ]
+    },
+    "VerifyMainStory": {
+        "recognition": "OCR",
+        "expected": "劇情",
+        "roi": [318, 103, 42, 23],
+        "next": [
+            "VerifyMainStoryChapterSelection",
+            "[JumpBack]ReturnMainStoryChapterSelection",
+            "[JumpBack]EnterMainStoryChapterSelection"
+        ]
+    },
+    "VerifyMainStoryChapterSelection": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "expected": "裡灣",
+                "roi": [41, 343, 63, 34]
+            },
+            {
+                "recognition": "TemplateMatch",
+                "template": "Discity/VerifyMainStoryChapterSelection.png",
+                "roi": [406, 99, 58, 32]
+            }
+        ],
+        "next": [
+            "VerifyMainStoryLevelSelection",
+            "[JumpBack]EnterMainStoryLevelSelection",
+            "[JumpBack]InitSwipePosition_1",
+            "[JumpBack]AutoSwipeLeft"
+        ]
+    },
+    "ReturnMainStoryChapterSelection": {
+        "recognition": "TemplateMatch",
+        "template": "Discity/ReturnMainStoryChapterSelection.png",
+        "roi": [406, 99, 58, 32],
+        "action": "Click"
+    },
+    "EnterMainStoryChapterSelection": {
+        "recognition": "Or",
+        "any_of": [
+            {
+                "recognition": "OCR",
+                "expected": "裡灣",
+                "roi": [41, 250, 50, 28]
+            },
+            {
+                "recognition": "OCR",
+                "expected": "裡灣",
+                "roi": [41, 442, 50, 28]
+            }
+        ],
+        "end_hold": 500,
+        "action": "Swipe",
+        "end": [66, 360, 1, 1]
+    },
+    "VerifyMainStoryLevelSelection": {
+        "recognition": "OCR",
+        "expected": "13",
+        "roi": [686, 82, 81, 39],
+        "next": [
+            "VerifyMainStoryLevel",
+            "[JumpBack]EnterMainStoryLevel",
+            "[JumpBack]InitSwipePosition_2",
+            "[JumpBack]AutoSwipeLeft"
+        ]
+    },
+    "EnterMainStoryLevelSelection": {
+        "post_delay": 500,
+        "recognition": "OCR",
+        "expected": "13",
+        "roi": [180, 150, 1080, 370],
+        "action": "Click"
+    },
+    "VerifyMainStoryLevel": {
+        "recognition": "OCR",
+        "expected": "\\b13-8\\b",
+        "roi": [233, 157, 47, 18],
+        "next": "AutoRaidLevel"
+    },
+    "EnterMainStoryLevel": {
+        "post_delay": 500,
+        "recognition": "Custom",
+        "custom_recognition": "CheckMainStoryLevel",
+        "custom_recognition_param": {
+            "expected": "\\b13-8\\b"
+        },
+        "action": "Click"
+    }
+}

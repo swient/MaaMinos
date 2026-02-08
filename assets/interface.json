@@ -105,7 +105,7 @@
                 "EnterDisSea": {
                     "next": [
                         "EnterOblivionPit",
-                        "[JumpBack]InitSwipePosition",
+                        "[JumpBack]InitSwipePosition_1",
                         "[JumpBack]AutoSwipeLeft"
                     ]
                 }
@@ -125,7 +125,7 @@
                 "EnterDisSea": {
                     "next": [
                         "EnterBrokenFrontline",
-                        "[JumpBack]InitSwipePosition",
+                        "[JumpBack]InitSwipePosition_1",
                         "[JumpBack]AutoSwipeLeft"
                     ]
                 }
@@ -185,6 +185,28 @@
                 "CompletedRaidLevel": {
                     "action": "DoNothing",
                     "next": []
+                }
+            }
+        },
+        {
+            "name": "主線掃蕩",
+            "entry": "MainStory",
+            "doc": "默認掃蕩第十三章,需解鎖掃蕩功能",
+            "option": [
+                "掃蕩材料",
+                "掃蕩次數",
+                "使用全部體力"
+            ],
+            "pipeline_override": {
+                "EnterOpsHub": {
+                    "next": "EnterDiscity"
+                },
+                "EnterDiscity": {
+                    "next": [
+                        "VerifyMainStory",
+                        "[JumpBack]EnterMainStory",
+                        "[JumpBack]ReturnMainStory"
+                    ]
                 }
             }
         },
@@ -308,11 +330,293 @@
                 }
             ]
         },
+        "掃蕩材料": {
+            "type": "select",
+            "cases": [
+                {
+                    "name": "裂生冰晶錐",
+                    "icon": "./icons/MainStory/CrackedIceCrystal.png",
+                    "pipeline_override": {
+                        "VerifyMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "EnterMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "VerifyMainStoryLevel": {
+                            "expected": "\\b13-8\\b"
+                        },
+                        "EnterMainStoryLevel": {
+                            "custom_recognition_param": {
+                                "expected": "\\b13-8\\b"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "衰變暮輝晶",
+                    "icon": "./icons/MainStory/DecayingTwilightCrystal.png",
+                    "pipeline_override": {
+                        "VerifyMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "EnterMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "VerifyMainStoryLevel": {
+                            "expected": "\\b13-12\\b"
+                        },
+                        "EnterMainStoryLevel": {
+                            "custom_recognition_param": {
+                                "expected": "\\b13-12\\b"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "燃念赤晶",
+                    "icon": "./icons/MainStory/BloodRedCrystal.png",
+                    "pipeline_override": {
+                        "VerifyMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "EnterMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "VerifyMainStoryLevel": {
+                            "expected": [
+                                "\\b13-10\\b",
+                                "\\b13-17\\b"
+                            ]
+                        },
+                        "EnterMainStoryLevel": {
+                            "custom_recognition_param": {
+                                "expected": [
+                                    "\\b13-10\\b",
+                                    "\\b13-17\\b"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "沉霧淚晶",
+                    "icon": "./icons/MainStory/MistyTearCrystal.png",
+                    "pipeline_override": {
+                        "VerifyMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "EnterMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "VerifyMainStoryLevel": {
+                            "expected": [
+                                "\\b13-6\\b",
+                                "\\b13-11\\b"
+                            ]
+                        },
+                        "EnterMainStoryLevel": {
+                            "custom_recognition_param": {
+                                "expected": [
+                                    "\\b13-6\\b",
+                                    "\\b13-11\\b"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "結霜毒砂晶",
+                    "icon": "./icons/MainStory/FrostedArsenopyriteCrystal.png",
+                    "pipeline_override": {
+                        "VerifyMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "EnterMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "VerifyMainStoryLevel": {
+                            "expected": [
+                                "\\b13-5\\b",
+                                "\\b13-15\\b"
+                            ]
+                        },
+                        "EnterMainStoryLevel": {
+                            "custom_recognition_param": {
+                                "expected": [
+                                    "\\b13-5\\b",
+                                    "\\b13-15\\b"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "繁盛曲銅晶",
+                    "icon": "./icons/MainStory/RadiantBronzeCrystal.png",
+                    "pipeline_override": {
+                        "VerifyMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "EnterMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "VerifyMainStoryLevel": {
+                            "expected": "\\b13-2\\b"
+                        },
+                        "EnterMainStoryLevel": {
+                            "custom_recognition_param": {
+                                "expected": "\\b13-2\\b"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "異化擬怪腕足",
+                    "icon": "./icons/MainStory/MutatedMonstrousTentacle.png",
+                    "pipeline_override": {
+                        "VerifyMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "EnterMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "VerifyMainStoryLevel": {
+                            "expected": "\\b13-4\\b"
+                        },
+                        "EnterMainStoryLevel": {
+                            "custom_recognition_param": {
+                                "expected": "\\b13-4\\b"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "異化尖刺骨片",
+                    "icon": "./icons/MainStory/MutatedSpikedBoneShard.png",
+                    "pipeline_override": {
+                        "VerifyMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "EnterMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "VerifyMainStoryLevel": {
+                            "expected": [
+                                "\\b13-7\\b",
+                                "\\b13-18\\b"
+                            ]
+                        },
+                        "EnterMainStoryLevel": {
+                            "custom_recognition_param": {
+                                "expected": [
+                                    "\\b13-7\\b",
+                                    "\\b13-18\\b"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "異化棘狀角",
+                    "icon": "./icons/MainStory/MutatedSpinousHorn.png",
+                    "pipeline_override": {
+                        "VerifyMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "EnterMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "VerifyMainStoryLevel": {
+                            "expected": "\\b13-13\\b"
+                        },
+                        "EnterMainStoryLevel": {
+                            "custom_recognition_param": {
+                                "expected": "\\b13-13\\b"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "異化暗凝膠",
+                    "icon": "./icons/MainStory/MutatedDarkGel.png",
+                    "pipeline_override": {
+                        "VerifyMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "EnterMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "VerifyMainStoryLevel": {
+                            "expected": [
+                                "\\b13-3\\b",
+                                "\\b13-9\\b"
+                            ]
+                        },
+                        "EnterMainStoryLevel": {
+                            "custom_recognition_param": {
+                                "expected": [
+                                    "\\b13-3\\b",
+                                    "\\b13-9\\b"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "異化詭影鞘翅",
+                    "icon": "./icons/MainStory/MutatedGhastlyShadowElytra.png",
+                    "pipeline_override": {
+                        "VerifyMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "EnterMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "VerifyMainStoryLevel": {
+                            "expected": [
+                                "\\b13-1\\b",
+                                "\\b13-16\\b"
+                            ]
+                        },
+                        "EnterMainStoryLevel": {
+                            "custom_recognition_param": {
+                                "expected": [
+                                    "\\b13-1\\b",
+                                    "\\b13-16\\b"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "異化真紅囊胞",
+                    "icon": "./icons/MainStory/MutatedRedCyst.png",
+                    "pipeline_override": {
+                        "VerifyMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "EnterMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "VerifyMainStoryLevel": {
+                            "expected": "\\b13-14\\b"
+                        },
+                        "EnterMainStoryLevel": {
+                            "custom_recognition_param": {
+                                "expected": "\\b13-14\\b"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
         "掃蕩資源": {
             "type": "select",
             "cases": [
                 {
                     "name": "狄斯幣",
+                    "icon": "./icons/DisCoin.png",
                     "pipeline_override": {
                         "EnterResource": {
                             "expected": "清剿"
@@ -331,6 +635,7 @@
                 },
                 {
                     "name": "狂亂精粹",
+                    "icon": "./icons/ManiaEssence.png",
                     "pipeline_override": {
                         "EnterResource": {
                             "expected": "清剿"
@@ -349,6 +654,7 @@
                 },
                 {
                     "name": "技能模組",
+                    "icon": "./icons/Resource/SkillModule.png",
                     "pipeline_override": {
                         "EnterResource": {
                             "expected": [
@@ -370,6 +676,7 @@
                 },
                 {
                     "name": "重構碎片",
+                    "icon": "./icons/Resource/ReforgeFragment.png",
                     "pipeline_override": {
                         "EnterResource": {
                             "expected": [
@@ -391,6 +698,7 @@
                 },
                 {
                     "name": "堅韌源質",
+                    "icon": "./icons/Resource/EnduraElementalFluid.png",
                     "pipeline_override": {
                         "EnterResource": {
                             "expected": "帕爾",
@@ -409,6 +717,7 @@
                 },
                 {
                     "name": "狂暴源質",
+                    "icon": "./icons/Resource/FuryElementalFluid.png",
                     "pipeline_override": {
                         "EnterResource": {
                             "expected": "帕爾"
@@ -423,6 +732,7 @@
                 },
                 {
                     "name": "詭秘源質",
+                    "icon": "./icons/Resource/UmbraElementalFluid.png",
                     "pipeline_override": {
                         "EnterResource": {
                             "expected": "帕爾"
@@ -437,6 +747,7 @@
                 },
                 {
                     "name": "精準源質",
+                    "icon": "./icons/Resource/ReticleElementalFluid.png",
                     "pipeline_override": {
                         "EnterResource": {
                             "expected": "帕爾"
@@ -451,6 +762,7 @@
                 },
                 {
                     "name": "異能源質",
+                    "icon": "./icons/Resource/ArcancElementalFluid.png",
                     "pipeline_override": {
                         "EnterResource": {
                             "expected": "帕爾"
@@ -465,6 +777,7 @@
                 },
                 {
                     "name": "啟迪源質",
+                    "icon": "./icons/Resource/CatalystElementalFluid.png",
                     "pipeline_override": {
                         "EnterResource": {
                             "expected": "帕爾",
@@ -624,6 +937,7 @@
         },
         "搜索令(追蹤兌換)": {
             "type": "switch",
+            "icon": "./icons/SupplyOffice/Warrant.png",
             "cases": [
                 {
                     "name": "Yes"
@@ -635,6 +949,7 @@
         },
         "內海遺物箱(戰勳兌換)": {
             "type": "switch",
+            "icon": "./icons/SupplyOffice/DisSeaRelicChest.png",
             "cases": [
                 {
                     "name": "Yes"
@@ -662,6 +977,7 @@
         },
         "S級魂識印記(樣本兌換)": {
             "type": "switch",
+            "icon": "./icons/SupplyOffice/S-ClassSoulMark.png",
             "cases": [
                 {
                     "name": "Yes"
@@ -673,6 +989,7 @@
         },
         "A級魂識印記(樣本兌換)": {
             "type": "switch",
+            "icon": "./icons/SupplyOffice/A-ClassSoulMark.png",
             "cases": [
                 {
                     "name": "Yes"
@@ -685,6 +1002,7 @@
         },
         "B級魂識印記(樣本兌換)": {
             "type": "switch",
+            "icon": "./icons/SupplyOffice/B-ClassSoulMark.png",
             "cases": [
                 {
                     "name": "Yes"
@@ -714,6 +1032,7 @@
         },
         "低階材料補給箱(秘盟兌換)": {
             "type": "switch",
+            "icon": "./icons/SupplyOffice/LowLevelMaterialChest.png",
             "cases": [
                 {
                     "name": "Yes"
@@ -725,6 +1044,7 @@
         },
         "技能模組(秘盟兌換)": {
             "type": "switch",
+            "icon": "./icons/SupplyOffice/SkillModule.png",
             "cases": [
                 {
                     "name": "Yes"
@@ -736,6 +1056,7 @@
         },
         "狄斯幣(秘盟兌換)": {
             "type": "switch",
+            "icon": "./icons/DisCoin.png",
             "cases": [
                 {
                     "name": "Yes"
@@ -747,6 +1068,7 @@
         },
         "狂亂精粹(秘盟兌換)": {
             "type": "switch",
+            "icon": "./icons/ManiaEssence.png",
             "cases": [
                 {
                     "name": "Yes"
@@ -782,6 +1104,7 @@
         },
         "搜索令(友情兌換)": {
             "type": "switch",
+            "icon": "./icons/SupplyOffice/Warrant.png",
             "cases": [
                 {
                     "name": "Yes"
@@ -793,6 +1116,7 @@
         },
         "夢影之塵(友情兌換)": {
             "type": "switch",
+            "icon": "./icons/SupplyOffice/DreamDust.png",
             "cases": [
                 {
                     "name": "Yes"
@@ -804,6 +1128,7 @@
         },
         "監測磁帶(友情兌換)": {
             "type": "switch",
+            "icon": "./icons/SupplyOffice/SurveillanceTape.png",
             "cases": [
                 {
                     "name": "Yes"
@@ -815,6 +1140,7 @@
         },
         "迴響質料(友情兌換)": {
             "type": "switch",
+            "icon": "./icons/SupplyOffice/EchoSubstance.png",
             "cases": [
                 {
                     "name": "Yes"
@@ -826,6 +1152,7 @@
         },
         "邊界重構碎片(友情兌換)": {
             "type": "switch",
+            "icon": "./icons/SupplyOffice/BorderReforgeFragment.png",
             "cases": [
                 {
                     "name": "Yes"
@@ -838,6 +1165,7 @@
         },
         "一階源素補給箱(友情兌換)": {
             "type": "switch",
+            "icon": "./icons/SupplyOffice/Phase1ElementalParticleSupplyChest.png",
             "cases": [
                 {
                     "name": "Yes"
@@ -850,6 +1178,7 @@
         },
         "低階材料補給箱(友情兌換)": {
             "type": "switch",
+            "icon": "./icons/SupplyOffice/LowLevelMaterialChest.png",
             "cases": [
                 {
                     "name": "Yes"
@@ -862,6 +1191,7 @@
         },
         "技能模組(友情兌換)": {
             "type": "switch",
+            "icon": "./icons/SupplyOffice/SkillModule.png",
             "cases": [
                 {
                     "name": "Yes"
@@ -874,6 +1204,7 @@
         },
         "狄斯幣(友情兌換)": {
             "type": "switch",
+            "icon": "./icons/DisCoin.png",
             "cases": [
                 {
                     "name": "Yes"
@@ -886,6 +1217,7 @@
         },
         "狂亂精粹(友情兌換)": {
             "type": "switch",
+            "icon": "./icons/ManiaEssence.png",
             "cases": [
                 {
                     "name": "Yes"
@@ -898,6 +1230,7 @@
         },
         "記憶碎片(友情兌換)": {
             "type": "switch",
+            "icon": "./icons/SupplyOffice/MemoryFragment.png",
             "cases": [
                 {
                     "name": "Yes"
