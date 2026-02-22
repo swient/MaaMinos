@@ -10,7 +10,7 @@
     "EnterSurveillance": {
         "recognition": "OCR",
         "expected": "監察",
-        "roi": [1185, 589, 33, 20],
+        "roi": [1179, 594, 35, 22],
         "action": "Click",
         "next": "EnterSurveillanceMission"
     },
@@ -30,7 +30,7 @@
     "EnterSurveillanceDataPack": {
         "recognition": "OCR",
         "expected": "領取",
-        "roi": [989, 96, 63, 29],
+        "roi": [832, 96, 61, 29],
         "action": "Click",
         "next": "ClaimSurveillanceDataPack"
     },

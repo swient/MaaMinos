@@ -447,5 +447,7 @@ install
 # Tools
 tools/ImageCropper/**/*.png
 
-config
-debug
+# MaaMinos
+.venv/
+config/
+debug/

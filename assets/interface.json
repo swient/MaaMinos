@@ -65,7 +65,7 @@
         {
             "name": "秘盟互助",
             "entry": "SocietyMutalAid",
-            "doc": "默認求助技能模組I",
+            "doc": "默認互助技能模組I",
             "pipeline_override": {
                 "EnterNexus": {
                     "next": "EnterSociety"

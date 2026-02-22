@@ -12,8 +12,11 @@
     },
     "VerifyMainStory": {
         "recognition": "OCR",
-        "expected": "劇情",
-        "roi": [318, 103, 42, 23],
+        "expected": [
+            "特別",
+            "特别"
+        ],
+        "roi": [601, 574, 43, 24],
         "next": [
             "VerifyMainStoryChapterSelection",
             "[JumpBack]ReturnMainStoryChapterSelection",
@@ -31,7 +34,7 @@
             {
                 "recognition": "TemplateMatch",
                 "template": "Discity/VerifyMainStoryChapterSelection.png",
-                "roi": [406, 99, 58, 32]
+                "roi": [185, 98, 58, 34]
             }
         ],
         "next": [
@@ -44,7 +47,7 @@
     "ReturnMainStoryChapterSelection": {
         "recognition": "TemplateMatch",
         "template": "Discity/ReturnMainStoryChapterSelection.png",
-        "roi": [406, 99, 58, 32],
+        "roi": [185, 98, 58, 34],
         "action": "Click"
     },
     "EnterMainStoryChapterSelection": {
@@ -72,6 +75,7 @@
         "next": [
             "VerifyMainStoryLevel",
             "[JumpBack]EnterMainStoryLevel",
+            "[JumpBack]CancelMainStoryLevel",
             "[JumpBack]InitSwipePosition_2",
             "[JumpBack]AutoSwipeLeft"
         ]
@@ -86,7 +90,7 @@
     "VerifyMainStoryLevel": {
         "recognition": "OCR",
         "expected": "\\b13-8\\b",
-        "roi": [233, 157, 47, 18],
+        "roi": [233, 203, 47, 18],
         "next": "AutoRaidLevel"
     },
     "EnterMainStoryLevel": {
@@ -97,5 +101,12 @@
             "expected": "\\b13-8\\b"
         },
         "action": "Click"
+    },
+    "CancelMainStoryLevel": {
+        "recognition": "OCR",
+        "expected": "掃蕩",
+        "roi": [818, 637, 69, 35],
+        "action": "Click",
+        "target": [38, 42, 1, 1]
     }
 }

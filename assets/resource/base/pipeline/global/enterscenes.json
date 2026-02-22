@@ -2,13 +2,13 @@
     "EnterOpsHub": {
         "recognition": "OCR",
         "expected": "危機",
-        "roi": [911, 630, 40, 26],
+        "roi": [896, 626, 39, 29],
         "action": "Click"
     },
     "EnterNexus": {
         "recognition": "OCR",
         "expected": "整備",
-        "roi": [1016, 641, 42, 30],
+        "roi": [997, 640, 43, 30],
         "action": "Click"
     },
     "EnterDiscity": {
@@ -20,11 +20,11 @@
     "EnterBureau": {
         "recognition": "OCR",
         "expected": "管理局",
-        "roi": [1165, 302, 62, 25],
+        "roi": [1162, 300, 68, 29],
         "action": "Click"
     },
     "EnterSociety": {
-        "post_delay": 500,
+        "post_delay": 1000,
         "recognition": "OCR",
         "expected": "秘盟",
         "roi": [1181, 177, 50, 28],
@@ -47,9 +47,9 @@
         "recognition": "OCR",
         "expected": [
             "內海",
-            "内海"
+            "丙海"
         ],
-        "roi": [1064, 642, 66, 35],
+        "roi": [1062, 638, 79, 42],
         "action": "Click"
     }
 }

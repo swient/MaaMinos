@@ -81,7 +81,10 @@
     },
     "ReturnMainStory": {
         "recognition": "OCR",
-        "expected": "核心危機",
+        "expected": [
+            "核心危機",
+            "核心危模"
+        ],
         "roi": [601, 47, 82, 24],
         "action": "Click"
     },
