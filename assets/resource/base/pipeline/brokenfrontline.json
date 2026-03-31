@@ -45,6 +45,7 @@
         "next": "ReturnHome"
     },
     "EnterBrokenFrontlineItem": {
+        "post_delay": 500,
         "recognition": "TemplateMatch",
         "template": "Discity/BrokenFrontline.png",
         "roi": [102, 514, 26, 26],

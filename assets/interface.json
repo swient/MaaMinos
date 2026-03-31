@@ -797,50 +797,20 @@
             ]
         },
         "掃蕩次數": {
-            "type": "select",
-            "cases": [
+            "type": "input",
+            "inputs": [
                 {
-                    "name": "1次",
-                    "pipeline_override": {
-                        "TargetRaidTimes": {
-                            "expected": "1"
-                        }
-                    }
-                },
-                {
-                    "name": "2次",
-                    "pipeline_override": {
-                        "TargetRaidTimes": {
-                            "expected": "2"
-                        }
-                    }
-                },
-                {
-                    "name": "3次",
-                    "pipeline_override": {
-                        "TargetRaidTimes": {
-                            "expected": "3"
-                        }
-                    }
-                },
-                {
-                    "name": "4次",
-                    "pipeline_override": {
-                        "TargetRaidTimes": {
-                            "expected": "4"
-                        }
-                    }
-                },
-                {
-                    "name": "5次",
-                    "pipeline_override": {
-                        "TargetRaidTimes": {
-                            "expected": "5"
-                        }
-                    }
+                    "name": "掃蕩次數",
+                    "pipeline_type": "string",
+                    "default": "3",
+                    "verify": "^(0|[1-9]\\d*)$"
                 }
             ],
-            "default_case": "3次"
+            "pipeline_override": {
+                "TargetRaidTimes": {
+                    "expected": "\\b{掃蕩次數}\\b"
+                }
+            }
         },
         "使用全部體力": {
             "type": "switch",

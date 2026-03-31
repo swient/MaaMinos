@@ -30,8 +30,11 @@
         "roi": [804, 636, 106, 31],
         "action": "Click",
         "next": [
+            "EnterDonation",
             "CompletedDonation",
-            "[JumpBack]AutoDonation"
+            "[JumpBack]AutoDonation",
+            "[JumpBack]ResourcesObtained",
+            "[JumpBack]DailySignIn"
         ]
     },
     "CompletedDonation": {
@@ -68,8 +71,11 @@
         "roi": [921, 637, 105, 30],
         "action": "Click",
         "next": [
+            "EnterMutalAid",
             "CompletedMutalAid",
-            "[JumpBack]AutoMutalAid"
+            "[JumpBack]AutoMutalAid",
+            "[JumpBack]ResourcesObtained",
+            "[JumpBack]DailySignIn"
         ]
     },
     "CompletedMutalAid": {

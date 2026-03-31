@@ -1,7 +1,7 @@
 {
     "StartUp": {
         "next": [
-            "HomeFlag",
+            "HomeFlag_StartUp",
             "StartGame",
             "[JumpBack]GameLoading_1",
             "[JumpBack]GameLoading_2",
@@ -43,7 +43,7 @@
         ]
     },
     "HomeFlag_StartUp": {
-        "post_delay": 1500,
+        "post_delay": 2000,
         "recognition": "And",
         "all_of": [
             {
@@ -112,7 +112,7 @@
         "post_delay": 500,
         "recognition": "TemplateMatch",
         "template": "Home/AutoEventAnnouncement.png",
-        "threshold": 0.9,
+        "threshold": 0.8,
         "roi": [972, 642, 34, 34],
         "action": "Click",
         "next": "CloseEventAnnouncement"
@@ -121,7 +121,7 @@
         "post_delay": 1500,
         "recognition": "TemplateMatch",
         "template": "Home/CloseEventAnnouncement.png",
-        "threshold": 0.9,
+        "threshold": 0.8,
         "roi": [972, 642, 34, 34],
         "action": "Click",
         "target": [640, 715, 1, 1]
@@ -130,7 +130,7 @@
         "post_delay": 1500,
         "recognition": "OCR",
         "expected": "前往",
-        "roi": [892, 561, 79, 40],
+        "roi": [544, 602, 80, 43],
         "action": "Click",
         "target": [640, 715, 1, 1]
     },
@@ -172,23 +172,37 @@
         ]
     },
     "CompletedEmotionCheck": {
-        "post_delay": 3000,
-        "recognition": "OCR",
-        "expected": "完成",
-        "roi": [681, 410, 42, 23],
+        "post_delay": 6000,
+        "recognition": "Or",
+        "any_of": [
+            {
+                "recognition": "OCR",
+                "expected": "獲得",
+                "roi": [745, 386, 43, 24]
+            },
+            {
+                "recognition": "OCR",
+                "expected": "獲得",
+                "roi": [745, 409, 43, 24]
+            }
+        ],
         "action": "Click",
         "target": [640, 715, 1, 1]
     },
     "AutoHappyBirthday": {
+        "post_delay": 500,
         "recognition": "OCR",
         "expected": "生日快樂",
         "roi": [931, 553, 121, 33],
         "action": "Click",
         "target": [40, 40, 1, 1],
-        "next": "CloseHappyBirthday"
+        "next": [
+            "AutoHappyBirthday",
+            "CloseHappyBirthday"
+        ]
     },
     "CloseHappyBirthday": {
-        "post_delay": 2000,
+        "post_delay": 6000,
         "recognition": "OCR",
         "expected": "生日",
         "roi": [956, 0, 122, 64],

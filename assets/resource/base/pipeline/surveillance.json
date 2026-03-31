@@ -54,7 +54,7 @@
         ]
     },
     "ClaimSurveillanceDataPoints": {
-        "post_delay": 1000,
+        "post_delay": 1500,
         "recognition": "OCR",
         "expected": "鍵領取",
         "roi": [1081, 590, 80, 27],

@@ -20,11 +20,10 @@
     "EnterBureau": {
         "recognition": "OCR",
         "expected": "管理局",
-        "roi": [1162, 300, 68, 29],
+        "roi": [1161, 297, 70, 32],
         "action": "Click"
     },
     "EnterSociety": {
-        "post_delay": 1000,
         "recognition": "OCR",
         "expected": "秘盟",
         "roi": [1181, 177, 50, 28],
@@ -47,7 +46,8 @@
         "recognition": "OCR",
         "expected": [
             "內海",
-            "丙海"
+            "丙海",
+            "内海"
         ],
         "roi": [1062, 638, 79, 42],
         "action": "Click"

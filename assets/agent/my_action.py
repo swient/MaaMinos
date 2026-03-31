@@ -33,7 +33,7 @@ class BuySupplyOfficeProduct(CustomAction):
         # 讀取採購選項
         supply_options = {}
         config_sources = [
-            (Path("config/config.json"), "TaskItems", "index"),
+            (Path("config/instances/default.json"), "TaskItems", "index"),
             (Path("config/maa_pi_config.json"), "task", "default"),
         ]
         for config_path, task_key, option_key in config_sources:
@@ -48,7 +48,7 @@ class BuySupplyOfficeProduct(CustomAction):
                             # maa_pi_config.json
                             if isinstance(option, dict):
                                 for name, value in option.items():
-                                    supply_options[name] = value[option_key]
+                                    supply_options[name] = value
                             # config.json
                             elif isinstance(option, list):
                                 for item in option:
@@ -125,9 +125,7 @@ class BuySupplyOfficeProduct(CustomAction):
                 purchase_success = False
             # 紀錄採購時間
             if purchase_success:
-                record_data["採購部"][key]["last_purchased_time"] = int(
-                    time.time() * 1000
-                )
+                record_data["採購部"][key]["last_purchased_time"] = int(time.time() * 1000)
                 record_data["採購部"][key]["is_purchasing"] = False
                 try:
                     with open(RECORD_PATH, "w", encoding="utf-8") as f:
@@ -165,7 +163,7 @@ class RaidStormyMemories(CustomAction):
         # 讀取關卡選項
         stormy_options = {}
         config_sources = [
-            (Path("config/config.json"), "TaskItems", "index"),
+            (Path("config/instances/default.json"), "TaskItems", "index"),
             (Path("config/maa_pi_config.json"), "task", "default"),
         ]
         for config_path, task_key, option_key in config_sources:
@@ -180,7 +178,7 @@ class RaidStormyMemories(CustomAction):
                             # maa_pi_config.json
                             if isinstance(option, dict):
                                 for name, value in option.items():
-                                    stormy_options[name] = value[option_key]
+                                    stormy_options[name] = value
                             # config.json
                             elif isinstance(option, list):
                                 for item in option:

@@ -29,15 +29,18 @@
         "next": [
             "AutoRaidLevel",
             "RaidOnceOnly",
-            "TargetRaidTimes",
             "InitRaidTimes",
+            "TargetRaidTimes",
             "SetRaidTimes"
         ]
     },
     "SetRaidTimes": {
         "recognition": "OCR",
-        "expected": "選擇次數",
-        "roi": [330, 424, 74, 21],
+        "expected": [
+            "選擇次數",
+            "選擇次数"
+        ],
+        "roi": [330, 424, 77, 23],
         "action": "Click",
         "target": [913, 468, 1, 1],
         "next": [
@@ -48,9 +51,20 @@
         ]
     },
     "RaidOnceOnly": {
-        "recognition": "OCR",
-        "expected": "1",
-        "roi": [857, 457, 6, 23],
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "TemplateMatch",
+                "template": "Discity/InitRaidTimes.png",
+                "roi": [430, 449, 38, 38]
+            },
+            {
+                "recognition": "ColorMatch",
+                "upper": [47, 47, 47],
+                "lower": [42, 42, 42],
+                "roi": [891, 457, 46, 23]
+            }
+        ],
         "next": "StartRaidLevel"
     },
     "MaxRaidTimes": {
@@ -61,8 +75,8 @@
     },
     "TargetRaidTimes": {
         "recognition": "OCR",
-        "expected": "3",
-        "roi": [412, 423, 21, 23],
+        "expected": "\\b3\\b",
+        "roi": [407, 421, 30, 29],
         "next": "StartRaidLevel"
     },
     "StartRaidLevel": {
