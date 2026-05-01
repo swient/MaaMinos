@@ -11,7 +11,7 @@ header = """
 
 body = """
 {%- macro remote_url() -%}
-  https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}
+    https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}
 {%- endmacro -%}
 
 {% macro print_commit(commit) -%}
@@ -69,7 +69,7 @@ footer = """
 conventional_commits = true # 使用約定式提交格式
 filter_unconventional = false # 不過濾非約定式提交
 # 啟用完整的 commit 資訊
-split_commits = false
+split_commits = true
 # 保留完整的 commit body
 protect_breaking_commits = false
 commit_parsers = [

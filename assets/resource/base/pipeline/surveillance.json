@@ -29,7 +29,7 @@
     },
     "EnterSurveillanceDataPack": {
         "recognition": "OCR",
-        "expected": "領取",
+        "expected": "領 取",
         "roi": [832, 96, 61, 29],
         "action": "Click",
         "next": "ClaimSurveillanceDataPack"

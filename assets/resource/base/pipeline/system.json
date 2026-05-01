@@ -62,7 +62,7 @@
         ]
     },
     "CompletedIncident": {
-        "post_delay": 500,
+        "post_delay": 1000,
         "recognition": "OCR",
         "expected": "處理",
         "roi": [800, 455, 42, 22],

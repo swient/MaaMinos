@@ -72,7 +72,8 @@
         "post_delay": 500,
         "recognition": "OCR",
         "expected": "13",
-        "roi": [180, 150, 1080, 370],
+        "roi": [180, 150, 1080, 420],
+        "target_offset": [0, -15, 0, 0],
         "action": "Click",
         "next": "VerifyMainStoryLevelSelection"
     },

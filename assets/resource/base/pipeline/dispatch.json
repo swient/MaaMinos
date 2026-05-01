@@ -12,6 +12,7 @@
         "recognition": "OCR",
         "expected": "派遣",
         "roi": [527, 445, 80, 44],
+        "target_offset": [0, 60, 0, 0],
         "action": "Click",
         "next": [
             "CompletedDispatch",
