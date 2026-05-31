@@ -1,0 +1,24 @@
+{
+    "task": [
+        {
+            "name": "破碎防線",
+            "entry": "BrokenFrontline",
+            "doc": "僅領取本期與關卡獎勵",
+            "pipeline_override": {
+                "EnterOpsHub": {
+                    "next": "EnterDiscity"
+                },
+                "EnterDiscity": {
+                    "next": "EnterDisSea"
+                },
+                "EnterDisSea": {
+                    "next": [
+                        "EnterBrokenFrontline",
+                        "[JumpBack]InitSwipePosition_1",
+                        "[JumpBack]AutoSwipeLeft"
+                    ]
+                }
+            }
+        }
+    ]
+}

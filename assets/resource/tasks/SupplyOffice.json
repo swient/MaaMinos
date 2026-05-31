@@ -1,0 +1,341 @@
+{
+    "task": [
+        {
+            "name": "採購部",
+            "entry": "SupplyOffice",
+            "doc": "同名材料僅購買特惠材料",
+            "option": [
+                "每日免費補給",
+                "搜索令(追蹤兌換)",
+                "內海遺物箱(戰勳兌換)",
+                "樣本兌換",
+                "秘盟兌換",
+                "友情兌換"
+            ],
+            "pipeline_override": {
+                "EnterOpsHub": {
+                    "next": "EnterSupplyOffice"
+                }
+            }
+        }
+    ],
+    "option": {
+        "每日免費補給": {
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No"
+                }
+            ]
+        },
+        "搜索令(追蹤兌換)": {
+            "type": "switch",
+            "icon": "./icons/SupplyOffice/Warrant.png",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No"
+                }
+            ]
+        },
+        "內海遺物箱(戰勳兌換)": {
+            "type": "switch",
+            "icon": "./icons/SupplyOffice/DisSeaRelicChest.png",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No"
+                }
+            ]
+        },
+        "樣本兌換": {
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "option": [
+                        "S級魂識印記(樣本兌換)",
+                        "A級魂識印記(樣本兌換)",
+                        "B級魂識印記(樣本兌換)"
+                    ]
+                },
+                {
+                    "name": "No"
+                }
+            ]
+        },
+        "S級魂識印記(樣本兌換)": {
+            "type": "switch",
+            "icon": "./icons/SupplyOffice/S-ClassSoulMark.png",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No"
+                }
+            ]
+        },
+        "A級魂識印記(樣本兌換)": {
+            "type": "switch",
+            "icon": "./icons/SupplyOffice/A-ClassSoulMark.png",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No"
+                }
+            ],
+            "default_case": "No"
+        },
+        "B級魂識印記(樣本兌換)": {
+            "type": "switch",
+            "icon": "./icons/SupplyOffice/B-ClassSoulMark.png",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No"
+                }
+            ],
+            "default_case": "No"
+        },
+        "秘盟兌換": {
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "option": [
+                        "低階材料補給箱(秘盟兌換)",
+                        "技能模組(秘盟兌換)",
+                        "狄斯幣(秘盟兌換)",
+                        "狂亂精粹(秘盟兌換)"
+                    ]
+                },
+                {
+                    "name": "No"
+                }
+            ]
+        },
+        "低階材料補給箱(秘盟兌換)": {
+            "type": "switch",
+            "icon": "./icons/SupplyOffice/LowLevelMaterialChest.png",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No"
+                }
+            ]
+        },
+        "技能模組(秘盟兌換)": {
+            "type": "switch",
+            "icon": "./icons/SupplyOffice/SkillModule.png",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No"
+                }
+            ]
+        },
+        "狄斯幣(秘盟兌換)": {
+            "type": "switch",
+            "icon": "./icons/DisCoin.png",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No"
+                }
+            ]
+        },
+        "狂亂精粹(秘盟兌換)": {
+            "type": "switch",
+            "icon": "./icons/ManiaEssence.png",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No"
+                }
+            ]
+        },
+        "友情兌換": {
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "option": [
+                        "搜索令(友情兌換)",
+                        "夢影之塵(友情兌換)",
+                        "監測磁帶(友情兌換)",
+                        "迴響質料(友情兌換)",
+                        "邊界重構碎片(友情兌換)",
+                        "一階源素補給箱(友情兌換)",
+                        "低階材料補給箱(友情兌換)",
+                        "技能模組(友情兌換)",
+                        "狄斯幣(友情兌換)",
+                        "狂亂精粹(友情兌換)",
+                        "記憶碎片(友情兌換)"
+                    ]
+                },
+                {
+                    "name": "No"
+                }
+            ]
+        },
+        "搜索令(友情兌換)": {
+            "type": "switch",
+            "icon": "./icons/SupplyOffice/Warrant.png",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No"
+                }
+            ]
+        },
+        "夢影之塵(友情兌換)": {
+            "type": "switch",
+            "icon": "./icons/SupplyOffice/DreamDust.png",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No"
+                }
+            ]
+        },
+        "監測磁帶(友情兌換)": {
+            "type": "switch",
+            "icon": "./icons/SupplyOffice/SurveillanceTape.png",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No"
+                }
+            ]
+        },
+        "迴響質料(友情兌換)": {
+            "type": "switch",
+            "icon": "./icons/SupplyOffice/EchoSubstance.png",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No"
+                }
+            ]
+        },
+        "邊界重構碎片(友情兌換)": {
+            "type": "switch",
+            "icon": "./icons/SupplyOffice/BorderReforgeFragment.png",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No"
+                }
+            ],
+            "default_case": "No"
+        },
+        "一階源素補給箱(友情兌換)": {
+            "type": "switch",
+            "icon": "./icons/SupplyOffice/Phase1ElementalParticleSupplyChest.png",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No"
+                }
+            ],
+            "default_case": "No"
+        },
+        "低階材料補給箱(友情兌換)": {
+            "type": "switch",
+            "icon": "./icons/SupplyOffice/LowLevelMaterialChest.png",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No"
+                }
+            ],
+            "default_case": "No"
+        },
+        "技能模組(友情兌換)": {
+            "type": "switch",
+            "icon": "./icons/SupplyOffice/SkillModule.png",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No"
+                }
+            ],
+            "default_case": "No"
+        },
+        "狄斯幣(友情兌換)": {
+            "type": "switch",
+            "icon": "./icons/DisCoin.png",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No"
+                }
+            ],
+            "default_case": "No"
+        },
+        "狂亂精粹(友情兌換)": {
+            "type": "switch",
+            "icon": "./icons/ManiaEssence.png",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No"
+                }
+            ],
+            "default_case": "No"
+        },
+        "記憶碎片(友情兌換)": {
+            "type": "switch",
+            "icon": "./icons/SupplyOffice/MemoryFragment.png",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No"
+                }
+            ],
+            "default_case": "No"
+        }
+    }
+}

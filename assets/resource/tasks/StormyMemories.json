@@ -1,0 +1,72 @@
+{
+    "task": [
+        {
+            "name": "記憶風暴",
+            "entry": "StormyMemories",
+            "doc": "自定義設置只在星期日生效",
+            "option": [
+                "記憶畸點",
+                "印象畸點",
+                "殘響畸點",
+                "掃蕩次數"
+            ],
+            "pipeline_override": {
+                "EnterOpsHub": {
+                    "next": "EnterDiscity"
+                },
+                "EnterDiscity": {
+                    "next": "EnterTheRust"
+                },
+                "EnterTheRust": {
+                    "next": [
+                        "EnterStormyMemories",
+                        "EnterTheRust"
+                    ]
+                },
+                "SkipRaidLevel": {
+                    "action": "DoNothing",
+                    "next": []
+                },
+                "CompletedRaidLevel": {
+                    "action": "DoNothing",
+                    "next": []
+                }
+            }
+        }
+    ],
+    "option": {
+        "記憶畸點": {
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No"
+                }
+            ]
+        },
+        "印象畸點": {
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No"
+                }
+            ]
+        },
+        "殘響畸點": {
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No"
+                }
+            ]
+        }
+    }
+}

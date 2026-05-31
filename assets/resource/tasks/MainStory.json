@@ -1,0 +1,309 @@
+{
+    "task": [
+        {
+            "name": "主線掃蕩",
+            "entry": "MainStory",
+            "doc": "默認掃蕩第十三章,需解鎖掃蕩功能",
+            "option": [
+                "掃蕩材料",
+                "掃蕩次數",
+                "使用全部體力"
+            ],
+            "pipeline_override": {
+                "EnterOpsHub": {
+                    "next": "EnterDiscity"
+                },
+                "EnterDiscity": {
+                    "next": [
+                        "VerifyMainStory",
+                        "[JumpBack]EnterMainStory",
+                        "[JumpBack]ReturnMainStory"
+                    ]
+                }
+            }
+        }
+    ],
+    "option": {
+        "掃蕩材料": {
+            "type": "select",
+            "cases": [
+                {
+                    "name": "裂生冰晶錐",
+                    "icon": "./icons/MainStory/CrackedIceCrystal.png",
+                    "pipeline_override": {
+                        "VerifyMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "EnterMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "VerifyMainStoryLevel": {
+                            "expected": "\\b13-8\\b"
+                        },
+                        "EnterMainStoryLevel": {
+                            "custom_recognition_param": {
+                                "expected": "\\b13-8\\b"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "衰變暮輝晶",
+                    "icon": "./icons/MainStory/DecayingTwilightCrystal.png",
+                    "pipeline_override": {
+                        "VerifyMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "EnterMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "VerifyMainStoryLevel": {
+                            "expected": "\\b13-12\\b"
+                        },
+                        "EnterMainStoryLevel": {
+                            "custom_recognition_param": {
+                                "expected": "\\b13-12\\b"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "燃念赤晶",
+                    "icon": "./icons/MainStory/BloodRedCrystal.png",
+                    "pipeline_override": {
+                        "VerifyMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "EnterMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "VerifyMainStoryLevel": {
+                            "expected": [
+                                "\\b13-10\\b",
+                                "\\b13-17\\b"
+                            ]
+                        },
+                        "EnterMainStoryLevel": {
+                            "custom_recognition_param": {
+                                "expected": [
+                                    "\\b13-10\\b",
+                                    "\\b13-17\\b"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "沉霧淚晶",
+                    "icon": "./icons/MainStory/MistyTearCrystal.png",
+                    "pipeline_override": {
+                        "VerifyMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "EnterMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "VerifyMainStoryLevel": {
+                            "expected": [
+                                "\\b13-6\\b",
+                                "\\b13-11\\b"
+                            ]
+                        },
+                        "EnterMainStoryLevel": {
+                            "custom_recognition_param": {
+                                "expected": [
+                                    "\\b13-6\\b",
+                                    "\\b13-11\\b"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "結霜毒砂晶",
+                    "icon": "./icons/MainStory/FrostedArsenopyriteCrystal.png",
+                    "pipeline_override": {
+                        "VerifyMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "EnterMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "VerifyMainStoryLevel": {
+                            "expected": [
+                                "\\b13-5\\b",
+                                "\\b13-15\\b"
+                            ]
+                        },
+                        "EnterMainStoryLevel": {
+                            "custom_recognition_param": {
+                                "expected": [
+                                    "\\b13-5\\b",
+                                    "\\b13-15\\b"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "繁盛曲銅晶",
+                    "icon": "./icons/MainStory/RadiantBronzeCrystal.png",
+                    "pipeline_override": {
+                        "VerifyMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "EnterMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "VerifyMainStoryLevel": {
+                            "expected": "\\b13-2\\b"
+                        },
+                        "EnterMainStoryLevel": {
+                            "custom_recognition_param": {
+                                "expected": "\\b13-2\\b"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "異化擬怪腕足",
+                    "icon": "./icons/MainStory/MutatedMonstrousTentacle.png",
+                    "pipeline_override": {
+                        "VerifyMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "EnterMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "VerifyMainStoryLevel": {
+                            "expected": "\\b13-4\\b"
+                        },
+                        "EnterMainStoryLevel": {
+                            "custom_recognition_param": {
+                                "expected": "\\b13-4\\b"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "異化尖刺骨片",
+                    "icon": "./icons/MainStory/MutatedSpikedBoneShard.png",
+                    "pipeline_override": {
+                        "VerifyMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "EnterMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "VerifyMainStoryLevel": {
+                            "expected": [
+                                "\\b13-7\\b",
+                                "\\b13-18\\b"
+                            ]
+                        },
+                        "EnterMainStoryLevel": {
+                            "custom_recognition_param": {
+                                "expected": [
+                                    "\\b13-7\\b",
+                                    "\\b13-18\\b"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "異化棘狀角",
+                    "icon": "./icons/MainStory/MutatedSpinousHorn.png",
+                    "pipeline_override": {
+                        "VerifyMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "EnterMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "VerifyMainStoryLevel": {
+                            "expected": "\\b13-13\\b"
+                        },
+                        "EnterMainStoryLevel": {
+                            "custom_recognition_param": {
+                                "expected": "\\b13-13\\b"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "異化暗凝膠",
+                    "icon": "./icons/MainStory/MutatedDarkGel.png",
+                    "pipeline_override": {
+                        "VerifyMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "EnterMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "VerifyMainStoryLevel": {
+                            "expected": [
+                                "\\b13-3\\b",
+                                "\\b13-9\\b"
+                            ]
+                        },
+                        "EnterMainStoryLevel": {
+                            "custom_recognition_param": {
+                                "expected": [
+                                    "\\b13-3\\b",
+                                    "\\b13-9\\b"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "異化詭影鞘翅",
+                    "icon": "./icons/MainStory/MutatedGhastlyShadowElytra.png",
+                    "pipeline_override": {
+                        "VerifyMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "EnterMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "VerifyMainStoryLevel": {
+                            "expected": [
+                                "\\b13-1\\b",
+                                "\\b13-16\\b"
+                            ]
+                        },
+                        "EnterMainStoryLevel": {
+                            "custom_recognition_param": {
+                                "expected": [
+                                    "\\b13-1\\b",
+                                    "\\b13-16\\b"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "異化真紅囊胞",
+                    "icon": "./icons/MainStory/MutatedRedCyst.png",
+                    "pipeline_override": {
+                        "VerifyMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "EnterMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "VerifyMainStoryLevel": {
+                            "expected": "\\b13-14\\b"
+                        },
+                        "EnterMainStoryLevel": {
+                            "custom_recognition_param": {
+                                "expected": "\\b13-14\\b"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

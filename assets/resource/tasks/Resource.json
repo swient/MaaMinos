@@ -1,0 +1,223 @@
+{
+    "task": [
+        {
+            "name": "資源掃蕩",
+            "entry": "Resource",
+            "doc": "不足目標掃蕩次數會掃蕩到可掃蕩的最大值",
+            "option": [
+                "掃蕩資源",
+                "掃蕩次數",
+                "使用全部體力"
+            ],
+            "pipeline_override": {
+                "EnterOpsHub": {
+                    "next": "EnterDiscity"
+                },
+                "EnterDiscity": {
+                    "next": "EnterTheRust"
+                },
+                "EnterTheRust": {
+                    "next": [
+                        "EnterResource",
+                        "EnterTheRust"
+                    ]
+                }
+            }
+        }
+    ],
+    "option": {
+        "掃蕩資源": {
+            "type": "select",
+            "cases": [
+                {
+                    "name": "狄斯幣",
+                    "icon": "./icons/DisCoin.png",
+                    "pipeline_override": {
+                        "EnterResource": {
+                            "expected": "清剿"
+                        },
+                        "EnterResourceItem": {
+                            "expected": "淘金"
+                        },
+                        "VerifyResourceItem": {
+                            "expected": "淘金"
+                        },
+                        "EnterResourceLevel": {
+                            "expected": "5",
+                            "roi": [1177, 472, 16, 22]
+                        }
+                    }
+                },
+                {
+                    "name": "狂亂精粹",
+                    "icon": "./icons/ManiaEssence.png",
+                    "pipeline_override": {
+                        "EnterResource": {
+                            "expected": "清剿"
+                        },
+                        "EnterResourceItem": {
+                            "expected": "惡兆"
+                        },
+                        "VerifyResourceItem": {
+                            "expected": "惡兆"
+                        },
+                        "EnterResourceLevel": {
+                            "expected": "5",
+                            "roi": [1177, 472, 16, 22]
+                        }
+                    }
+                },
+                {
+                    "name": "技能模組",
+                    "icon": "./icons/Resource/SkillModule.png",
+                    "pipeline_override": {
+                        "EnterResource": {
+                            "expected": [
+                                "汙染",
+                                "汗染"
+                            ]
+                        },
+                        "EnterResourceItem": {
+                            "expected": "禁區"
+                        },
+                        "VerifyResourceItem": {
+                            "expected": "禁區"
+                        },
+                        "EnterResourceLevel": {
+                            "expected": "5",
+                            "roi": [1177, 472, 16, 22]
+                        }
+                    }
+                },
+                {
+                    "name": "重構碎片",
+                    "icon": "./icons/Resource/ReforgeFragment.png",
+                    "pipeline_override": {
+                        "EnterResource": {
+                            "expected": [
+                                "汙染",
+                                "汗染"
+                            ]
+                        },
+                        "EnterResourceItem": {
+                            "expected": "極域"
+                        },
+                        "VerifyResourceItem": {
+                            "expected": "極域"
+                        },
+                        "EnterResourceLevel": {
+                            "expected": "3",
+                            "roi": [897, 472, 16, 22]
+                        }
+                    }
+                },
+                {
+                    "name": "堅韌源質",
+                    "icon": "./icons/Resource/EnduraElementalFluid.png",
+                    "pipeline_override": {
+                        "EnterResource": {
+                            "expected": "帕爾",
+                            "next": [
+                                "EnterResourceItem",
+                                "[JumpBack]AutoSwipeDown"
+                            ]
+                        },
+                        "EnterResourceItem": {
+                            "expected": "堅韌"
+                        },
+                        "VerifyResourceItem": {
+                            "expected": "堅韌"
+                        }
+                    }
+                },
+                {
+                    "name": "狂暴源質",
+                    "icon": "./icons/Resource/FuryElementalFluid.png",
+                    "pipeline_override": {
+                        "EnterResource": {
+                            "expected": "帕爾",
+                            "next": [
+                                "EnterResourceItem",
+                                "[JumpBack]AutoSwipeDown"
+                            ]
+                        },
+                        "EnterResourceItem": {
+                            "expected": "狂暴"
+                        },
+                        "VerifyResourceItem": {
+                            "expected": "狂暴"
+                        }
+                    }
+                },
+                {
+                    "name": "詭秘源質",
+                    "icon": "./icons/Resource/UmbraElementalFluid.png",
+                    "pipeline_override": {
+                        "EnterResource": {
+                            "expected": "帕爾"
+                        },
+                        "EnterResourceItem": {
+                            "expected": "詭秘"
+                        },
+                        "VerifyResourceItem": {
+                            "expected": "詭秘"
+                        }
+                    }
+                },
+                {
+                    "name": "精準源質",
+                    "icon": "./icons/Resource/ReticleElementalFluid.png",
+                    "pipeline_override": {
+                        "EnterResource": {
+                            "expected": "帕爾"
+                        },
+                        "EnterResourceItem": {
+                            "expected": "精準"
+                        },
+                        "VerifyResourceItem": {
+                            "expected": "精準"
+                        }
+                    }
+                },
+                {
+                    "name": "異能源質",
+                    "icon": "./icons/Resource/ArcancElementalFluid.png",
+                    "pipeline_override": {
+                        "EnterResource": {
+                            "expected": "帕爾",
+                            "next": [
+                                "EnterResourceItem",
+                                "[JumpBack]AutoSwipeUp"
+                            ]
+                        },
+                        "EnterResourceItem": {
+                            "expected": "異能"
+                        },
+                        "VerifyResourceItem": {
+                            "expected": "異能"
+                        }
+                    }
+                },
+                {
+                    "name": "啟迪源質",
+                    "icon": "./icons/Resource/CatalystElementalFluid.png",
+                    "pipeline_override": {
+                        "EnterResource": {
+                            "expected": "帕爾",
+                            "next": [
+                                "EnterResourceItem",
+                                "[JumpBack]AutoSwipeUp"
+                            ]
+                        },
+                        "EnterResourceItem": {
+                            "expected": "啟迪"
+                        },
+                        "VerifyResourceItem": {
+                            "expected": "啟迪"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

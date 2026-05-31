@@ -1,0 +1,14 @@
+{
+    "task": [
+        {
+            "name": "收取監管",
+            "entry": "System",
+            "doc": "三星事件默認選擇第一項",
+            "pipeline_override": {
+                "EnterNexus": {
+                    "next": "EnterSystem"
+                }
+            }
+        }
+    ]
+}

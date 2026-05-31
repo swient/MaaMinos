@@ -1,0 +1,94 @@
+{
+    "task": [
+        {
+            "name": "領取獎勵",
+            "entry": "Awards",
+            "option": [
+                "領取友情點",
+                "收取信箱",
+                "領取體力"
+            ],
+            "pipeline_override": {
+                "CompletedFriendship": {
+                    "next": [
+                        "MinosMailbox",
+                        "Stamina",
+                        "ReturnHome"
+                    ]
+                },
+                "CompletedMinosMailbox": {
+                    "next": [
+                        "Stamina",
+                        "ReturnHome"
+                    ]
+                }
+            }
+        }
+    ],
+    "option": {
+        "領取友情點": {
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "EnterNexus": {
+                            "next": "EnterFriends"
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "Friendship": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "收取信箱": {
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "MinosMailbox": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "領取體力": {
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "EnterOpsHub": {
+                            "next": "EnterBureau"
+                        },
+                        "EnterBureau": {
+                            "next": [
+                                "SkipStamina",
+                                "EnterStamina"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "Stamina": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

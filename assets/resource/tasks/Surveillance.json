@@ -1,0 +1,43 @@
+{
+    "task": [
+        {
+            "name": "監察密令",
+            "entry": "Surveillance",
+            "option": [
+                "監察嘉獎"
+            ],
+            "pipeline_override": {
+                "EnterOpsHub": {
+                    "next": "EnterSurveillance"
+                }
+            }
+        }
+    ],
+    "option": {
+        "監察嘉獎": {
+            "type": "select",
+            "cases": [
+                {
+                    "name": "思感精粹",
+                    "pipeline_override": {
+                        "ChooseSurveillanceReward": {
+                            "template": "Surveillance/CognitiveEssence.png",
+                            "roi": [411, 199, 122, 122],
+                            "target": [472, 510, 1, 1]
+                        }
+                    }
+                },
+                {
+                    "name": "魂識印記",
+                    "pipeline_override": {
+                        "ChooseSurveillanceReward": {
+                            "template": "Surveillance/SoulMark.png",
+                            "roi": [747, 199, 122, 122],
+                            "target": [808, 510, 1, 1]
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

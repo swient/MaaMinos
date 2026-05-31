@@ -1,0 +1,24 @@
+{
+    "task": [
+        {
+            "name": "濁暗之阱",
+            "doc": "僅完成掃蕩工作,需完成樂園幻境",
+            "entry": "OblivionPit",
+            "pipeline_override": {
+                "EnterOpsHub": {
+                    "next": "EnterDiscity"
+                },
+                "EnterDiscity": {
+                    "next": "EnterDisSea"
+                },
+                "EnterDisSea": {
+                    "next": [
+                        "EnterOblivionPit",
+                        "[JumpBack]InitSwipePosition_1",
+                        "[JumpBack]AutoSwipeLeft"
+                    ]
+                }
+            }
+        }
+    ]
+}

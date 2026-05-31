@@ -1,0 +1,16 @@
+{
+    "task": [
+        {
+            "name": "派遣任務",
+            "entry": "Dispatch",
+            "pipeline_override": {
+                "EnterOpsHub": {
+                    "next": "EnterBureau"
+                },
+                "EnterBureau": {
+                    "next": "EnterDispatch"
+                }
+            }
+        }
+    ]
+}

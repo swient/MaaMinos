@@ -1,0 +1,38 @@
+{
+    "task": [
+        {
+            "name": "秘盟捐贈",
+            "entry": "SocietyDonation",
+            "doc": "默認捐贈狄斯幣",
+            "pipeline_override": {
+                "EnterNexus": {
+                    "next": "EnterSociety"
+                },
+                "EnterSociety": {
+                    "next": [
+                        "EnterDonation",
+                        "[JumpBack]ResourcesObtained",
+                        "[JumpBack]DailySignIn"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "秘盟互助",
+            "entry": "SocietyMutalAid",
+            "doc": "默認互助技能模組I",
+            "pipeline_override": {
+                "EnterNexus": {
+                    "next": "EnterSociety"
+                },
+                "EnterSociety": {
+                    "next": [
+                        "EnterMutalAid",
+                        "[JumpBack]ResourcesObtained",
+                        "[JumpBack]DailySignIn"
+                    ]
+                }
+            }
+        }
+    ]
+}
