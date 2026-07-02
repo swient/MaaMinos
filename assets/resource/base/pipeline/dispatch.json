@@ -12,11 +12,11 @@
         "recognition": "OCR",
         "expected": "派遣",
         "roi": [527, 445, 80, 44],
-        "target_offset": [0, 60, 0, 0],
+        "target_offset": [60, 80, 0, 0],
         "action": "Click",
         "next": [
-            "CompletedDispatch",
             "EnterDispatch",
+            "CompletedDispatch",
             "[JumpBack]ClaimDispatch",
             "[JumpBack]AutoDispatch"
         ]

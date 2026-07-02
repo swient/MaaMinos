@@ -14,8 +14,8 @@ from my_reco import VerifyTime
 logger = get_logger(__name__)
 
 
-@AgentServer.custom_action("BuySupplyOfficeProduct")
-class BuySupplyOfficeProduct(CustomAction):
+@AgentServer.custom_action("AutoBuySupplyOfficeProduct")
+class AutoBuySupplyOfficeProduct(CustomAction):
 
     def run(
         self,
@@ -116,7 +116,8 @@ class BuySupplyOfficeProduct(CustomAction):
             result = context.run_task("SupplyOfficeTemplate")
             # 驗證是否執行到 CompletedSupplyOffice 節點
             if (
-                result.nodes
+                result
+                and result.nodes
                 and result.nodes[-1].name == "CompletedSupplyOffice"
                 and result.nodes[-1].completed
             ):
@@ -147,9 +148,7 @@ class RaidStormyMemories(CustomAction):
 
         # 週期判斷，若在週期內直接結束任務
         verify_param = json.dumps({"key": "記憶風暴", "period_type": "day"})
-        verify_time = VerifyTime().analyze(
-            context, SimpleNamespace(custom_recognition_param=verify_param)
-        )
+        verify_time = VerifyTime().analyze(context, SimpleNamespace(custom_recognition_param=verify_param))
         if verify_time is not None:
             return True
 

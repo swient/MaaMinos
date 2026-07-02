@@ -7,8 +7,9 @@
     },
     "EnterNexus": {
         "recognition": "OCR",
-        "expected": "整備",
-        "roi": [997, 640, 43, 30],
+        "expected": "危機",
+        "roi": [896, 626, 39, 29],
+        "target_offset": [103, 15, 0, 0],
         "action": "Click"
     },
     "EnterDiscity": {

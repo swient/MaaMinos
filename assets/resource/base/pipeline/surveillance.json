@@ -22,9 +22,11 @@
         "action": "Click",
         "next": [
             "EnterSurveillanceDataPack",
-            "EnterSurveillanceMissionItem",
-            "ClaimSurveillanceDataPoints",
-            "CompletedSurveillanceMission"
+            "CompletedSurveillanceMission",
+            "[JumpBack]EnterSurveillanceMissionItem",
+            "[JumpBack]ClaimSurveillanceDataPoints",
+            "[JumpBack]ReturnSurveillanceMissionItem",
+            "[JumpBack]ResourcesObtained"
         ]
     },
     "EnterSurveillanceDataPack": {
@@ -41,74 +43,48 @@
         "action": "Click",
         "next": "EnterSurveillanceMission"
     },
+    "CompletedSurveillanceMission": {
+        "recognition": "TemplateMatch",
+        "template": "Surveillance/CompletedSurveillance.png",
+        "roi": [390, 656, 17, 17],
+        "next": [
+            "CompletedSurveillanceOrder",
+            "[JumpBack]EnterSurveillanceOrder",
+            "[JumpBack]ClaimSurveillanceReward",
+            "[JumpBack]ChooseSurveillanceReward",
+            "[JumpBack]ResourcesObtained"
+        ]
+    },
     "EnterSurveillanceMissionItem": {
-        "post_delay": 500,
         "recognition": "TemplateMatch",
         "template": "Surveillance/SurveillanceMissionItem.png",
         "roi": [447, 108, 35, 260],
         "action": "Click",
-        "target_offset": [-85, 20, 0, 0],
-        "next": [
-            "ClaimSurveillanceDataPoints",
-            "ReturnSurveillanceMissionItem"
-        ]
+        "target_offset": [-85, 20, 0, 0]
     },
     "ClaimSurveillanceDataPoints": {
-        "post_delay": 1500,
         "recognition": "OCR",
         "expected": "鍵領取",
         "roi": [1081, 590, 80, 27],
-        "action": "Click",
-        "next": [
-            "SurveillanceDataPointsObtained",
-            "EnterSurveillanceMissionItem",
-            "CompletedSurveillanceMission"
-        ]
+        "action": "Click"
     },
     "ReturnSurveillanceMissionItem": {
         "recognition": "OCR",
         "expected": "每日",
         "roi": [370, 183, 51, 29],
-        "action": "Click",
-        "next": [
-            "EnterSurveillanceMissionItem",
-            "ClaimSurveillanceDataPoints",
-            "CompletedSurveillanceMission"
-        ]
-    },
-    "SurveillanceDataPointsObtained": {
-        "pre_delay": 500,
-        "recognition": "OCR",
-        "expected": "獲得物資",
-        "roi": [557, 104, 166, 50],
-        "action": "Click",
-        "target": [640, 715, 1, 1],
-        "next": [
-            "EnterSurveillanceMissionItem",
-            "CompletedSurveillanceMission"
-        ]
-    },
-    "CompletedSurveillanceMission": {
-        "recognition": "TemplateMatch",
-        "template": "Surveillance/CompletedSurveillance.png",
-        "roi": [390, 656, 17, 17],
-        "next": "EnterSurveillanceOrder"
-    },
-    "EnterSurveillanceOrder": {
-        "recognition": "OCR",
-        "expected": "密令",
-        "roi": [980, 667, 58, 32],
-        "action": "Click",
-        "next": [
-            "CompletedSurveillanceOrder",
-            "[JumpBack]ClaimSurveillanceReward"
-        ]
+        "action": "Click"
     },
     "CompletedSurveillanceOrder": {
         "recognition": "TemplateMatch",
         "template": "Surveillance/CompletedSurveillance.png",
         "roi": [1030, 656, 17, 17],
         "next": "ReturnHome"
+    },
+    "EnterSurveillanceOrder": {
+        "recognition": "OCR",
+        "expected": "察密",
+        "roi": [952, 667, 61, 34],
+        "action": "Click"
     },
     "ClaimSurveillanceReward": {
         "recognition": "OCR",

@@ -14,6 +14,7 @@
         "roi": [1188, 294, 38, 21],
         "action": "Click",
         "next": [
+            "EnterFriends",
             "CompletedFriendship",
             "[JumpBack]ClaimFriendship",
             "[JumpBack]SendFriendship"

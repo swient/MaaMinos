@@ -143,13 +143,13 @@
         }
     },
     "迴響質料(友情兌換)": {
-        "expected": "迴響",
+        "expected": "質料",
         "period_type": "month",
         "is_discounted": false,
         "pipeline_override": {
             "EnterSupplyOfficeItem": {"expected": "中心"},
             "EnterSupplyOfficeItemDetail": {"expected": "友情"},
-            "VerifySupplyOfficeProduct": {"expected": "迴響"},
+            "VerifySupplyOfficeProduct": {"expected": "質料"},
             "CloseSupplyOfficeItem": {"expected": "中心"}
         }
     },

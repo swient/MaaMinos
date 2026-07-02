@@ -7,15 +7,15 @@
         ]
     },
     "EnterMinosMailbox": {
-        "post_delay": 500,
         "recognition": "OCR",
         "expected": "信箱",
         "roi": [97, 428, 31, 18],
         "action": "Click",
         "next": [
-            "CompletedMinosMailbox",
             "EnterMinosMailbox",
-            "[JumpBack]AutoProcessAll"
+            "CompletedMinosMailbox",
+            "[JumpBack]AutoProcessAll",
+            "[JumpBack]ResourcesObtained"
         ]
     },
     "CompletedMinosMailbox": {
@@ -25,16 +25,13 @@
             "MinosMailbox/CompletedMinosMailbox_2.png"
         ],
         "roi": [105, 236, 40, 40],
+        "action": "Click",
         "next": "ReturnHome"
     },
     "AutoProcessAll": {
         "recognition": "OCR",
         "expected": "快速處理",
         "roi": [305, 649, 106, 26],
-        "action": "Click",
-        "next": [
-            "ResourcesObtained",
-            "AutoProcessAll"
-        ]
+        "action": "Click"
     }
 }

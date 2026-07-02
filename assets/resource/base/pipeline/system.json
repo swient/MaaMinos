@@ -24,11 +24,18 @@
         "next": "EnterCCTV"
     },
     "AutoCollect": {
+        "post_delay": 500,
         "recognition": "OCR",
-        "expected": "一鍵收取",
-        "roi": [120, 331, 90, 24],
+        "expected": [
+            "鍵收取",
+            "键收取"
+        ],
+        "roi": [141, 333, 64, 24],
         "action": "Click",
-        "next": "ResourcesObtained"
+        "next": [
+            "AutoCollect",
+            "ResourcesObtained"
+        ]
     },
     "EnterCCTV": {
         "recognition": "OCR",
@@ -72,6 +79,7 @@
         ]
     },
     "NextIncident": {
+        "post_delay": 500,
         "recognition": "OCR",
         "expected": "下",
         "roi": [1174, 621, 26, 26],

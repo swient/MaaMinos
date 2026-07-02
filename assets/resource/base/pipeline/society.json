@@ -23,11 +23,8 @@
     },
     "EnterDonation": {
         "recognition": "OCR",
-        "expected": [
-            "秘盟捐贈",
-            "秘盟捐赠"
-        ],
-        "roi": [804, 636, 106, 31],
+        "expected": "秘盟",
+        "roi": [805, 637, 56, 30],
         "action": "Click",
         "next": [
             "EnterDonation",
@@ -105,11 +102,7 @@
             }
         ],
         "action": "Click",
-        "target_offset": [0, 100, 0, 0],
-        "next": [
-            "ResourcesObtained",
-            "AutoMutalAid"
-        ]
+        "target_offset": [0, 100, 0, 0]
     },
     "SkipPostRequest": {
         "recognition": "OCR",

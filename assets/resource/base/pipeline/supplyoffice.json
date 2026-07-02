@@ -1,7 +1,7 @@
 {
     "SupplyOffice": {
         "action": "Custom",
-        "custom_action": "BuySupplyOfficeProduct",
+        "custom_action": "AutoBuySupplyOfficeProduct",
         "next": [
             "HomeFlag",
             "ReturnHome"
@@ -33,11 +33,27 @@
         ]
     },
     "EnterSupplyOfficeItem": {
-        "post_delay": 500,
+        "post_delay": 1500,
         "recognition": "OCR",
         "expected": "精選禮包",
         "roi": [64, 242, 150, 478],
         "action": "Click",
+        "next": [
+            "VerifySupplyOfficeItem",
+            "EnterSupplyOfficeItem"
+        ]
+    },
+    "VerifySupplyOfficeItem": {
+        "recognition": "And",
+        "all_of": [
+            "EnterSupplyOfficeItem",
+            {
+                "recognition": "ColorMatch",
+                "upper": [255, 222, 222],
+                "lower": [244, 207, 207],
+                "roi": "EnterSupplyOfficeItem"
+            }
+        ],
         "next": [
             "EnterSupplyOfficeItemDetail",
             "[JumpBack]AutoSwipeUp"
@@ -50,12 +66,30 @@
         "roi": [64, 242, 150, 478],
         "action": "Click",
         "next": [
-            "AutoBuySupplyOfficeProduct",
+            "VerifySupplyOfficeItemDetail",
+            "EnterSupplyOfficeItemDetail"
+        ]
+    },
+    "VerifySupplyOfficeItemDetail": {
+        "recognition": "ColorMatch",
+        "upper": [232, 212, 192],
+        "lower": [220, 193, 178],
+        "roi": "EnterSupplyOfficeItemDetail",
+        "next": "InitSupplyOfficeProduct"
+    },
+    "InitSupplyOfficeProduct": {
+        "inverse": true,
+        "recognition": "ColorMatch",
+        "upper": [248, 246, 237],
+        "lower": [246, 241, 233],
+        "roi": [454, 207, 74, 74],
+        "next": [
+            "EnterSupplyOfficeProduct",
             "[JumpBack]CancelBuySupplyOfficeProduct",
             "[JumpBack]AutoSwipeLeft"
         ]
     },
-    "AutoBuySupplyOfficeProduct": {
+    "EnterSupplyOfficeProduct": {
         "recognition": "Custom",
         "custom_recognition": "CheckSupplyOfficeProduct",
         "action": "Click",
