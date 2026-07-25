@@ -23,8 +23,8 @@
         "next": [
             "EnterSurveillanceDataPack",
             "CompletedSurveillanceMission",
-            "[JumpBack]EnterSurveillanceMissionItem",
             "[JumpBack]ClaimSurveillanceDataPoints",
+            "[JumpBack]EnterSurveillanceMissionItem",
             "[JumpBack]ReturnSurveillanceMissionItem",
             "[JumpBack]ResourcesObtained"
         ]
@@ -41,7 +41,10 @@
         "expected": "直接領取",
         "roi": [431, 481, 132, 33],
         "action": "Click",
-        "next": "EnterSurveillanceMission"
+        "next": [
+            "EnterSurveillanceMission",
+            "[JumpBack]ResourcesObtained"
+        ]
     },
     "CompletedSurveillanceMission": {
         "recognition": "TemplateMatch",
@@ -49,11 +52,17 @@
         "roi": [390, 656, 17, 17],
         "next": [
             "CompletedSurveillanceOrder",
-            "[JumpBack]EnterSurveillanceOrder",
             "[JumpBack]ClaimSurveillanceReward",
             "[JumpBack]ChooseSurveillanceReward",
+            "[JumpBack]EnterSurveillanceOrder",
             "[JumpBack]ResourcesObtained"
         ]
+    },
+    "ClaimSurveillanceDataPoints": {
+        "recognition": "OCR",
+        "expected": "鍵領取",
+        "roi": [1081, 590, 80, 27],
+        "action": "Click"
     },
     "EnterSurveillanceMissionItem": {
         "recognition": "TemplateMatch",
@@ -61,12 +70,6 @@
         "roi": [447, 108, 35, 260],
         "action": "Click",
         "target_offset": [-85, 20, 0, 0]
-    },
-    "ClaimSurveillanceDataPoints": {
-        "recognition": "OCR",
-        "expected": "鍵領取",
-        "roi": [1081, 590, 80, 27],
-        "action": "Click"
     },
     "ReturnSurveillanceMissionItem": {
         "recognition": "OCR",
@@ -79,12 +82,6 @@
         "template": "Surveillance/CompletedSurveillance.png",
         "roi": [1030, 656, 17, 17],
         "next": "ReturnHome"
-    },
-    "EnterSurveillanceOrder": {
-        "recognition": "OCR",
-        "expected": "察密",
-        "roi": [952, 667, 61, 34],
-        "action": "Click"
     },
     "ClaimSurveillanceReward": {
         "recognition": "OCR",
@@ -102,5 +99,11 @@
         "roi": [411, 199, 122, 122],
         "action": "Click",
         "target": [472, 510, 1, 1]
+    },
+    "EnterSurveillanceOrder": {
+        "recognition": "OCR",
+        "expected": "察密",
+        "roi": [952, 667, 61, 34],
+        "action": "Click"
     }
 }

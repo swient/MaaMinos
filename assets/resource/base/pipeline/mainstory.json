@@ -19,34 +19,9 @@
         "roi": [601, 574, 43, 24],
         "next": [
             "VerifyMainStoryChapterSelection",
-            "EnterMainStoryChapterSelection",
+            "[JumpBack]EnterMainStoryChapterSelection",
             "[JumpBack]ReturnMainStoryChapterSelection"
         ]
-    },
-    "EnterMainStoryChapterSelection": {
-        "recognition": "Or",
-        "any_of": [
-            {
-                "recognition": "OCR",
-                "expected": "裡灣",
-                "roi": [41, 250, 50, 28]
-            },
-            {
-                "recognition": "OCR",
-                "expected": "裡灣",
-                "roi": [41, 442, 50, 28]
-            }
-        ],
-        "end_hold": 500,
-        "action": "Swipe",
-        "end": [66, 360, 1, 1],
-        "next": "VerifyMainStoryChapterSelection"
-    },
-    "ReturnMainStoryChapterSelection": {
-        "recognition": "TemplateMatch",
-        "template": "Discity/ReturnMainStoryChapterSelection.png",
-        "roi": [185, 98, 58, 34],
-        "action": "Click"
     },
     "VerifyMainStoryChapterSelection": {
         "recognition": "And",
@@ -67,6 +42,30 @@
             "[JumpBack]InitSwipePosition_1",
             "[JumpBack]AutoSwipeLeft"
         ]
+    },
+    "EnterMainStoryChapterSelection": {
+        "recognition": "Or",
+        "any_of": [
+            {
+                "recognition": "OCR",
+                "expected": "裡灣",
+                "roi": [41, 250, 50, 28]
+            },
+            {
+                "recognition": "OCR",
+                "expected": "裡灣",
+                "roi": [41, 442, 50, 28]
+            }
+        ],
+        "end_hold": 500,
+        "action": "Swipe",
+        "end": [66, 360, 1, 1]
+    },
+    "ReturnMainStoryChapterSelection": {
+        "recognition": "TemplateMatch",
+        "template": "Discity/ReturnMainStoryChapterSelection.png",
+        "roi": [185, 98, 58, 34],
+        "action": "Click"
     },
     "EnterMainStoryLevelSelection": {
         "post_delay": 500,

@@ -18,7 +18,8 @@
             "EnterDispatch",
             "CompletedDispatch",
             "[JumpBack]ClaimDispatch",
-            "[JumpBack]AutoDispatch"
+            "[JumpBack]AutoDispatch",
+            "[JumpBack]ResourcesObtained"
         ]
     },
     "CompletedDispatch": {
@@ -34,11 +35,7 @@
             "领取"
         ],
         "roi": [1140, 532, 105, 37],
-        "action": "Click",
-        "next": [
-            "ResourcesObtained",
-            "ClaimDispatch"
-        ]
+        "action": "Click"
     },
     "AutoDispatch": {
         "recognition": "OCR",

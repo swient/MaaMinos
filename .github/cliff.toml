@@ -17,7 +17,7 @@ body = """
 {% macro print_commit(commit) -%}
     - {% if commit.scope %}*({{ commit.scope }})* {% endif %}\
         {% if commit.breaking %}[**breaking**] {% endif %}\
-        {{ commit.message | split(pat="\n") | first | upper_first }} \
+        {{ commit.message | split(pat="\n") | first | trim_start_matches(pat="-") | trim | upper_first }} \
         @{{ commit.author.name }}
         {%- if commit.footers -%}
             {%- for footer in commit.footers -%}

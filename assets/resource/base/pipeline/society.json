@@ -81,7 +81,8 @@
         "roi": [400, 339, 169, 31],
         "next": [
             "SkipPostRequest",
-            "EnterPostRequest"
+            "EnterPostRequest",
+            "[JumpBack]ResourcesObtained"
         ]
     },
     "AutoMutalAid": {

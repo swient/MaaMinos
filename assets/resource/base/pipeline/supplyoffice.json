@@ -80,9 +80,9 @@
     "InitSupplyOfficeProduct": {
         "inverse": true,
         "recognition": "ColorMatch",
-        "upper": [248, 246, 237],
-        "lower": [246, 241, 233],
-        "roi": [454, 207, 74, 74],
+        "upper": [253, 241, 235],
+        "lower": [239, 211, 194],
+        "roi": [345, 200, 35, 70],
         "next": [
             "EnterSupplyOfficeProduct",
             "[JumpBack]CancelBuySupplyOfficeProduct",

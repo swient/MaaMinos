@@ -45,12 +45,8 @@
     "EnterDisSea": {
         "post_delay": 1000,
         "recognition": "OCR",
-        "expected": [
-            "內海",
-            "丙海",
-            "内海"
-        ],
-        "roi": [1062, 638, 79, 42],
+        "expected": "海",
+        "roi": [1099, 638, 42, 42],
         "action": "Click"
     }
 }
