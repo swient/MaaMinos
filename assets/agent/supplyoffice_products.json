@@ -21,6 +21,17 @@
             "CloseSupplyOfficeItem": {"expected": "中心"}
         }
     },
+    "都市搜索令(追蹤兌換)": {
+        "expected": "都市",
+        "period_type": "month",
+        "is_discounted": false,
+        "pipeline_override": {
+            "EnterSupplyOfficeItem": {"expected": "中心"},
+            "EnterSupplyOfficeItemDetail": {"expected": "追蹤"},
+            "VerifySupplyOfficeProduct": {"expected": "都市"},
+            "CloseSupplyOfficeItem": {"expected": "中心"}
+        }
+    },
     "內海遺物箱(戰勳兌換)": {
         "expected": ["遺物", "遗物"],
         "period_type": "month",

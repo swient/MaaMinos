@@ -37,6 +37,9 @@
                         "EnterMainStoryLevelSelection": {
                             "expected": "13"
                         },
+                        "EnterMainStoryPartSelection": {
+                            "expected": "13"
+                        },
                         "VerifyMainStoryLevel": {
                             "expected": "\\b13-8\\b"
                         },
@@ -57,6 +60,9 @@
                         "EnterMainStoryLevelSelection": {
                             "expected": "13"
                         },
+                        "EnterMainStoryPartSelection": {
+                            "expected": "13"
+                        },
                         "VerifyMainStoryLevel": {
                             "expected": "\\b13-12\\b"
                         },
@@ -75,6 +81,9 @@
                             "expected": "13"
                         },
                         "EnterMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "EnterMainStoryPartSelection": {
                             "expected": "13"
                         },
                         "VerifyMainStoryLevel": {
@@ -103,6 +112,9 @@
                         "EnterMainStoryLevelSelection": {
                             "expected": "13"
                         },
+                        "EnterMainStoryPartSelection": {
+                            "expected": "13"
+                        },
                         "VerifyMainStoryLevel": {
                             "expected": [
                                 "\\b13-6\\b",
@@ -127,6 +139,9 @@
                             "expected": "13"
                         },
                         "EnterMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "EnterMainStoryPartSelection": {
                             "expected": "13"
                         },
                         "VerifyMainStoryLevel": {
@@ -155,6 +170,9 @@
                         "EnterMainStoryLevelSelection": {
                             "expected": "13"
                         },
+                        "EnterMainStoryPartSelection": {
+                            "expected": "13"
+                        },
                         "VerifyMainStoryLevel": {
                             "expected": "\\b13-2\\b"
                         },
@@ -175,6 +193,9 @@
                         "EnterMainStoryLevelSelection": {
                             "expected": "13"
                         },
+                        "EnterMainStoryPartSelection": {
+                            "expected": "13"
+                        },
                         "VerifyMainStoryLevel": {
                             "expected": "\\b13-4\\b"
                         },
@@ -193,6 +214,9 @@
                             "expected": "13"
                         },
                         "EnterMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "EnterMainStoryPartSelection": {
                             "expected": "13"
                         },
                         "VerifyMainStoryLevel": {
@@ -221,6 +245,9 @@
                         "EnterMainStoryLevelSelection": {
                             "expected": "13"
                         },
+                        "EnterMainStoryPartSelection": {
+                            "expected": "13"
+                        },
                         "VerifyMainStoryLevel": {
                             "expected": "\\b13-13\\b"
                         },
@@ -239,6 +266,9 @@
                             "expected": "13"
                         },
                         "EnterMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "EnterMainStoryPartSelection": {
                             "expected": "13"
                         },
                         "VerifyMainStoryLevel": {
@@ -267,6 +297,9 @@
                         "EnterMainStoryLevelSelection": {
                             "expected": "13"
                         },
+                        "EnterMainStoryPartSelection": {
+                            "expected": "13"
+                        },
                         "VerifyMainStoryLevel": {
                             "expected": [
                                 "\\b13-1\\b",
@@ -291,6 +324,9 @@
                             "expected": "13"
                         },
                         "EnterMainStoryLevelSelection": {
+                            "expected": "13"
+                        },
+                        "EnterMainStoryPartSelection": {
                             "expected": "13"
                         },
                         "VerifyMainStoryLevel": {

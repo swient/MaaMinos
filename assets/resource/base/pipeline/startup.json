@@ -11,6 +11,8 @@
             "[JumpBack]CloseEventArrest",
             "[JumpBack]ClaimBlackKeyVIP",
             "[JumpBack]CloseBlackKeyVIP",
+            "[JumpBack]ClaimSecretKey",
+            "[JumpBack]CloseSecretKey",
             "[JumpBack]AutoEmotionCheck",
             "[JumpBack]AutoHappyBirthday",
             "[JumpBack]CloseHappyBirthday",
@@ -36,6 +38,8 @@
             "[JumpBack]CloseEventArrest",
             "[JumpBack]ClaimBlackKeyVIP",
             "[JumpBack]CloseBlackKeyVIP",
+            "[JumpBack]ClaimSecretKey",
+            "[JumpBack]CloseSecretKey",
             "[JumpBack]AutoEmotionCheck",
             "[JumpBack]AutoHappyBirthday",
             "[JumpBack]CloseHappyBirthday",
@@ -68,6 +72,8 @@
             "[JumpBack]CloseEventArrest",
             "[JumpBack]ClaimBlackKeyVIP",
             "[JumpBack]CloseBlackKeyVIP",
+            "[JumpBack]ClaimSecretKey",
+            "[JumpBack]CloseSecretKey",
             "[JumpBack]AutoEmotionCheck",
             "[JumpBack]AutoHappyBirthday",
             "[JumpBack]CloseHappyBirthday",
@@ -141,7 +147,6 @@
         "target": [640, 715, 1, 1]
     },
     "ClaimBlackKeyVIP": {
-        "pre_delay": 1000,
         "recognition": "OCR",
         "expected": "黑鑰",
         "roi": [531, 472, 41, 21],
@@ -155,10 +160,29 @@
         "roi": [464, 482, 66, 32],
         "action": "Click"
     },
+    "ClaimSecretKey": {
+        "recognition": "OCR",
+        "expected": "金鑰",
+        "roi": [362, 267, 50, 28],
+        "action": "Click",
+        "target": [840, 510, 1, 1],
+        "next": [
+            "ResourcesObtained",
+            "CloseSecretKey"
+        ]
+    },
+    "CloseSecretKey": {
+        "post_delay": 2000,
+        "recognition": "OCR",
+        "expected": "已領",
+        "roi": [823, 493, 60, 33],
+        "action": "Click",
+        "target": [640, 715, 1, 1]
+    },
     "AutoEmotionCheck": {
         "recognition": "OCR",
         "expected": "累計",
-        "roi": [317, 625, 40, 23],
+        "roi": [316, 644, 43, 23],
         "action": "Click",
         "target": [820, 400, 1, 1],
         "next": [
@@ -170,7 +194,7 @@
         "recognition": "TemplateMatch",
         "template": "Home/ClaimEmotionCheck.png",
         "green_mask": true,
-        "roi": [529, 562, 530, 90],
+        "roi": [528, 581, 531, 89],
         "action": "Click",
         "next": [
             "ResourcesObtained",
@@ -213,14 +237,11 @@
     },
     "CloseLimitedTimeAttires": {
         "post_delay": 2000,
-        "recognition": "OCR",
-        "expected": [
-            "套裝",
-            "套装"
-        ],
-        "roi": [960, 401, 62, 30],
-        "action": "Click",
-        "target": [1092, 98, 1, 1]
+        "recognition": "TemplateMatch",
+        "template": "Home/CloseLimitedTimeAttires.png",
+        "green_mask": true,
+        "roi": [1078, 45, 88, 83],
+        "action": "Click"
     },
     "CloseUnknownAnnouncement": {
         "max_hit": 5,

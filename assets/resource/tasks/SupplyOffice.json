@@ -7,6 +7,7 @@
             "option": [
                 "每日免費補給",
                 "搜索令(追蹤兌換)",
+                "都市搜索令(追蹤兌換)",
                 "內海遺物箱(戰勳兌換)",
                 "樣本兌換",
                 "秘盟兌換",
@@ -34,6 +35,18 @@
         "搜索令(追蹤兌換)": {
             "type": "switch",
             "icon": "./icons/SupplyOffice/Warrant.png",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No"
+                }
+            ]
+        },
+        "都市搜索令(追蹤兌換)": {
+            "type": "switch",
+            "icon": "./icons/SupplyOffice/CityWarrant.png",
             "cases": [
                 {
                     "name": "Yes"

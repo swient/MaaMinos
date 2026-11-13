@@ -72,9 +72,12 @@
         "recognition": "OCR",
         "expected": "13",
         "roi": [180, 150, 1080, 420],
-        "target_offset": [0, -15, 0, 0],
         "action": "Click",
-        "next": "VerifyMainStoryLevelSelection"
+        "target_offset": [0, 40, 0, 0],
+        "next": [
+            "VerifyMainStoryLevelSelection",
+            "[JumpBack]EnterMainStoryPartSelection"
+        ]
     },
     "VerifyMainStoryLevelSelection": {
         "recognition": "OCR",
@@ -86,6 +89,14 @@
             "[JumpBack]InitSwipePosition_2",
             "[JumpBack]AutoSwipeLeft"
         ]
+    },
+    "EnterMainStoryPartSelection": {
+        "post_delay": 500,
+        "recognition": "OCR",
+        "expected": "13",
+        "roi": [1020, 458, 51, 196],
+        "action": "Click",
+        "target_offset": [0, 40, 0, 0]
     },
     "EnterMainStoryLevel": {
         "post_delay": 500,

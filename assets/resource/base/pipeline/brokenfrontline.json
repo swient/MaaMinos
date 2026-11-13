@@ -2,7 +2,6 @@
     "BrokenFrontline": {
         "next": [
             "VerifyBrokenFrontline",
-            "CompletedBrokenFrontline",
             "EnterBrokenFrontline",
             "EnterDisSea",
             "EnterDiscity",
@@ -35,7 +34,7 @@
     "CompletedBrokenFrontline": {
         "recognition": "TemplateMatch",
         "template": "Discity/CompletedBrokenFrontline.png",
-        "roi": [102, 514, 26, 26],
+        "roi": [82, 514, 27, 27],
         "next": "RecordBrokenFrontline"
     },
     "EnterBrokenFrontlineItem": {
@@ -43,7 +42,7 @@
         "recognition": "TemplateMatch",
         "template": "Discity/BrokenFrontline.png",
         "threshold": 0.9,
-        "roi": [102, 514, 26, 26],
+        "roi": [82, 514, 27, 27],
         "action": "Click",
         "target_offset": [-25, 25, 0, 0],
         "next": [
@@ -90,6 +89,7 @@
         "template": "Discity/BrokenFrontline.png",
         "roi": [192, 197, 26, 118],
         "action": "Click",
+        "target_offset": [30, 25, 0, 0],
         "next": "ClaimBrokenFrontlineReward"
     },
     "ClaimBrokenFrontlineReward": {
